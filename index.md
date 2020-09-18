@@ -23,10 +23,10 @@ _Alternatively, `./*/` gives sizes of all directories_
 
 ## Vim redirect output of Ex commands to register
 
-1. :redir @a
-2. :<commands>
-3. :redir END
-4. "ap
+1. `:redir @a`
+2. `:<commands>`
+3. `:redir END`
+4. `"ap`
 
 ## Vim run bash (or any shell) commands from buffer
 
