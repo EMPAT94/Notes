@@ -1,7 +1,3 @@
-# NOTES
-
-This is a live collection of notes related to programming and writing that I have compiled for myself and thought to share with the community with the hopes someone might benefit from it!
-
 ## Mount external ntfs hdd on macos
 
 1. `brew cask install osxfuse`
@@ -25,6 +21,31 @@ _Alternatively, `./*/` gives sizes of all directories_
 2. `adb tcpip 5555`
 3. `adb connect <phone-ip>:5555`
 
+## ADB push new files only
+
+`adb push --sync <source> <target>`
+
+## Move new files only (do not overwrite if exists)
+
+`mv -vn <source> <target>` where v = verbose, n = no overwrite
+
+## Shell if/else
+
+```sh
+if [ <test> ]; then <do something>; fi
+```
+
+## Shell for loop
+
+```sh
+for <variable> in <list>; do <command>; done
+```
+
+Example
+```sh
+for file in .*; do echo $file >> .gitignore; done
+```
+
 ## Vim redirect output of Ex commands to register
 
 1. `:redir @a`
@@ -35,6 +56,12 @@ _Alternatively, `./*/` gives sizes of all directories_
 ## Vim run bash (or any shell) commands from buffer
 
 `:%!bash`
+
+## Vim convert textfile to pdf (via ps) using inbuilt utils macos
+
+`vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps`
+
+*pstopdf may be names ps2pdf on other OSes*
 
 ## Rule of English adjective order
 
