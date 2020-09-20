@@ -9,9 +9,12 @@
 7. `sudo umount /dev/disk2s1`
 8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
 
-## Check size of a directory dir
+## Check size of a directory
 
-`du -sh dir` where s = summary, h = human readable format
+```sh
+du -sh dir
+```
+where s = summary, h = human readable format
 
 _Alternatively, `./*/` gives sizes of all directories_
 
@@ -23,11 +26,15 @@ _Alternatively, `./*/` gives sizes of all directories_
 
 ## ADB push new files only
 
-`adb push --sync <source> <target>`
+```sh
+adb push --sync <source> <target>
+```
 
 ## Move new files only (do not overwrite if exists)
 
-`mv -vn <source> <target>` where v = verbose, n = no overwrite
+```sh
+mv -vn <source> <target> where v = verbose, n = no overwrite
+```
 
 ## Shell if/else
 
@@ -55,11 +62,15 @@ for file in .*; do echo $file >> .gitignore; done
 
 ## Vim run bash (or any shell) commands from buffer
 
-`:%!bash`
+```
+:%!bash
+```
 
 ## Vim convert textfile to pdf (via ps) using inbuilt utils macos
 
-`vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps`
+```sh
+vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
+```
 
 *pstopdf may be names ps2pdf on other OSes*
 
