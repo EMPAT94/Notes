@@ -77,3 +77,25 @@ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
 ## Rule of English adjective order
 
 The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose
+
+## Node make a dynamic chain of promises
+
+```javascript
+arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
+```
+
+This converts 
+
+```javascript
+const arr = [d1, d2, d3, ..., dn];
+
+function fn(d) {
+  return new Promise((res, rej) => { ...; res() });
+}
+```
+
+Into
+
+```javascript
+Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
+```
