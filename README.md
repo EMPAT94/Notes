@@ -99,3 +99,26 @@ Into
 ```javascript
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
+
+## Vim alternative undo redo
+
+```vim
+:earlier <time>
+:later <time>
+```
+where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
+
+to go back and forth on state of buffer in time of x units
+
+```vim
+g- " Moves to previous undo branch
+g+ " Moves to next undo branch
+```
+
+## Vim remote editing (using ssh config)
+
+*Assuming a Host for 'staging' is set in ~/.ssh/config*
+
+```vim
+:e scp://staging/~/path/to/file.ext
+```
