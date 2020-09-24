@@ -1,3 +1,45 @@
+# VIM
+
+## Redirect output of Ex commands to register
+
+1. `:redir @a`
+2. `:<commands>`
+3. `:redir END`
+4. `"ap`
+
+## Run bash (or any shell) commands from buffer
+
+```
+:%!bash
+```
+
+## Convert textfile to pdf (via ps)
+
+```sh
+$ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
+```
+
+*pstopdf may be names ps2pdf on other OSes*
+
+## Alternative undo redo
+
+```vim
+:earlier <time>
+:later <time>
+```
+where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
+
+to go back and forth on state of buffer in time of x units
+
+## Remote editing (using ssh config)
+
+*Assuming a Host for 'staging' is set in ~/.ssh/config*
+
+```vim
+:e scp://staging/~/path/to/file.ext
+```
+# SHELL
+
 ## Mount external ntfs hdd on macos
 
 1. `brew cask install osxfuse`
@@ -12,37 +54,25 @@
 ## Check size of a directory
 
 ```sh
-du -sh dir
+$ du -sh dir
 ```
 where s = summary, h = human readable format
 
 _Alternatively, `./*/` gives sizes of all directories_
 
-## Connect ADB wirelessly
-
-1. Connect adb with cable
-2. `adb tcpip 5555`
-3. `adb connect <phone-ip>:5555`
-
-## ADB push new files only
-
-```sh
-adb push --sync <source> <target>
-```
-
 ## Move new files only (do not overwrite if exists)
 
 ```sh
-mv -vn <source> <target> where v = verbose, n = no overwrite
+$ mv -vn <source> <target> where v = verbose, n = no overwrite
 ```
 
-## Shell if/else
+## if/else
 
 ```sh
 if [ <test> ]; then <do something>; fi
 ```
 
-## Shell for loop
+## for loop
 
 ```sh
 for <variable> in <list>; do <command>; done
@@ -52,39 +82,17 @@ Example
 ```sh
 for file in .*; do echo $file >> .gitignore; done
 ```
-
-## Vim redirect output of Ex commands to register
-
-1. `:redir @a`
-2. `:<commands>`
-3. `:redir END`
-4. `"ap`
-
-## Vim run bash (or any shell) commands from buffer
-
-```
-:%!bash
-```
-
-## Vim convert textfile to pdf (via ps) using inbuilt utils macos
-
-```sh
-vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
-```
-
-*pstopdf may be names ps2pdf on other OSes*
-
-## Rule of English adjective order
-
-The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose
+# NODE/JS
 
 ## Node make a dynamic chain of promises
+
+Use
 
 ```javascript
 arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
 ```
 
-This converts 
+to convert
 
 ```javascript
 const arr = [d1, d2, d3, ..., dn];
@@ -94,31 +102,29 @@ function fn(d) {
 }
 ```
 
-Into
+into
 
 ```javascript
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-## Vim alternative undo redo
+# ADB
 
-```vim
-:earlier <time>
-:later <time>
+## Connect wirelessly
+
+1. Connect adb with cable
+2. `adb tcpip 5555`
+3. `adb connect <phone-ip>:5555`
+
+## Push new files only
+
+```sh
+adb push --sync <source> <target>
 ```
-where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
 
-to go back and forth on state of buffer in time of x units
+# WRITING
 
-```vim
-g- " Moves to previous undo branch
-g+ " Moves to next undo branch
-```
+## Rule of English adjective order
 
-## Vim remote editing (using ssh config)
+The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose
 
-*Assuming a Host for 'staging' is set in ~/.ssh/config*
-
-```vim
-:e scp://staging/~/path/to/file.ext
-```
