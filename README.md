@@ -82,6 +82,17 @@ Example
 ```sh
 for file in .*; do echo $file >> .gitignore; done
 ```
+
+## Strict mode
+
+```sh
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+```
+
+[http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+
 # NODE/JS
 
 ## Node make a dynamic chain of promises
