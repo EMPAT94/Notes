@@ -54,17 +54,23 @@ to go back and forth on state of buffer in time of x units
 ## Check size of a directory
 
 ```sh
-$ du -sh dir
+du -sh <dir>
 ```
 where s = summary, h = human readable format
 
-_Alternatively, `./*/` gives sizes of all directories_
+Example: Get size of all directories in current directory
+
+```sh
+du -sh ./*/
+```
 
 ## Move new files only (do not overwrite if exists)
 
 ```sh
-$ mv -vn <source> <target> where v = verbose, n = no overwrite
+$ mv -vn <source> <target> 
 ```
+
+where v = verbose, n = no overwrite
 
 ## if/else
 
@@ -78,12 +84,12 @@ if [ <test> ]; then <do something>; fi
 for <variable> in <list>; do <command>; done
 ```
 
-Example
+Example: Add all dot files to gitignore
 ```sh
 for file in .*; do echo $file >> .gitignore; done
 ```
 
-## Strict mode
+## Script strict mode
 
 ```sh
 #!/bin/bash
@@ -92,6 +98,18 @@ IFS=$'\n\t'
 ```
 
 [http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+
+## Find command
+
+```sh
+find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
+```
+
+Example: find and delete all dot files in current directory
+
+```sh
+find . -name ".*" -delete
+```
 
 # NODE/JS
 
