@@ -38,6 +38,19 @@ to go back and forth on state of buffer in time of x units
 ```vim
 :e scp://staging/~/path/to/file.ext
 ```
+
+## Delete other buffers except current
+
+```vim
+:% bd | e # | bd #
+```
+
+where % bd = delete all buffers (creates a new no-name buffer),
+  e # = edit previous buffer (since current is no-name),
+  bd # = delete previous buffer (no-name)
+
+*spaces are optional*
+
 # SHELL
 
 ## Mount external ntfs hdd on macos
