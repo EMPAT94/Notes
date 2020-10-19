@@ -1,3 +1,4 @@
+
 # VIM
 
 ## Redirect output of Ex commands to register
@@ -33,11 +34,11 @@ to go back and forth on state of buffer in time of x units
 
 ## Remote editing (using ssh config)
 
-*Assuming a Host for 'staging' is set in ~/.ssh/config*
-
 ```vim
 :e scp://staging/~/path/to/file.ext
 ```
+
+*Assuming a Host for 'staging' is set in ~/.ssh/config*
 
 ## Delete other buffers except current
 
@@ -50,6 +51,19 @@ where % bd = delete all buffers (creates a new no-name buffer),
   bd # = delete previous buffer (no-name)
 
 *spaces are optional*
+
+## Ex mode completion options
+
+<TAB> cycles through options; <C-a> inputs all options.
+
+Example: To delete all \*.js files in buffer list
+
+```vi
+:bd js<C-a>
+```
+
+*Can use :bwipe to completely remove a buffer*
+ 
 
 # SHELL
 
@@ -124,6 +138,7 @@ Example: find and delete all dot files in current directory
 find . -name ".*" -delete
 ```
 
+
 # NODE/JS
 
 ## Node make a dynamic chain of promises
@@ -150,6 +165,7 @@ into
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
+
 # ADB
 
 ## Connect wirelessly
@@ -164,9 +180,13 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 adb push --sync <source> <target>
 ```
 
+
 # WRITING
 
 ## Rule of English adjective order
 
 The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose
 
+## A good video on writing
+
+https://youtu.be/vtIzMaLkCaM
