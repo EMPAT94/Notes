@@ -63,7 +63,7 @@ Example: To delete all \*.js files in buffer list
 ```
 
 *Can use :bwipe to completely remove a buffer*
- 
+
 
 # SHELL
 
@@ -94,7 +94,7 @@ du -sh ./*/
 ## Move new files only (do not overwrite if exists)
 
 ```sh
-$ mv -vn <source> <target> 
+$ mv -vn <source> <target>
 ```
 
 where v = verbose, n = no overwrite
@@ -138,6 +138,25 @@ Example: find and delete all dot files in current directory
 find . -name ".*" -delete
 ```
 
+## Remove duplicate lines from a file
+
+```sh
+awk '!l[$0]++' file > newfile
+```
+
+if order is not important
+
+```sh
+sort -u file > newfile
+```
+
+## Download songs from youtube in mp3 format
+
+```sh
+youtube-dl -x --audio-format mp3 [ "URL" | -a  ./fileName ]
+```
+
+*where fileName is a list of urls separated by blank lines*
 
 # NODE/JS
 
