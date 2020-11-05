@@ -67,6 +67,21 @@ Example: To delete all \*.js files in buffer list
 
 # SHELL
 
+## Reuse previous shell command
+
+```sh
+$ !!
+```
+
+Example: check git root and cd if proper
+
+```sh
+$ git rev-parse --show-toplevel
+/git/root
+$ cd $(!!)
+```
+
+
 ## Mount external ntfs hdd on macos
 
 1. `brew cask install osxfuse`
