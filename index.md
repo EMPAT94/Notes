@@ -214,6 +214,39 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 adb push --sync <source> <target>
 ```
 
+## Make an app fullscreen
+
+```sh
+adb shell settings put global policy_control immersive.full=com.package
+```
+
+To remove
+
+```sh
+adb shell settings put global policy_control immersive.off=com.package
+```
+
+
+# SQL
+
+## Distinct Query
+
+```sql
+select distinct col1, col2 from table;
+```
+
+## Delete Query
+
+```sql
+delete from table where col = val;
+```
+
+## Count Query
+
+```sql
+select count(*) from table;
+```
+
 
 # WRITING
 
