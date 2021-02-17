@@ -81,6 +81,14 @@ $ git rev-parse --show-toplevel
 $ cd $(!!)
 ```
 
+## Reinstall xcode-select
+
+```sh
+sudo rm -rf $(xcode-select -p) && xcode-select -i
+```
+
+where -p = print path & -i = install
+
 
 ## Mount external ntfs hdd on macos
 
