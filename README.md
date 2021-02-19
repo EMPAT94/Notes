@@ -1,20 +1,19 @@
-
 # VIM
 
-## Redirect output of Ex commands to register
+#### Redirect output of Ex commands to register
 
 1. `:redir @a`
 2. `:<commands>`
 3. `:redir END`
 4. `"ap`
 
-## Run bash (or any shell) commands from buffer
+#### Run bash (or any shell) commands from buffer
 
 ```
 :%!bash
 ```
 
-## Convert textfile to pdf (via ps)
+#### Convert textfile to pdf (via ps)
 
 ```sh
 $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
@@ -22,7 +21,7 @@ $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
 
 *pstopdf may be names ps2pdf on other OSes*
 
-## Alternative undo redo
+#### Alternative undo redo
 
 ```vim
 :earlier <time>
@@ -32,7 +31,7 @@ where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
 
 to go back and forth on state of buffer in time of x units
 
-## Remote editing (using ssh config)
+#### Remote editing (using ssh config)
 
 ```vim
 :e scp://staging/~/path/to/file.ext
@@ -40,7 +39,7 @@ to go back and forth on state of buffer in time of x units
 
 *Assuming a Host for 'staging' is set in ~/.ssh/config*
 
-## Delete other buffers except current
+#### Delete other buffers except current
 
 ```vim
 :% bd | e # | bd #
@@ -52,7 +51,7 @@ where % bd = delete all buffers (creates a new no-name buffer),
 
 *spaces are optional*
 
-## Ex mode completion options
+#### Ex mode completion options
 
 <TAB> cycles through options; <C-a> inputs all options.
 
@@ -67,7 +66,7 @@ Example: To delete all \*.js files in buffer list
 
 # SHELL
 
-## Reuse previous shell command
+#### Reuse previous shell command
 
 ```sh
 $ !!
@@ -81,14 +80,14 @@ $ git rev-parse --show-toplevel
 $ cd $(!!)
 ```
 
-## Reinstall xcode-select
+#### Reinstall xcode-select
 
 ```sh
 sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 ```
 
 
-## Mount external ntfs hdd on macos
+#### Mount external ntfs hdd on macos
 
 1. `brew cask install osxfuse`
 2. Reboot
@@ -99,7 +98,7 @@ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 7. `sudo umount /dev/disk2s1`
 8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
 
-## Check size of a directory
+#### Check size of a directory
 
 ```sh
 du -sh <dir>
@@ -112,7 +111,7 @@ Example: Get size of all directories in current directory
 du -sh ./*/
 ```
 
-## Move new files only (do not overwrite if exists)
+#### Move new files only (do not overwrite if exists)
 
 ```sh
 $ mv -vn <source> <target>
@@ -120,13 +119,13 @@ $ mv -vn <source> <target>
 
 where v = verbose, n = no overwrite
 
-## if/else
+#### if/else
 
 ```sh
 if [ <test> ]; then <do something>; fi
 ```
 
-## for loop
+#### for loop
 
 ```sh
 for <variable> in <list>; do <command>; done
@@ -137,7 +136,7 @@ Example: Add all dot files to gitignore
 for file in .*; do echo $file >> .gitignore; done
 ```
 
-## Script strict mode
+#### Script strict mode
 
 ```sh
 #!/bin/bash
@@ -147,7 +146,7 @@ IFS=$'\n\t'
 
 [http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 
-## Find command
+#### Find command
 
 ```sh
 find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
@@ -159,7 +158,7 @@ Example: find and delete all dot files in current directory
 find . -name ".*" -delete
 ```
 
-## Remove duplicate lines from a file
+#### Remove duplicate lines from a file
 
 ```sh
 awk '!l[$0]++' file > newfile
@@ -171,7 +170,7 @@ if order is not important
 sort -u file > newfile
 ```
 
-## Download songs from youtube in mp3 format
+#### Download songs from youtube in mp3 format
 
 ```sh
 youtube-dl -x --audio-format mp3 [ "URL" | -a  ./fileName ]
@@ -181,7 +180,7 @@ youtube-dl -x --audio-format mp3 [ "URL" | -a  ./fileName ]
 
 # NODE/JS
 
-## Node make a dynamic chain of promises
+#### Node make a dynamic chain of promises
 
 Use
 
@@ -208,19 +207,19 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 
 # ADB
 
-## Connect wirelessly
+#### Connect wirelessly
 
 1. Connect adb with cable
 2. `adb tcpip 5555`
 3. `adb connect <phone-ip>:5555`
 
-## Push new files only
+#### Push new files only
 
 ```sh
 adb push --sync <source> <target>
 ```
 
-## Make an app fullscreen
+#### Make an app fullscreen
 
 ```sh
 adb shell settings put global policy_control immersive.full=com.package
@@ -235,19 +234,19 @@ adb shell settings put global policy_control immersive.off=com.package
 
 # SQL
 
-## Distinct Query
+#### Distinct Query
 
 ```sql
 select distinct col1, col2 from table;
 ```
 
-## Delete Query
+#### Delete Query
 
 ```sql
 delete from table where col = val;
 ```
 
-## Count Query
+#### Count Query
 
 ```sql
 select count(*) from table;
@@ -256,10 +255,10 @@ select count(*) from table;
 
 # WRITING
 
-## Rule of English adjective order
+#### Rule of English adjective order
 
 The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose
 
-## A good video on writing
+#### A good video on writing
 
 https://youtu.be/vtIzMaLkCaM
