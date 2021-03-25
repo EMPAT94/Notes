@@ -170,10 +170,10 @@ if order is not important
 sort -u file > newfile
 ```
 
-#### Download songs from youtube in mp3 format
+#### Download songs from youtube 
 
 ```sh
-youtube-dl -x --audio-format mp3 [ "URL" | -a  ./fileName ]
+youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 [--yes-playlist] [ "URL" | -a  ./fileName ]
 ```
 
 *where fileName is a list of urls separated by blank lines*
@@ -216,7 +216,7 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 #### Push new files only
 
 ```sh
-adb push --sync <source> <target>
+adb push [-n for dryrun] --sync <source> <target>
 ```
 
 #### Make an app fullscreen
@@ -224,6 +224,8 @@ adb push --sync <source> <target>
 ```sh
 adb shell settings put global policy_control immersive.full=com.package
 ```
+
+where immersive.full can be replaced by immersive.status or immersive.navigation
 
 To remove
 
@@ -262,3 +264,9 @@ The rule is that multiple adjectives are always ranked accordingly: opinion, siz
 #### A good video on writing
 
 https://youtu.be/vtIzMaLkCaM
+
+#### Guide to Grammar and Style - By Jack Lynch
+
+http://www.jacklynch.net/Writing/index.html
+
+
