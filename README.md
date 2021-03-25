@@ -139,7 +139,7 @@ for file in .*; do echo $file >> .gitignore; done
 #### Script strict mode
 
 ```sh
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
 ```
@@ -202,6 +202,13 @@ into
 
 ```javascript
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
+```
+
+#### Get integer part of a fraction
+
+```javascript
+let fraction = 1.234
+let intPart = ~~fraction; // 1
 ```
 
 
