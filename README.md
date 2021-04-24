@@ -66,6 +66,18 @@ Example: To delete all \*.js files in buffer list
 
 # SHELL
 
+#### Use user argument or default Valued
+
+```sh
+VAL=${1:-"<default>"}
+```
+
+Example: assuming above default is "/tmp" and the script is run
+
+1. with argument /home then VAL = /home
+2. with no argument then VAL = /tmp
+
+
 #### Reuse previous shell command
 
 ```sh
@@ -238,6 +250,23 @@ To remove
 
 ```sh
 adb shell settings put global policy_control immersive.off=com.package
+```
+
+#### Screenshot & Screenrecord
+
+```sh
+adb shell screenrecord /sdcard/test.mp4
+```
+Close with Ctrl-C
+
+```sh
+adb shell screencap /sdcard/test.png
+```
+
+To pull file on pc and remove from phone
+
+```sh
+adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
 
 
