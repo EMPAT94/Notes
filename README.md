@@ -3,7 +3,7 @@
 #### Redirect output of Ex commands to register
 
 1. `:redir @a`
-2. `:<commands>`
+2. `:__commands__`
 3. `:redir END`
 4. `"ap`
 
@@ -24,11 +24,11 @@ _pstopdf may be names ps2pdf on other OSes_
 #### Alternative undo redo
 
 ```vim
-:earlier <time>
-:later <time>
+:earlier __time__
+:later __time__
 ```
 
-where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
+where **time** = x(s|m|h|d) (s = second, m = minute, h = hour, day)
 
 to go back and forth on state of buffer in time of x units
 
@@ -46,30 +46,32 @@ _Assuming a Host for 'staging' is set in ~/.ssh/config_
 :% bd | e # | bd #
 ```
 
-where % bd = delete all buffers (creates a new no-name buffer),
-e # = edit previous buffer (since current is no-name),
-bd # = delete previous buffer (no-name)
+where
+
+- % bd = delete all buffers (creates a new no-name buffer),
+- e # = edit previous buffer (since current is no-name),
+- bd # = delete previous buffer (no-name)
 
 _spaces are optional_
 
 #### Ex mode completion options
 
-<TAB> cycles through options; <C-a> inputs all options.
+TAB cycles through options; Ctrl-a inputs all options.
 
 Example: To delete all \*.js files in buffer list
 
 ```vi
-:bd js<C-a>
+:bd js Ctrl-a
 ```
 
-_Can use :bwipe to completely remove a buffer_
+_Can use :bwipeout to completely remove a buffer_
 
 # SHELL
 
 #### Use user argument or default Valued
 
 ```sh
-VAL=${1:-"<default>"}
+VAL=${1:-"__default__"}
 ```
 
 Example: assuming above default is "/tmp" and the script is run
@@ -94,7 +96,7 @@ $ cd $(!!)
 #### Reinstall xcode-select
 
 ```sh
-sudo rm -rf $(xcode-select --print-path) && xcode-select --install
+$ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 ```
 
 #### Mount external ntfs hdd on macos
@@ -111,15 +113,18 @@ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 #### Check size of a directory
 
 ```sh
-du -sh <dir>
+$ du -sh __dir__
 ```
 
-where s = summary, h = human readable format
+where
+
+- s = summary
+- h = human readable format
 
 Example: Get size of all directories in current directory
 
 ```sh
-du -sh ./*/
+$ du -sh ./*/
 ```
 
 #### Move new files only (do not overwrite if exists)
@@ -128,18 +133,21 @@ du -sh ./*/
 $ mv -vn <source> <target>
 ```
 
-where v = verbose, n = no overwrite
+where
+
+- v = verbose
+- n = no overwrite
 
 #### if/else
 
 ```sh
-if [ <test> ]; then <do something>; fi
+$ if [ __test__ ]; then __do something__; fi
 ```
 
 #### for loop
 
 ```sh
-for <variable> in <list>; do <command>; done
+for __variable__ in __list__; do __command__; done
 ```
 
 Example: Add all dot files to gitignore
@@ -163,7 +171,7 @@ IFS=$'\n\t'
 #### Find command
 
 ```sh
-find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
+find __path__ [-type | -size] -name "regex" [-exec __another cmd__ | -delete]
 ```
 
 Example: find and delete all dot files in current directory
@@ -195,15 +203,16 @@ _where fileName is a list of urls separated by blank lines; [youtube-dl](https:/
 #### Start a background job
 
 ```sh
-nohup <job> < /dev/null > /dev/null & disown
+nohup __job__ < /dev/null > /dev/null & disown
 ```
 
 where
-  nohup = no hangup sig
-  < /dev/null = no stdin (input)
-  > /dev/null = no nohup file (output)
-  > & = start in background
-  > disown = detach from shell
+
+- nohup = no hangup sig
+- < /dev/null = no stdin (input)
+- > /dev/null = no nohup file (output)
+- > & = start in background
+- > disown = detach from shell
 
 Example: To start [mpv](https://mpv.io/) as music daemon
 
@@ -255,7 +264,7 @@ let intPart = ~~fraction; // 1
 #### Push new files only
 
 ```sh
-adb push [-n for dryrun] --sync <source> <target>
+adb push [-n for dryrun] --sync __source__ __target__
 ```
 
 #### Make an app fullscreen
