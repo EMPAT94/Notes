@@ -19,7 +19,7 @@
 $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
 ```
 
-*pstopdf may be names ps2pdf on other OSes*
+_pstopdf may be names ps2pdf on other OSes_
 
 #### Alternative undo redo
 
@@ -27,6 +27,7 @@ $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
 :earlier <time>
 :later <time>
 ```
+
 where <time> = x(s|m|h|d) (s = second, m = minute, h = hour, day)
 
 to go back and forth on state of buffer in time of x units
@@ -37,7 +38,7 @@ to go back and forth on state of buffer in time of x units
 :e scp://staging/~/path/to/file.ext
 ```
 
-*Assuming a Host for 'staging' is set in ~/.ssh/config*
+_Assuming a Host for 'staging' is set in ~/.ssh/config_
 
 #### Delete other buffers except current
 
@@ -46,10 +47,10 @@ to go back and forth on state of buffer in time of x units
 ```
 
 where % bd = delete all buffers (creates a new no-name buffer),
-  e # = edit previous buffer (since current is no-name),
-  bd # = delete previous buffer (no-name)
+e # = edit previous buffer (since current is no-name),
+bd # = delete previous buffer (no-name)
 
-*spaces are optional*
+_spaces are optional_
 
 #### Ex mode completion options
 
@@ -61,8 +62,7 @@ Example: To delete all \*.js files in buffer list
 :bd js<C-a>
 ```
 
-*Can use :bwipe to completely remove a buffer*
-
+_Can use :bwipe to completely remove a buffer_
 
 # SHELL
 
@@ -76,7 +76,6 @@ Example: assuming above default is "/tmp" and the script is run
 
 1. with argument /home then VAL = /home
 2. with no argument then VAL = /tmp
-
 
 #### Reuse previous shell command
 
@@ -98,7 +97,6 @@ $ cd $(!!)
 sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 ```
 
-
 #### Mount external ntfs hdd on macos
 
 1. `brew cask install osxfuse`
@@ -115,6 +113,7 @@ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 ```sh
 du -sh <dir>
 ```
+
 where s = summary, h = human readable format
 
 Example: Get size of all directories in current directory
@@ -144,14 +143,17 @@ for <variable> in <list>; do <command>; done
 ```
 
 Example: Add all dot files to gitignore
+
 ```sh
 for file in .*; do echo $file >> .gitignore; done
 ```
 
 #### Script strict mode
 
+_Ignore the \ in \# below, kept for formatting reasons_
+
 ```sh
-#!/usr/bin/env bash
+\#!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
 ```
@@ -182,13 +184,32 @@ if order is not important
 sort -u file > newfile
 ```
 
-#### Download songs from youtube 
+#### Download songs from youtube
 
 ```sh
 youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 [--yes-playlist] [ "URL" | -a  ./fileName ]
 ```
 
-*where fileName is a list of urls separated by blank lines*
+_where fileName is a list of urls separated by blank lines; [youtube-dl](https://youtube-dl.org/)_
+
+#### Start a background job
+
+```sh
+nohup <job> < /dev/null > /dev/null & disown
+```
+
+where
+  nohup = no hangup sig
+  < /dev/null = no stdin (input)
+  > /dev/null = no nohup file (output)
+  > & = start in background
+  > disown = detach from shell
+
+Example: To start [mpv](https://mpv.io/) as music daemon
+
+```sh
+nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
+```
 
 # NODE/JS
 
@@ -219,10 +240,9 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 #### Get integer part of a fraction
 
 ```javascript
-let fraction = 1.234
+let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
-
 
 # ADB
 
@@ -257,6 +277,7 @@ adb shell settings put global policy_control immersive.off=com.package
 ```sh
 adb shell screenrecord /sdcard/test.mp4
 ```
+
 Close with Ctrl-C
 
 ```sh
@@ -268,7 +289,6 @@ To pull file on pc and remove from phone
 ```sh
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
-
 
 # SQL
 
@@ -290,7 +310,6 @@ delete from table where col = val;
 select count(*) from table;
 ```
 
-
 # WRITING
 
 #### Rule of English adjective order
@@ -304,5 +323,3 @@ https://youtu.be/vtIzMaLkCaM
 #### Guide to Grammar and Style - By Jack Lynch
 
 http://www.jacklynch.net/Writing/index.html
-
-
