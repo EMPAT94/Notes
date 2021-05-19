@@ -23,7 +23,7 @@ _pstopdf may be names ps2pdf on other OSes_
 
 #### Alternative undo redo
 
-```vim
+```vi
 :earlier __time__
 :later __time__
 ```
@@ -34,7 +34,7 @@ to go back and forth on state of buffer in time of x units
 
 #### Remote editing (using ssh config)
 
-```vim
+```vi
 :e scp://staging/~/path/to/file.ext
 ```
 
@@ -42,7 +42,7 @@ _Assuming a Host for 'staging' is set in ~/.ssh/config_
 
 #### Delete other buffers except current
 
-```vim
+```vi
 :% bd | e # | bd #
 ```
 
@@ -219,6 +219,11 @@ Example: To start [mpv](https://mpv.io/) as music daemon
 ```sh
 nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
 ```
+#### Git delete all branches except main and featurex
+
+```sh
+git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
+```
 
 # NODE/JS
 
@@ -332,3 +337,7 @@ https://youtu.be/vtIzMaLkCaM
 #### Guide to Grammar and Style - By Jack Lynch
 
 http://www.jacklynch.net/Writing/index.html
+
+#### Dynomight
+
+https://dynomight.net/2021/02/07/writing-as-a-craft/
