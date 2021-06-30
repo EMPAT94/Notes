@@ -203,16 +203,17 @@ _where fileName is a list of urls separated by blank lines; [youtube-dl](https:/
 #### Start a background job
 
 ```sh
-nohup __job__ < /dev/null > /dev/null & disown
+nohup __job__ < /dev/null > /dev/null 2>&1 & disown
 ```
 
 where
 
-- nohup = no hangup sig
+- nohup = no hangup signal
 - < /dev/null = no stdin (input)
 - > /dev/null = no nohup file (output)
-- > & = start in background
-- > disown = detach from shell
+- 2>&1 = redirect errors to stdout (which is null)
+- & = start in background
+- disown = detach from shell
 
 Example: To start [mpv](https://mpv.io/) as music daemon
 
