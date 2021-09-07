@@ -194,11 +194,20 @@ sort -u file > newfile
 
 #### Download songs from youtube
 
-```sh
-youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 [--yes-playlist] [ "URL" | -a  ./fileName ]
-```
+[https://youtube-dl.org/](https://youtube-dl.org/)
 
-_where fileName is a list of urls separated by blank lines; [youtube-dl](https://youtube-dl.org/)_
+Only audio:
+
+```sh
+youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] [ "URL" | -a  ./fileName ]
+```
+_where fileName is a list of urls separated by blank lines;_
+
+Best video+audio:
+
+```sh
+youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4  -o '%(title)s.%(ext)s' "VIDEO-LINK"
+```
 
 #### Start a background job
 
@@ -210,7 +219,7 @@ where
 
 - nohup = no hangup signal
 - < /dev/null = no stdin (input)
-- > /dev/null = no nohup file (output)
+- \> /dev/null = no nohup file (output)
 - 2>&1 = redirect errors to stdout (which is null)
 - & = start in background
 - disown = detach from shell
@@ -225,6 +234,20 @@ nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & di
 ```sh
 git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
 ```
+
+#### Mount Ram as disk
+
+```sh
+sudo mount -t tmpfs -o size=5g tmpfs /mnt/ramfs
+```
+
+where a new temporary mount point /mnt/ramfs is created with 5 Gigabytes of capacity;
+to unmount, do
+
+```sh
+umount /mnt/ramfs
+```
+
 
 # NODE/JS
 
