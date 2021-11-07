@@ -47,6 +47,24 @@ adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 
 
 
+# git
+
+## Create a tag (annotated)
+
+`git tag -a v0.2 -m "Release v0.2"`
+
+Note that simple `git push` does not push a tag to remote, must do something like:
+
+`git push origin <tag>`
+
+## List tags
+
+`git tag -l`
+
+## Show specific tag details
+
+`git show v0.2`
+
 # nodejs
 
 #### Node make a dynamic chain of promises
