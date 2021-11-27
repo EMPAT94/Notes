@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Notes</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Notes</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#adb">adb</a>
+<ul>
+<li><a href="#connect-wirelessly">Connect wirelessly</a></li>
+<li><a href="#push-new-files-only">Push new files only</a></li>
+<li><a href="#make-an-app-fullscreen">Make an app fullscreen</a></li>
+<li><a href="#screenshot-screenrecord">Screenshot &amp; Screenrecord</a></li>
+</ul></li>
+<li><a href="#git">git</a>
+<ul>
+<li><a href="#create-a-tag-annotated">Create a tag (annotated)</a></li>
+<li><a href="#list-tags">List tags</a></li>
+<li><a href="#show-specific-tag-details">Show specific tag details</a></li>
+</ul></li>
+<li><a href="#nodejs">nodejs</a>
+<ul>
+<li><a href="#node-make-a-dynamic-chain-of-promises">Node make a dynamic chain of promises</a></li>
+<li><a href="#get-integer-part-of-a-fraction">Get integer part of a fraction</a></li>
+</ul></li>
+<li><a href="#shell">shell</a>
+<ul>
+<li><a href="#use-user-argument-or-default-valued">Use user argument or default Valued</a></li>
+<li><a href="#reuse-previous-shell-command">Reuse previous shell command</a></li>
+<li><a href="#reinstall-xcode-select">Reinstall xcode-select</a></li>
+<li><a href="#mount-external-ntfs-hdd-on-macos">Mount external ntfs hdd on macos</a></li>
+<li><a href="#check-size-of-a-directory">Check size of a directory</a></li>
+<li><a href="#move-new-files-only-do-not-overwrite-if-exists">Move new files only (do not overwrite if exists)</a></li>
+<li><a href="#ifelse">if/else</a></li>
+<li><a href="#for-loop">for loop</a></li>
+<li><a href="#script-strict-mode">Script strict mode</a></li>
+<li><a href="#find-command">Find command</a></li>
+<li><a href="#remove-duplicate-lines-from-a-file">Remove duplicate lines from a file</a></li>
+<li><a href="#download-songs-from-youtube">Download songs from youtube</a></li>
+<li><a href="#start-a-background-job">Start a background job</a></li>
+<li><a href="#git-delete-all-branches-except-main-and-featurex">Git delete all branches except main and featurex</a></li>
+<li><a href="#mount-ram-as-disk">Mount Ram as disk</a></li>
+<li><a href="#watch-a-file-for-change-and-run-command-when-changes">Watch a file for change and run command when changes</a></li>
+</ul></li>
+<li><a href="#sql">sql</a>
+<ul>
+<li><a href="#distinct-query">Distinct Query</a></li>
+<li><a href="#delete-query">Delete Query</a></li>
+<li><a href="#count-query">Count Query</a></li>
+</ul></li>
+<li><a href="#vim">vim</a>
+<ul>
+<li><a href="#redirect-output-of-ex-commands-to-register">Redirect output of Ex commands to register</a></li>
+<li><a href="#run-bash-or-any-shell-commands-from-buffer">Run bash (or any shell) commands from buffer</a></li>
+<li><a href="#convert-textfile-to-pdf-via-ps">Convert textfile to pdf (via ps)</a></li>
+<li><a href="#alternative-undo-redo">Alternative undo redo</a></li>
+<li><a href="#remote-editing-using-ssh-config">Remote editing (using ssh config)</a></li>
+<li><a href="#delete-other-buffers-except-current">Delete other buffers except current</a></li>
+<li><a href="#ex-mode-completion-options">Ex mode completion options</a></li>
+</ul></li>
+<li><a href="#writing">writing</a>
+<ul>
+<li><a href="#rule-of-english-adjective-order">Rule of English adjective order</a></li>
+<li><a href="#a-good-video-on-writing">A good video on writing</a></li>
+<li><a href="#guide-to-grammar-and-style---by-jack-lynch">Guide to Grammar and Style - By Jack Lynch</a></li>
+<li><a href="#dynomight">Dynomight</a></li>
+</ul></li>
+<li><a href="#yay">yay</a>
+<ul>
+<li><a href="#install-yay-for-manjaro">Install yay (for manjaro)</a></li>
+<li><a href="#print-help">Print Help</a></li>
+<li><a href="#remove-all-old-packages-from-cache">Remove all old packages from cache</a></li>
+<li><a href="#remove-unneeded-dependencies">Remove unneeded dependencies</a></li>
+<li><a href="#search-for-a-package">Search for a package</a></li>
+<li><a href="#print-information-about-a-package">Print information about a package</a></li>
+<li><a href="#install-a-package">Install a package</a></li>
+<li><a href="#list-all-explicitly-installed-packages">List all explicitly installed packages</a></li>
+<li><a href="#remove-a-package-use-with-caution-check-for-cross-deps">Remove a package (use with caution, check for cross deps)</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="adb">adb</h1>
+<h2 id="connect-wirelessly">Connect wirelessly</h2>
+<ol type="1">
+<li>Connect adb with cable</li>
+<li><code>adb tcpip 5555</code></li>
+<li><code>adb connect &lt;phone-ip&gt;:5555</code></li>
+</ol>
+<h2 id="push-new-files-only">Push new files only</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> push [-n for dryrun] <span class="at">--sync</span> __source__ __target__</span></code></pre></div>
+<h2 id="make-an-app-fullscreen">Make an app fullscreen</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell settings put global policy_control immersive.full=com.package</span></code></pre></div>
+<p>where immersive.full can be replaced by immersive.status or immersive.navigation</p>
+<p>To remove</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell settings put global policy_control immersive.off=com.package</span></code></pre></div>
+<h2 id="screenshot-screenrecord">Screenshot &amp; Screenrecord</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell screenrecord /sdcard/test.mp4</span></code></pre></div>
+<p>Close with Ctrl-C</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> shell screencap /sdcard/test.png</span></code></pre></div>
+<p>To pull file on pc and remove from phone</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adb</span> pull /sdcard/test.mp4 ./ <span class="kw">&amp;&amp;</span> <span class="ex">adb</span> shell rm /sdcard/test.mp4</span></code></pre></div>
+<h1 id="git">git</h1>
+<h2 id="create-a-tag-annotated">Create a tag (annotated)</h2>
+<p><code>git tag -a v0.2 -m "Release v0.2"</code></p>
+<p>Note that simple <code>git push</code> does not push a tag to remote, must do something like:</p>
+<p><code>git push origin &lt;tag&gt;</code></p>
+<h2 id="list-tags">List tags</h2>
+<p><code>git tag -l</code></p>
+<h2 id="show-specific-tag-details">Show specific tag details</h2>
+<p><code>git show v0.2</code></p>
+<h1 id="nodejs">nodejs</h1>
+<h2 id="node-make-a-dynamic-chain-of-promises">Node make a dynamic chain of promises</h2>
+<p>Use</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>arr<span class="op">.</span><span class="fu">reduce</span>((c<span class="op">,</span> d) <span class="kw">=&gt;</span> c<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="fu">fn</span>(d))<span class="op">,</span> <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>())<span class="op">.</span><span class="fu">catch</span>(error)<span class="op">;</span></span></code></pre></div>
+<p>to convert</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr <span class="op">=</span> [d1<span class="op">,</span> d2<span class="op">,</span> d3<span class="op">,</span> <span class="op">...,</span> dn]<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">fn</span>(d) {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>((res<span class="op">,</span> rej) <span class="kw">=&gt;</span> { <span class="op">...;</span> <span class="fu">res</span>() })<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>into</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>()<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="fu">fn</span>(d1))<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="fu">fn</span>(d2))<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="fu">fn</span>(d3))<span class="op">...</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> <span class="fu">fn</span>(dn))<span class="op">.</span><span class="fu">catch</span>(error)</span></code></pre></div>
+<h2 id="get-integer-part-of-a-fraction">Get integer part of a fraction</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> fraction <span class="op">=</span> <span class="fl">1.234</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> intPart <span class="op">=</span> <span class="op">~~</span>fraction<span class="op">;</span> <span class="co">// 1</span></span></code></pre></div>
+<h1 id="shell">shell</h1>
+<h2 id="use-user-argument-or-default-valued">Use user argument or default Valued</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">VAL</span><span class="op">=</span><span class="va">${1</span><span class="op">:-</span><span class="st">&quot;__default__&quot;</span><span class="va">}</span></span></code></pre></div>
+<p>Example: assuming above default is “/tmp” and the script is run</p>
+<ol type="1">
+<li>with argument /home then VAL = /home</li>
+<li>with no argument then VAL = /tmp</li>
+</ol>
+<h2 id="reuse-previous-shell-command">Reuse previous shell command</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> !!</span></code></pre></div>
+<p>Example: check git root and cd if proper</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git rev-parse <span class="at">--show-toplevel</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/git/root</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="va">$(</span><span class="ex">!!</span><span class="va">)</span></span></code></pre></div>
+<h2 id="reinstall-xcode-select">Reinstall xcode-select</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo rm <span class="at">-rf</span> <span class="va">$(</span><span class="ex">xcode-select</span> <span class="at">--print-path</span><span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div>
+<h2 id="mount-external-ntfs-hdd-on-macos">Mount external ntfs hdd on macos</h2>
+<ol type="1">
+<li><code>brew cask install osxfuse</code></li>
+<li>Reboot</li>
+<li><code>brew install ntfs-3g</code></li>
+<li>Connect hdd</li>
+<li><code>mkdir ~/NTFS</code></li>
+<li><code>diskutil list</code> (check MS drive num eg disk2s1)</li>
+<li><code>sudo umount /dev/disk2s1</code></li>
+<li><code>sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other</code></li>
+</ol>
+<h2 id="check-size-of-a-directory">Check size of a directory</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-sh</span> __dir__</span></code></pre></div>
+<p>where</p>
+<ul>
+<li>s = summary</li>
+<li>h = human readable format</li>
+</ul>
+<p>Example: Get size of all directories in current directory</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> du <span class="at">-sh</span> ./<span class="pp">*</span>/</span></code></pre></div>
+<h2 id="move-new-files-only-do-not-overwrite-if-exists">Move new files only (do not overwrite if exists)</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv <span class="at">-vn</span> <span class="op">&lt;</span>source<span class="op">&gt;</span> <span class="op">&lt;</span>target<span class="op">&gt;</span></span></code></pre></div>
+<p>where</p>
+<ul>
+<li>v = verbose</li>
+<li>n = no overwrite</li>
+</ul>
+<h2 id="ifelse">if/else</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> if [ __test__ ]<span class="kw">;</span> <span class="cf">then</span> <span class="ex">__something__</span><span class="kw">;</span> <span class="cf">fi</span></span></code></pre></div>
+<p>for command sucess | fail, simply do this (not no sq brackets)</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> if command<span class="kw">;</span> <span class="cf">then</span> <span class="ex">__sucess__</span><span class="kw">;</span> <span class="cf">else</span> <span class="ex">__fail__</span><span class="kw">;</span> <span class="cf">fi</span></span></code></pre></div>
+<h2 id="for-loop">for loop</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> __variable__ <span class="kw">in</span> __list__<span class="kw">;</span> <span class="cf">do</span> <span class="ex">__command__</span><span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<p>Example: Add all dot files to gitignore</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> .<span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> <span class="va">$file</span> <span class="op">&gt;&gt;</span> .gitignore<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<h2 id="script-strict-mode">Script strict mode</h2>
+<p><em>Ignore the  in # below, kept for formatting reasons</em></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\#!/usr/bin/env</span> bash</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="va">IFS</span><span class="op">=</span><span class="st">$&#39;</span><span class="dt">\n\t</span><span class="st">&#39;</span></span></code></pre></div>
+<p><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">http://redsymbol.net/articles/unofficial-bash-strict-mode/</a></p>
+<h2 id="find-command">Find command</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> __path__ [-type <span class="kw">|</span> <span class="ex">-size]</span> <span class="at">-name</span> <span class="st">&quot;regex&quot;</span> [-exec __another cmd__ <span class="kw">|</span> <span class="ex">-delete]</span></span></code></pre></div>
+<p>Example: find and delete all dot files in current directory</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;.*&quot;</span> <span class="at">-delete</span></span></code></pre></div>
+<h2 id="remove-duplicate-lines-from-a-file">Remove duplicate lines from a file</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;!l[$0]++&#39;</span> file <span class="op">&gt;</span> newfile</span></code></pre></div>
+<p>if order is not important</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-u</span> file <span class="op">&gt;</span> newfile</span></code></pre></div>
+<h2 id="download-songs-from-youtube">Download songs from youtube</h2>
+<p><a href="https://youtube-dl.org/">https://youtube-dl.org/</a></p>
+<p>Only audio:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">youtube-dl</span> <span class="at">--ignore-errors</span> <span class="at">--format</span> bestaudio <span class="at">--extract-audio</span> <span class="at">--audio-format</span> mp3 <span class="at">-o</span> <span class="st">&#39;%(title)s.%(ext)s&#39;</span> [--yes-playlist] [ <span class="st">&quot;URL&quot;</span> <span class="kw">|</span> <span class="ex">-a</span>  ./fileName ]</span></code></pre></div>
+<p><em>where fileName is a list of urls separated by blank lines;</em></p>
+<p>Best video+audio:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">youtube-dl</span> <span class="at">--ignore-errors</span> <span class="at">--format</span> <span class="st">&#39;bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio&#39;</span> <span class="at">--merge-output-format</span> mp4  <span class="at">-o</span> <span class="st">&#39;%(title)s.%(ext)s&#39;</span> <span class="st">&quot;VIDEO-LINK&quot;</span></span></code></pre></div>
+<h2 id="start-a-background-job">Start a background job</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> __job__ <span class="op">&lt;</span> /dev/null <span class="op">&gt;</span> /dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;</span> <span class="bu">disown</span></span></code></pre></div>
+<p>where</p>
+<ul>
+<li>nohup = no hangup signal</li>
+<li>&lt; /dev/null = no stdin (input)</li>
+<li>&gt; /dev/null = no nohup file (output)</li>
+<li>2&gt;&amp;1 = redirect errors to stdout (which is null)</li>
+<li>&amp; = start in background</li>
+<li>disown = detach from shell</li>
+</ul>
+<p>Example: To start <a href="https://mpv.io/">mpv</a> as music daemon</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> mpv <span class="at">--no-audio-display</span> <span class="at">--shuffle</span> ~/Music <span class="op">&lt;</span> /dev/null <span class="op">&gt;</span> /dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;</span> <span class="bu">disown</span></span></code></pre></div>
+<h2 id="git-delete-all-branches-except-main-and-featurex">Git delete all branches except main and featurex</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;!/main|featurex/ { print $1 }&#39;</span> <span class="kw">|</span> <span class="fu">xargs</span> git branch <span class="at">-D</span></span></code></pre></div>
+<h2 id="mount-ram-as-disk">Mount Ram as disk</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mount <span class="at">-t</span> tmpfs <span class="at">-o</span> size=5g tmpfs /mnt/ramfs</span></code></pre></div>
+<p>where a new temporary mount point /mnt/ramfs is created with 5 Gigabytes of capacity; to unmount, do</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">umount</span> /mnt/ramfs</span></code></pre></div>
+<h2 id="watch-a-file-for-change-and-run-command-when-changes">Watch a file for change and run command when changes</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span> <span class="ex">watch</span> <span class="at">-g</span> ls <span class="at">-l</span> __filename__ <span class="kw">&amp;&amp;</span> <span class="ex">__cmd__</span><span class="kw">;</span> <span class="fu">sleep</span> 5<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<h1 id="sql">sql</h1>
+<h2 id="distinct-query">Distinct Query</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="kw">distinct</span> col1, col2 <span class="kw">from</span> <span class="kw">table</span>;</span></code></pre></div>
+<h2 id="delete-query">Delete Query</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">delete</span> <span class="kw">from</span> <span class="kw">table</span> <span class="kw">where</span> col <span class="op">=</span> val;</span></code></pre></div>
+<h2 id="count-query">Count Query</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">from</span> <span class="kw">table</span>;</span></code></pre></div>
+<h1 id="vim">vim</h1>
+<h2 id="redirect-output-of-ex-commands-to-register">Redirect output of Ex commands to register</h2>
+<ol type="1">
+<li><code>:redir @a</code></li>
+<li><code>:__commands__</code></li>
+<li><code>:redir END</code></li>
+<li><code>"ap</code></li>
+</ol>
+<h2 id="run-bash-or-any-shell-commands-from-buffer">Run bash (or any shell) commands from buffer</h2>
+<pre><code>:%!bash</code></pre>
+<h2 id="convert-textfile-to-pdf-via-ps">Convert textfile to pdf (via ps)</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> vim filename.txt <span class="at">-c</span> <span class="st">&quot;hardcopy &gt; filename.ps | q&quot;</span><span class="kw">;</span> <span class="ex">pstopdf</span> filename.ps</span></code></pre></div>
+<p><em>pstopdf may be names ps2pdf on other OSes</em></p>
+<h2 id="alternative-undo-redo">Alternative undo redo</h2>
+<pre class="vi"><code>:earlier __time__
+:later __time__</code></pre>
+<p>where <strong>time</strong> = x(s|m|h|d) (s = second, m = minute, h = hour, day)</p>
+<p>to go back and forth on state of buffer in time of x units</p>
+<h2 id="remote-editing-using-ssh-config">Remote editing (using ssh config)</h2>
+<pre class="vi"><code>:e scp://staging/~/path/to/file.ext</code></pre>
+<p><em>Assuming a Host for ‘staging’ is set in ~/.ssh/config</em></p>
+<h2 id="delete-other-buffers-except-current">Delete other buffers except current</h2>
+<pre class="vi"><code>:% bd | e # | bd #</code></pre>
+<p>where</p>
+<ul>
+<li>% bd = delete all buffers (creates a new no-name buffer),</li>
+<li>e # = edit previous buffer (since current is no-name),</li>
+<li>bd # = delete previous buffer (no-name)</li>
+</ul>
+<p><em>spaces are optional</em></p>
+<h2 id="ex-mode-completion-options">Ex mode completion options</h2>
+<p>TAB cycles through options; Ctrl-a inputs all options.</p>
+<p>Example: To delete all *.js files in buffer list</p>
+<pre class="vi"><code>:bd js Ctrl-a</code></pre>
+<p><em>Can use :bwipeout to completely remove a buffer</em></p>
+<h1 id="writing">writing</h1>
+<h2 id="rule-of-english-adjective-order">Rule of English adjective order</h2>
+<p>The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose</p>
+<h2 id="a-good-video-on-writing">A good video on writing</h2>
+<p>https://youtu.be/vtIzMaLkCaM</p>
+<h2 id="guide-to-grammar-and-style---by-jack-lynch">Guide to Grammar and Style - By Jack Lynch</h2>
+<p>http://www.jacklynch.net/Writing/index.html</p>
+<h2 id="dynomight">Dynomight</h2>
+<p>https://dynomight.net/2021/02/07/writing-as-a-craft/</p>
+<h1 id="yay">yay</h1>
+<p>https://aur.archlinux.org/packages/yay</p>
+<h2 id="install-yay-for-manjaro">Install yay (for manjaro)</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> yay</span></code></pre></div>
+<p>where pacman is the default package manager, yay is aur helper wrapped around pacman</p>
+<h2 id="print-help">Print Help</h2>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-h</span></span></code></pre></div>
+<p>for general help and</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-[S</span><span class="kw">|</span><span class="ex">Q</span><span class="kw">|</span><span class="ex">R</span><span class="kw">|</span><span class="ex">...]h</span></span></code></pre></div>
+<p>where S = Sync, Q = Query, R = Remove</p>
+<h2 id="remove-all-old-packages-from-cache">Remove all old packages from cache</h2>
+<div class="sourceCode" id="cb47"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-Scc</span></span></code></pre></div>
+<h2 id="remove-unneeded-dependencies">Remove unneeded dependencies</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-c</span></span></code></pre></div>
+<h2 id="search-for-a-package">Search for a package</h2>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-Ss</span> __regex__</span></code></pre></div>
+<h2 id="print-information-about-a-package">Print information about a package</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-[S</span><span class="kw">|</span><span class="ex">Q]i</span></span></code></pre></div>
+<p>where S = remote info, Q = local info</p>
+<h2 id="install-a-package">Install a package</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-S</span> __package__</span></code></pre></div>
+<h2 id="list-all-explicitly-installed-packages">List all explicitly installed packages</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-Qe</span></span></code></pre></div>
+<h2 id="remove-a-package-use-with-caution-check-for-cross-deps">Remove a package (use with caution, check for cross deps)</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yay</span> <span class="at">-Runs</span> __package__</span></code></pre></div>
+<p>where u = unneeded packages, n = remove config files, s = unneeded dependencies</p>
+</body>
+</html>

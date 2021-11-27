@@ -1,16 +1,16 @@
-#### Connect wirelessly
+## Connect wirelessly
 
 1. Connect adb with cable
 2. `adb tcpip 5555`
 3. `adb connect <phone-ip>:5555`
 
-#### Push new files only
+## Push new files only
 
 ```sh
 adb push [-n for dryrun] --sync __source__ __target__
 ```
 
-#### Make an app fullscreen
+## Make an app fullscreen
 
 ```sh
 adb shell settings put global policy_control immersive.full=com.package
@@ -24,7 +24,7 @@ To remove
 adb shell settings put global policy_control immersive.off=com.package
 ```
 
-#### Screenshot & Screenrecord
+## Screenshot & Screenrecord
 
 ```sh
 adb shell screenrecord /sdcard/test.mp4

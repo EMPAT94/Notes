@@ -1,17 +1,17 @@
-#### Redirect output of Ex commands to register
+## Redirect output of Ex commands to register
 
 1. `:redir @a`
 2. `:__commands__`
 3. `:redir END`
 4. `"ap`
 
-#### Run bash (or any shell) commands from buffer
+## Run bash (or any shell) commands from buffer
 
 ```
 :%!bash
 ```
 
-#### Convert textfile to pdf (via ps)
+## Convert textfile to pdf (via ps)
 
 ```sh
 $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
@@ -19,7 +19,7 @@ $ vim filename.txt -c "hardcopy > filename.ps | q"; pstopdf filename.ps
 
 _pstopdf may be names ps2pdf on other OSes_
 
-#### Alternative undo redo
+## Alternative undo redo
 
 ```vi
 :earlier __time__
@@ -30,7 +30,7 @@ where **time** = x(s|m|h|d) (s = second, m = minute, h = hour, day)
 
 to go back and forth on state of buffer in time of x units
 
-#### Remote editing (using ssh config)
+## Remote editing (using ssh config)
 
 ```vi
 :e scp://staging/~/path/to/file.ext
@@ -38,7 +38,7 @@ to go back and forth on state of buffer in time of x units
 
 _Assuming a Host for 'staging' is set in ~/.ssh/config_
 
-#### Delete other buffers except current
+## Delete other buffers except current
 
 ```vi
 :% bd | e # | bd #
@@ -52,7 +52,7 @@ where
 
 _spaces are optional_
 
-#### Ex mode completion options
+## Ex mode completion options
 
 TAB cycles through options; Ctrl-a inputs all options.
 
