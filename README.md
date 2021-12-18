@@ -294,6 +294,19 @@ umount /mnt/ramfs
 while true; do watch -g ls -l __filename__ && __cmd__; sleep 5; done
 ```
 
+## Download a webpage and all it's linked pages and content
+
+```shell
+wget -r -l 1 -p -k -H -D domain.com,relateddomain.com http://domain.com/page/in/domain
+```
+
+where
+  r = recurse
+  k = patch local links
+  H = traverse domains other than original
+  D = limit domains traversed
+  l = depth of recursion
+  p = download related content like images
 
 # sql
 
