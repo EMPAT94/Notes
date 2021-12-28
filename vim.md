@@ -1,3 +1,10 @@
+                              __     _____ __  __
+                              \ \   / /_ _|  \/  |
+                               \ \ / / | || |\/| |
+                                \ V /  | || |  | |
+                                 \_/  |___|_|  |_|
+
+
 ## Redirect output of Ex commands to register
 
 1. `:redir @a`
@@ -63,4 +70,3 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
-

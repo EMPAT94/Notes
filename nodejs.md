@@ -1,3 +1,10 @@
+                         _   _           _       _
+                        | \ | | ___   __| | ___ (_)___
+                        |  \| |/ _ \ / _` |/ _ \| / __|
+                        | |\  | (_) | (_| |  __/| \__ \
+                        |_| \_|\___/ \__,_|\___|/ |___/
+                                              |__/
+
 ## Node make a dynamic chain of promises
 
 Use
@@ -28,5 +35,3 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
-
-

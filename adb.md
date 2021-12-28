@@ -1,3 +1,10 @@
+                                 _    ____  ____
+                                / \  |  _ \| __ )
+                               / _ \ | | | |  _ \
+                              / ___ \| |_| | |_) |
+                             /_/   \_\____/|____/
+
+
 ## Connect wirelessly
 
 1. Connect adb with cable
@@ -41,5 +48,3 @@ To pull file on pc and remove from phone
 ```sh
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
-
-

@@ -1,3 +1,10 @@
+                              ____  _          _ _
+                             / ___|| |__   ___| | |
+                             \___ \| '_ \ / _ \ | |
+                              ___) | | | |  __/ | |
+                             |____/|_| |_|\___|_|_|
+
+
 ### Use user argument or default Valued
 
 ```sh
@@ -137,6 +144,7 @@ Only audio:
 ```sh
 youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] [ "URL" | -a  ./fileName ]
 ```
+
 _where fileName is a list of urls separated by blank lines;_
 
 Best video+audio:
@@ -165,6 +173,7 @@ Example: To start [mpv](https://mpv.io/) as music daemon
 ```sh
 nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
 ```
+
 ## Git delete all branches except main and featurex
 
 ```sh

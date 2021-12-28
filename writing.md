@@ -1,3 +1,10 @@
+                      __        __    _ _   _
+                      \ \      / / __(_) |_(_)_ __   __ _
+                       \ \ /\ / / '__| | __| | '_ \ / _` |
+                        \ V  V /| |  | | |_| | | | | (_| |
+                         \_/\_/ |_|  |_|\__|_|_| |_|\__, |
+                                                    |___/
+
 ## Rule of English adjective order
 
 The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose

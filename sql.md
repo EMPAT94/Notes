@@ -1,3 +1,10 @@
+                               ____   ___  _
+                              / ___| / _ \| |
+                              \___ \| | | | |
+                               ___) | |_| | |___
+                              |____/ \__\_\_____|
+
+
 ## Distinct Query
 
 ```sql
@@ -15,5 +22,3 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
-
-

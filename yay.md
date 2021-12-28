@@ -1,4 +1,9 @@
-https://aur.archlinux.org/packages/yay
+                               __   __ _ __   __
+                               \ \ / // \\ \ / /
+                                \ V // _ \\ V /
+                                 | |/ ___ \| |
+                                 |_/_/   \_\_|
+
 
 ## Install yay (for manjaro)
 
@@ -6,7 +11,7 @@ https://aur.archlinux.org/packages/yay
 sudo pacman -S yay
 ```
 
-where pacman is the default package manager, yay is aur helper wrapped around pacman
+where pacman is the default package manager, yay is aur helper wrapped around pacman. Here is the link : https://aur.archlinux.org/packages/yay
 
 ## Print Help
 
@@ -27,6 +32,7 @@ where S = Sync, Q = Query, R = Remove
 ```sh
 yay -Scc
 ```
+
 ## Remove unneeded dependencies
 
 ```sh

@@ -1,6 +1,13 @@
 
 # adb
 
+                                 _    ____  ____
+                                / \  |  _ \| __ )
+                               / _ \ | | | |  _ \
+                              / ___ \| |_| | |_) |
+                             /_/   \_\____/|____/
+
+
 ## Connect wirelessly
 
 1. Connect adb with cable
@@ -45,9 +52,14 @@ To pull file on pc and remove from phone
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
 
-
-
 # git
+
+                                 ____ ___ _____
+                                / ___|_ _|_   _|
+                               | |  _ | |  | |
+                               | |_| || |  | |
+                                \____|___| |_|
+
 
 ## Create a tag (annotated)
 
@@ -66,6 +78,13 @@ Note that simple `git push` does not push a tag to remote, must do something lik
 `git show v0.2`
 
 # nodejs
+
+                         _   _           _       _
+                        | \ | | ___   __| | ___ (_)___
+                        |  \| |/ _ \ / _` |/ _ \| / __|
+                        | |\  | (_) | (_| |  __/| \__ \
+                        |_| \_|\___/ \__,_|\___|/ |___/
+                                              |__/
 
 ## Node make a dynamic chain of promises
 
@@ -98,9 +117,14 @@ let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
 
-
-
 # shell
+
+                              ____  _          _ _
+                             / ___|| |__   ___| | |
+                             \___ \| '_ \ / _ \ | |
+                              ___) | | | |  __/ | |
+                             |____/|_| |_|\___|_|_|
+
 
 ### Use user argument or default Valued
 
@@ -241,6 +265,7 @@ Only audio:
 ```sh
 youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] [ "URL" | -a  ./fileName ]
 ```
+
 _where fileName is a list of urls separated by blank lines;_
 
 Best video+audio:
@@ -269,6 +294,7 @@ Example: To start [mpv](https://mpv.io/) as music daemon
 ```sh
 nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
 ```
+
 ## Git delete all branches except main and featurex
 
 ```sh
@@ -310,6 +336,13 @@ where,
 
 # sql
 
+                               ____   ___  _
+                              / ___| / _ \| |
+                              \___ \| | | | |
+                               ___) | |_| | |___
+                              |____/ \__\_\_____|
+
+
 ## Distinct Query
 
 ```sql
@@ -328,9 +361,14 @@ delete from table where col = val;
 select count(*) from table;
 ```
 
-
-
 # vim
+
+                              __     _____ __  __
+                              \ \   / /_ _|  \/  |
+                               \ \ / / | || |\/| |
+                                \ V /  | || |  | |
+                                 \_/  |___|_|  |_|
+
 
 ## Redirect output of Ex commands to register
 
@@ -398,8 +436,14 @@ Example: To delete all \*.js files in buffer list
 
 _Can use :bwipeout to completely remove a buffer_
 
-
 # writing
+
+                      __        __    _ _   _
+                      \ \      / / __(_) |_(_)_ __   __ _
+                       \ \ /\ / / '__| | __| | '_ \ / _` |
+                        \ V  V /| |  | | |_| | | | | (_| |
+                         \_/\_/ |_|  |_|\__|_|_| |_|\__, |
+                                                    |___/
 
 ## Rule of English adjective order
 
@@ -419,7 +463,12 @@ https://dynomight.net/2021/02/07/writing-as-a-craft/
 
 # yay
 
-https://aur.archlinux.org/packages/yay
+                               __   __ _ __   __
+                               \ \ / // \\ \ / /
+                                \ V // _ \\ V /
+                                 | |/ ___ \| |
+                                 |_/_/   \_\_|
+
 
 ## Install yay (for manjaro)
 
@@ -427,7 +476,7 @@ https://aur.archlinux.org/packages/yay
 sudo pacman -S yay
 ```
 
-where pacman is the default package manager, yay is aur helper wrapped around pacman
+where pacman is the default package manager, yay is aur helper wrapped around pacman. Here is the link : https://aur.archlinux.org/packages/yay
 
 ## Print Help
 
@@ -448,6 +497,7 @@ where S = Sync, Q = Query, R = Remove
 ```sh
 yay -Scc
 ```
+
 ## Remove unneeded dependencies
 
 ```sh
