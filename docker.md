@@ -4,9 +4,9 @@
                      | |_| || (_) || (__ |   <|  __/| |
                      |____/  \___/  \___||_|\_\\___||_|
 
-## https://wiki.archlinux.org/title/Docker
+[Archwiki Doc](https://wiki.archlinux.org/title/Docker)
 
-## https://docs.docker.com/get-started/
+[Docker Docs](https://docs.docker.com/get-started/)
 
 - Start docker service
 
@@ -91,6 +91,6 @@ docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
 
 assuming current directory contains Dockerfile.
 
-- A "container" is a virtually isolated environment.
-- An "image" is formed from multiple layer of commands [see Dockerfile]
+- A "container" is a virtually isolated environment. An "image" is formed from multiple layer of commands.
+
 - Analogy : An "image" is like the concept of Class from OOP - a blueprint/recipe of what will be. A "container" on the other hand, is like an Object - an instance of Class, or the dish made from a recipe. Obviously, there can be multiple "containers" for same "image".

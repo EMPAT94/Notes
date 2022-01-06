@@ -5,7 +5,7 @@
                         |_| \_|\___/ \__,_|\___|/ |___/
                                               |__/
 
-## Node make a dynamic chain of promises
+- Node make a dynamic chain of promises
 
 Use
 
@@ -29,7 +29,7 @@ into
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-## Get integer part of a fraction
+- Get integer part of a fraction
 
 ```javascript
 let fraction = 1.234;

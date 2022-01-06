@@ -1,14 +1,14 @@
-                              ____  _          _ _
-                             / ___|| |__   ___| | |
-                             \___ \| '_ \ / _ \ | |
-                              ___) | | | |  __/ | |
-                             |____/|_| |_|\___|_|_|
+                            ____   _            _  _
+                           / ___| | |__    ___ | || |
+                           \___ \ | '_ \  / _ \| || |
+                            ___) || | | ||  __/| || |
+                           |____/ |_| |_| \___||_||_|
 
 
-### Use user argument or default Valued
+- Use user argument or default Valued
 
 ```sh
-VAL=${1:-"__default__"}
+VAL=${1:-"<default>"}
 ```
 
 Example: assuming above default is "/tmp" and the script is run
@@ -16,7 +16,7 @@ Example: assuming above default is "/tmp" and the script is run
 1. with argument /home then VAL = /home
 2. with no argument then VAL = /tmp
 
-## Reuse previous shell command
+- Reuse previous shell command
 
 ```sh
 $ !!
@@ -30,13 +30,13 @@ $ git rev-parse --show-toplevel
 $ cd $(!!)
 ```
 
-## Reinstall xcode-select
+- Reinstall xcode-select @MACOS
 
 ```sh
 $ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 ```
 
-## Mount external ntfs hdd on macos
+- Mount external ntfs hdd @MACOS
 
 1. `brew cask install osxfuse`
 2. Reboot
@@ -47,10 +47,10 @@ $ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 7. `sudo umount /dev/disk2s1`
 8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
 
-## Check size of a directory
+- Check size of a directory
 
 ```sh
-$ du -sh __dir__
+$ du -sh <dir>
 ```
 
 where
@@ -64,7 +64,7 @@ Example: Get size of all directories in current directory
 $ du -sh ./*/
 ```
 
-## Move new files only (do not overwrite if exists)
+- Move new files only (do not overwrite if exists)
 
 ```sh
 $ mv -vn <source> <target>
@@ -75,22 +75,22 @@ where
 - v = verbose
 - n = no overwrite
 
-## if/else
+- if/else
 
 ```sh
-$ if [ __test__ ]; then __something__; fi
+$ if [ <test> ]; then <something>; fi
 ```
 
 for command sucess | fail, simply do this (not no sq brackets)
 
 ```sh
-$ if command; then __sucess__; else __fail__; fi
+$ if command; then <sucess>; else <fail>; fi
 ```
 
-## for loop
+- for loop
 
 ```sh
-for __variable__ in __list__; do __command__; done
+for <variable> in <list>; do <command>; done
 ```
 
 Example: Add all dot files to gitignore
@@ -99,7 +99,7 @@ Example: Add all dot files to gitignore
 for file in .*; do echo $file >> .gitignore; done
 ```
 
-## Script strict mode
+- Script strict mode
 
 _Ignore the \ in \# below, kept for formatting reasons_
 
@@ -111,10 +111,10 @@ IFS=$'\n\t'
 
 [http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 
-## Find command
+- Find command
 
 ```sh
-find __path__ [-type | -size] -name "regex" [-exec __another cmd__ | -delete]
+find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
 ```
 
 Example: find and delete all dot files in current directory
@@ -123,7 +123,13 @@ Example: find and delete all dot files in current directory
 find . -name ".*" -delete
 ```
 
-## Remove duplicate lines from a file
+as an alternative, `fd` works as follows
+
+```sh
+fd "regex"
+```
+
+- Remove duplicate lines from a file
 
 ```sh
 awk '!l[$0]++' file > newfile
@@ -135,7 +141,7 @@ if order is not important
 sort -u file > newfile
 ```
 
-## Download songs from youtube
+- Download songs from youtube
 
 [https://youtube-dl.org/](https://youtube-dl.org/)
 
@@ -153,16 +159,16 @@ Best video+audio:
 youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4  -o '%(title)s.%(ext)s' "VIDEO-LINK"
 ```
 
-## Start a background job
+- Start a background job
 
 ```sh
-nohup __job__ < /dev/null > /dev/null 2>&1 & disown
+nohup <job> < /dev/null > /dev/null 2>&1 & disown
 ```
 
 where
 
 - nohup = no hangup signal
-- < /dev/null = no stdin (input)
+- \< /dev/null = no stdin (input)
 - \> /dev/null = no nohup file (output)
 - 2>&1 = redirect errors to stdout (which is null)
 - & = start in background
@@ -174,13 +180,7 @@ Example: To start [mpv](https://mpv.io/) as music daemon
 nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
 ```
 
-## Git delete all branches except main and featurex
-
-```sh
-git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
-```
-
-## Mount Ram as disk
+- Mount Ram as disk
 
 ```sh
 sudo mount -t tmpfs -o size=5g tmpfs /mnt/ramfs
@@ -193,19 +193,20 @@ to unmount, do
 umount /mnt/ramfs
 ```
 
-## Watch a file for change and run command when changes
+- Watch a file for change and run command when changes
 
 ```sh
-while true; do watch -g ls -l __filename__ && __cmd__; sleep 5; done
+while true; do watch -g ls -l <filename> && <cmd>; sleep 5; done
 ```
 
-## Download a webpage and all it's linked pages and content
+- Download a webpage and all it's linked pages and content
 
 ```sh
 wget -r -l 1 -p -k -H -D domain.com,relateddomain.com http://domain.com/page/in/domain
 ```
 
 where,
+
 - r = recurse
 - k = patch local links
 - H = traverse domains other than original

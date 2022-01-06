@@ -4,8 +4,7 @@
                                | |_| || |  | |
                                 \____|___| |_|
 
-
-## Create a tag (annotated)
+- Create a tag (annotated)
 
 `git tag -a v0.2 -m "Release v0.2"`
 
@@ -13,10 +12,17 @@ Note that simple `git push` does not push a tag to remote, must do something lik
 
 `git push origin <tag>`
 
-## List tags
+- List tags
 
 `git tag -l`
 
-## Show specific tag details
+- Show specific tag details
 
 `git show v0.2`
+
+- Delete all branches except main and featurex
+
+```sh
+git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
+```
+
