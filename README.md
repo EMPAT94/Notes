@@ -1,6 +1,4 @@
 
-# adb
-
                                  _    ____  ____
                                 / \  |  _ \| __ )
                                / _ \ | | | |  _ \
@@ -51,9 +49,102 @@ To pull file on pc and remove from phone
 ```sh
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
+                      ____                _
+                     |  _ \   ___    ___ | | __ ___  _ __
+                     | | | | / _ \  / __|| |/ // _ \| '__|
+                     | |_| || (_) || (__ |   <|  __/| |
+                     |____/  \___/  \___||_|\_\\___||_|
 
-# git
+## https://wiki.archlinux.org/title/Docker
 
+## https://docs.docker.com/get-started/
+
+- Start docker service
+
+```sh
+systemctl start docker.service
+```
+
+- Start now & enable automatic startup on login
+
+```sh
+systemctl enable --now docker.service
+```
+
+- Deploy a container
+
+```sh
+docker run <image-name> [<command>]
+```
+
+with following options:
+
+- -d = detached mode
+- -p <host port>:<container port> = port redirect
+- -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
+- -i = interactive mode
+- -t = pseudo-tty
+- -n = network
+
+* Show deployed containers
+
+```sh
+docker ps [-a for all]
+```
+
+- Execute a command in deployed container
+
+```sh
+docker exec [-it for interactive tty] <container-id> <command>
+```
+
+- Stop a container
+
+```sh
+docker stop <container-id>
+```
+
+- Remove a container
+
+```sh
+docker rm <container-id>
+```
+
+- Force stop & remove a container
+
+```sh
+docker rm -f <container-id>
+```
+
+- Pull an image
+
+```sh
+docker pull <image-name>
+```
+
+- Show all images
+
+```sh
+docker images
+```
+
+- Remove an image
+
+```sh
+docker rm <image-name> [or <image-id> for unnamed images]
+```
+
+- Build an image
+
+```sh
+docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
+```
+
+assuming current directory contains Dockerfile.
+
+- A "container" is a virtually isolated environment.
+- An "image" is formed from multiple layer of commands [see Dockerfile]
+- Analogy : An "image" is like the concept of Class from OOP - a blueprint/recipe of what will be. A "container" on the other hand, is like an Object - an instance of Class, or the dish made from a recipe. Obviously, there can be multiple "containers" for same "image".
                                  ____ ___ _____
                                 / ___|_ _|_   _|
                                | |  _ | |  | |
@@ -77,8 +168,21 @@ Note that simple `git push` does not push a tag to remote, must do something lik
 
 `git show v0.2`
 
-# nodejs
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
+https://www.atlassian.com/git/tutorials/git-submodule
+
+https://www.w3docs.com/learn-git/git-submodule.html
+
+https://careerkarma.com/blog/git-submodules/
+
+https://gist.github.com/gitaarik/8735255
+
+https://www.sitepoint.com/git-submodules-introduction/
+
+https://sweetcode.io/git-submodules/
+
+https://github.blog/2016-02-01-working-with-submodules/
                          _   _           _       _
                         | \ | | ___   __| | ___ (_)___
                         |  \| |/ _ \ / _` |/ _ \| / __|
@@ -116,9 +220,6 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
-
-# shell
-
                               ____  _          _ _
                              / ___|| |__   ___| | |
                              \___ \| '_ \ / _ \ | |
@@ -333,9 +434,6 @@ where,
 - D = limit domains traversed
 - l = depth of recursion
 - p = download related content like images
-
-# sql
-
                                ____   ___  _
                               / ___| / _ \| |
                               \___ \| | | | |
@@ -360,9 +458,6 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
-
-# vim
-
                               __     _____ __  __
                               \ \   / /_ _|  \/  |
                                \ \ / / | || |\/| |
@@ -435,9 +530,6 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
-
-# writing
-
                       __        __    _ _   _
                       \ \      / / __(_) |_(_)_ __   __ _
                        \ \ /\ / / '__| | __| | '_ \ / _` |
@@ -460,9 +552,6 @@ http://www.jacklynch.net/Writing/index.html
 ## Dynomight
 
 https://dynomight.net/2021/02/07/writing-as-a-craft/
-
-# yay
-
                                __   __ _ __   __
                                \ \ / // \\ \ / /
                                 \ V // _ \\ V /
@@ -537,4 +626,3 @@ yay -Runs __package__
 ```
 
 where u = unneeded packages, n = remove config files, s = unneeded dependencies
-
