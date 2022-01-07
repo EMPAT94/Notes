@@ -29,11 +29,20 @@ docker run <image-name> [<command>]
 with following options:
 
 - -d = detached mode
+- -e = environment variables
 - -p <host port>:<container port> = port redirect
 - -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
-- -i = interactive mode
+- -i = interactive mode (keeps STDIN open)
 - -t = pseudo-tty
-- -n = network
+- -name = assign a name to the container
+- -w = work directory inside container
+- -rm = automatically remove on exit
+
+to get the rest of the options possible, run
+
+```sh
+docker run --help
+```
 
 * Show deployed containers
 
