@@ -8,6 +8,10 @@
 
 [Docker Docs](https://docs.docker.com/get-started/)
 
+- A "container" is a virtually isolated environment. An "image" is formed from multiple layer of commands.
+
+- Analogy : An "image" is like the concept of Class from OOP - a blueprint/recipe of what will be. A "container" on the other hand, is like an Object - an instance of Class, or the dish made from a recipe. Obviously, there can be multiple "containers" for same "image".
+
 - Start docker service
 
 ```sh
@@ -18,6 +22,16 @@ systemctl start docker.service
 
 ```sh
 systemctl enable --now docker.service
+```
+
+- Seek help 
+
+```sh
+docker [command] help
+```
+
+```sh
+docker <command> [subcommand] --help
 ```
 
 - Deploy a container
@@ -100,6 +114,19 @@ docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
 
 assuming current directory contains Dockerfile.
 
-- A "container" is a virtually isolated environment. An "image" is formed from multiple layer of commands.
+- Create a named volume
 
-- Analogy : An "image" is like the concept of Class from OOP - a blueprint/recipe of what will be. A "container" on the other hand, is like an Object - an instance of Class, or the dish made from a recipe. Obviously, there can be multiple "containers" for same "image".
+```sh
+docker volume create <some-name>
+```
+
+- List all volumes
+
+```sh
+docker volume ls
+```
+
+- Use host's network interface (reduces NAT latency)
+```sh
+docker run ... --net=host ...
+```
