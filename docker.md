@@ -24,7 +24,7 @@ systemctl start docker.service
 systemctl enable --now docker.service
 ```
 
-- Seek help 
+- Seek help
 
 ```sh
 docker [command] help
@@ -58,7 +58,7 @@ to get the rest of the options possible, run
 docker run --help
 ```
 
-* Show deployed containers
+- Show deployed containers
 
 ```sh
 docker ps [-a for all]
@@ -127,6 +127,27 @@ docker volume ls
 ```
 
 - Use host's network interface (reduces NAT latency)
+
 ```sh
 docker run ... --net=host ...
+```
+
+- When mounting volumes "${PWD}" works, "${pwd}" doesn't. Keep env var case sensitivity in mind.
+
+- Can get instance properties of containers (eg ip) as by runnings inspect
+
+```sh
+docker inspect my-container
+```
+
+- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on localhost.
+
+```sh
+sudo gpasswd -a $USER docker
+```
+
+- To access localhost (outside container), use ip address of bridge interface
+
+```sh
+ip addr show docker0
 ```

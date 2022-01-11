@@ -74,7 +74,7 @@ systemctl start docker.service
 systemctl enable --now docker.service
 ```
 
-- Seek help 
+- Seek help
 
 ```sh
 docker [command] help
@@ -108,7 +108,7 @@ to get the rest of the options possible, run
 docker run --help
 ```
 
-* Show deployed containers
+- Show deployed containers
 
 ```sh
 docker ps [-a for all]
@@ -177,8 +177,29 @@ docker volume ls
 ```
 
 - Use host's network interface (reduces NAT latency)
+
 ```sh
 docker run ... --net=host ...
+```
+
+- When mounting volumes "${PWD}" works, "${pwd}" doesn't. Keep env var case sensitivity in mind.
+
+- Can get instance properties of containers (eg ip) as by runnings inspect
+
+```sh
+docker inspect my-container
+```
+
+- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on localhost.
+
+```sh
+sudo gpasswd -a $USER docker
+```
+
+- To access localhost (outside container), use ip address of bridge interface
+
+```sh
+ip addr show docker0
 ```
                                  ____ ___ _____
                                 / ___|_ _|_   _|
@@ -271,13 +292,14 @@ git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
   ```
 
 - Proxy:
+
   - Act as a middleman for requests
   - Client request -> Forward to specific server -> Receive reply from server -> Client response
   - Eg, request come on /proxy-this and need to be sent to a separate server on port 8080, and /proxy-that on port 8081, then config would be:
+
   ```
   server {
-      listen 80; # This is default
-      listen [::]:80;
+      listen 80;
       server_name somedomain.com; # This is optional
       location /proxy-this/ {
         proxy_pass        http://127.0.0.1:8080;
@@ -287,29 +309,59 @@ git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
       }
   }
   ```
-  - Helpful directives:
-  ```
-  proxy_set_header Host      $host;
-  proxy_set_header X-Real-IP $remote_addr;
-  ```
-                         _   _           _       _
-                        | \ | | ___   __| | ___ (_)___
-                        |  \| |/ _ \ / _` |/ _ \| / __|
-                        | |\  | (_) | (_| |  __/| \__ \
-                        |_| \_|\___/ \__,_|\___|/ |___/
-                                              |__/
 
-- Node make a dynamic chain of promises
+  - Note that the trailing slash in proxy_pass value changes where location is truncated
+
+  - Helpful directives:
+
+  ```
+  rewrite // TODO
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_set_header  X-Real-IP        $remote_addr;
+  proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+  proxy_cache_bypass $http_upgrade;
+  ```
+
+- Load balancing: This config will start balancing requests on 3 addresses (default round robin)
+
+```
+http {
+  upstream poxy-server {
+    server server_addr1;
+    server server_addr2;
+    server server_addr3;
+  }
+
+  server {
+    location / {
+      proxy_pass http://proxy-server;
+    }
+  }
+}
+```
+```
+                     _   _           _       _
+                    | \ | | ___   __| | ___ (_)___
+                    |  \| |/ _ \ / _` |/ _ \| / __|
+                    | |\  | (_) | (_| |  __/| \__ \
+                    |_| \_|\___/ \__,_|\___|/ |___/
+                                          |__/
+```
+
+* Node make a dynamic chain of promises
 
 Use
 
-```javascript
+```
 arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
 ```
 
 to convert
 
-```javascript
+```
 const arr = [d1, d2, d3, ..., dn];
 
 function fn(d) {
@@ -319,17 +371,16 @@ function fn(d) {
 
 into
 
-```javascript
+```
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-- Get integer part of a fraction
+* Get integer part of a fraction
 
-```javascript
+```
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
-```
-                            ____   _            _  _
+```                            ____   _            _  _
                            / ___| | |__    ___ | || |
                            \___ \ | '_ \  / _ \| || |
                             ___) || | | ||  __/| || |
@@ -567,6 +618,46 @@ delete from table where col = val;
 
 ```sql
 select count(*) from table;
+```
+                                          _
+                                ___  ___ | |__
+                               / __|/ __|| '_ \
+                               \__ \\__ \| | | |
+                               |___/|___/|_| |_|
+
+- Connect to remote host (assuming id_rsa.pub is submitted)
+
+```sh
+ssh <username>@<hostname/ip> [-p <port>]
+```
+
+- Add a known host to ssh config for easier connection (also used by scp & rsync), using ssh config
+
+```sh
+touch ~/.ssh/config && chmod 600 ~/.ssh/config
+```
+
+```sh
+Host server-name # server-name is pattern matched
+  HostName <hostname/ip> # indentation optional but recommended
+  User <username>
+  Port <port>
+```
+
+```sh
+ssh server-name
+```
+
+- Recommended - generate a new ssh key pair for every remote host (so even if stolen, cannot compromise others). Can add in config as:
+
+```sh
+Host name1
+  ...
+  Identity ~/.ssh/id_rsa.name1
+
+Host name2
+  ...
+  Identity ~/.ssh/id_rsa.name2
 ```
                               __     _____ __  __
                               \ \   / /_ _|  \/  |
