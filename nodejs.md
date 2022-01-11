@@ -1,21 +1,23 @@
-                         _   _           _       _
-                        | \ | | ___   __| | ___ (_)___
-                        |  \| |/ _ \ / _` |/ _ \| / __|
-                        | |\  | (_) | (_| |  __/| \__ \
-                        |_| \_|\___/ \__,_|\___|/ |___/
-                                              |__/
+```
+                     _   _           _       _
+                    | \ | | ___   __| | ___ (_)___
+                    |  \| |/ _ \ / _` |/ _ \| / __|
+                    | |\  | (_) | (_| |  __/| \__ \
+                    |_| \_|\___/ \__,_|\___|/ |___/
+                                          |__/
+```
 
-- Node make a dynamic chain of promises
+* Node make a dynamic chain of promises
 
 Use
 
-```javascript
+```
 arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
 ```
 
 to convert
 
-```javascript
+```
 const arr = [d1, d2, d3, ..., dn];
 
 function fn(d) {
@@ -25,13 +27,13 @@ function fn(d) {
 
 into
 
-```javascript
+```
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-- Get integer part of a fraction
+* Get integer part of a fraction
 
-```javascript
+```
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
