@@ -61,13 +61,14 @@
   ```
 
 - Proxy:
+
   - Act as a middleman for requests
   - Client request -> Forward to specific server -> Receive reply from server -> Client response
   - Eg, request come on /proxy-this and need to be sent to a separate server on port 8080, and /proxy-that on port 8081, then config would be:
+
   ```
   server {
-      listen 80; # This is default
-      listen [::]:80;
+      listen 80;
       server_name somedomain.com; # This is optional
       location /proxy-this/ {
         proxy_pass        http://127.0.0.1:8080;
@@ -77,8 +78,35 @@
       }
   }
   ```
+
+  - Note that the trailing slash in proxy_pass value changes where location is truncated
+
   - Helpful directives:
+
   ```
-  proxy_set_header Host      $host;
-  proxy_set_header X-Real-IP $remote_addr;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_set_header  X-Real-IP        $remote_addr;
+  proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+  proxy_cache_bypass $http_upgrade;
   ```
+
+- Load balancing: This config will start balancing requests on 3 addresses (default round robin)
+
+```
+http {
+  upstream poxy-server {
+    server server_addr1;
+    server server_addr2;
+    server server_addr3;
+  }
+
+  server {
+    location / {
+      proxy_pass http://proxy-server;
+    }
+  }
+}
+```

@@ -315,7 +315,6 @@ git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
   - Helpful directives:
 
   ```
-  rewrite // TODO
   proxy_http_version 1.1;
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection 'upgrade';
