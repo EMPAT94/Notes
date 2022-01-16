@@ -1,13 +1,11 @@
-```
                      _   _           _       _
                     | \ | | ___   __| | ___ (_)___
                     |  \| |/ _ \ / _` |/ _ \| / __|
                     | |\  | (_) | (_| |  __/| \__ \
                     |_| \_|\___/ \__,_|\___|/ |___/
                                           |__/
-```
 
-* Node make a dynamic chain of promises
+- Node make a dynamic chain of promises
 
 Use
 
@@ -31,7 +29,7 @@ into
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-* Get integer part of a fraction
+- Get integer part of a fraction
 
 ```
 let fraction = 1.234;

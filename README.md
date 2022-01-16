@@ -48,6 +48,7 @@ To pull file on pc and remove from phone
 ```sh
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
+<br /><hr /><br />
                       ____                _
                      |  _ \   ___    ___ | | __ ___  _ __
                      | | | | / _ \  / __|| |/ // _ \| '__|
@@ -201,6 +202,7 @@ sudo gpasswd -a $USER docker
 ```sh
 ip addr show docker0
 ```
+<br /><hr /><br />
                                  ____ ___ _____
                                 / ___|_ _|_   _|
                                | |  _ | |  | |
@@ -299,6 +301,7 @@ git fetch origin
 ```
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
+<br /><hr /><br />
                                         _
                           _ __    __ _ (_) _ __  __  __
                          | '_ \  / _` || || '_ \ \ \/ /
@@ -411,16 +414,15 @@ http {
   }
 }
 ```
-```
+<br /><hr /><br />
                      _   _           _       _
                     | \ | | ___   __| | ___ (_)___
                     |  \| |/ _ \ / _` |/ _ \| / __|
                     | |\  | (_) | (_| |  __/| \__ \
                     |_| \_|\___/ \__,_|\___|/ |___/
                                           |__/
-```
 
-* Node make a dynamic chain of promises
+- Node make a dynamic chain of promises
 
 Use
 
@@ -444,17 +446,18 @@ into
 Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
 ```
 
-* Get integer part of a fraction
+- Get integer part of a fraction
 
 ```
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
-```                            ____   _            _  _
+```
+<br /><hr /><br />
+                            ____   _            _  _
                            / ___| | |__    ___ | || |
                            \___ \ | '_ \  / _ \| || |
                             ___) || | | ||  __/| || |
                            |____/ |_| |_| \___||_||_|
-
 
 - Use user argument or default Valued
 
@@ -664,12 +667,12 @@ where,
 - D = limit domains traversed
 - l = depth of recursion
 - p = download related content like images
+<br /><hr /><br />
                                ____   ___  _
                               / ___| / _ \| |
                               \___ \| | | | |
                                ___) | |_| | |___
                               |____/ \__\_\_____|
-
 
 - Distinct Query
 
@@ -688,6 +691,7 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
+<br /><hr /><br />
                                           _
                                 ___  ___ | |__
                                / __|/ __|| '_ \
@@ -728,6 +732,7 @@ Host name2
   ...
   Identity ~/.ssh/id_rsa.name2
 ```
+<br /><hr /><br />
                               __     _____ __  __
                               \ \   / /_ _|  \/  |
                                \ \ / / | || |\/| |
@@ -799,6 +804,7 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
+<br /><hr /><br />
                       __        __    _ _   _
                       \ \      / / __(_) |_(_)_ __   __ _
                        \ \ /\ / / '__| | __| | '_ \ / _` |
@@ -821,6 +827,7 @@ http://www.jacklynch.net/Writing/index.html
 - Dynomight
 
 https://dynomight.net/2021/02/07/writing-as-a-craft/
+<br /><hr /><br />
                                __   __ _ __   __
                                \ \ / // \\ \ / /
                                 \ V // _ \\ V /
@@ -894,3 +901,4 @@ yay -Runs __package__
 ```
 
 where u = unneeded packages, n = remove config files, s = unneeded dependencies
+<br /><hr /><br />
