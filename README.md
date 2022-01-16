@@ -1,9 +1,10 @@
-
+<pre>
                                  _    ____  ____
                                 / \  |  _ \| __ )
                                / _ \ | | | |  _ \
                               / ___ \| |_| | |_) |
                              /_/   \_\____/|____/
+</pre>
 
 - Connect wirelessly
 
@@ -49,11 +50,14 @@ To pull file on pc and remove from phone
 adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 ```
 <br /><hr /><br />
+<pre>
                       ____                _
                      |  _ \   ___    ___ | | __ ___  _ __
                      | | | | / _ \  / __|| |/ // _ \| '__|
                      | |_| || (_) || (__ |   <|  __/| |
                      |____/  \___/  \___||_|\_\\___||_|
+
+</pre>
 
 [Archwiki Doc](https://wiki.archlinux.org/title/Docker)
 
@@ -203,11 +207,13 @@ sudo gpasswd -a $USER docker
 ip addr show docker0
 ```
 <br /><hr /><br />
+<pre>
                                  ____ ___ _____
                                 / ___|_ _|_   _|
                                | |  _ | |  | |
                                | |_| || |  | |
                                 \____|___| |_|
+</pre>
 
 - Tags: Mark a point in commit history (useful for releases and such)
 
@@ -302,12 +308,14 @@ git fetch origin
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
 <br /><hr /><br />
+<pre>
                                         _
                           _ __    __ _ (_) _ __  __  __
                          | '_ \  / _` || || '_ \ \ \/ /
                          | | | || (_| || || | | | >  <
                          |_| |_| \__, ||_||_| |_|/_/\_\
                                  |___/
+</pre>
 
 [Beginner's Guide](https://nginx.org/en/docs/beginners_guide.html#control)
 
@@ -415,12 +423,14 @@ http {
 }
 ```
 <br /><hr /><br />
+<pre>
                      _   _           _       _
                     | \ | | ___   __| | ___ (_)___
                     |  \| |/ _ \ / _` |/ _ \| / __|
                     | |\  | (_) | (_| |  __/| \__ \
                     |_| \_|\___/ \__,_|\___|/ |___/
                                           |__/
+</pre>
 
 - Node make a dynamic chain of promises
 
@@ -453,11 +463,13 @@ let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
 <br /><hr /><br />
+<pre>
                             ____   _            _  _
                            / ___| | |__    ___ | || |
                            \___ \ | '_ \  / _ \| || |
                             ___) || | | ||  __/| || |
                            |____/ |_| |_| \___||_||_|
+</pre>
 
 - Use user argument or default Valued
 
@@ -668,11 +680,13 @@ where,
 - l = depth of recursion
 - p = download related content like images
 <br /><hr /><br />
+<pre>
                                ____   ___  _
                               / ___| / _ \| |
                               \___ \| | | | |
                                ___) | |_| | |___
                               |____/ \__\_\_____|
+</pre>
 
 - Distinct Query
 
@@ -692,11 +706,13 @@ delete from table where col = val;
 select count(*) from table;
 ```
 <br /><hr /><br />
+<pre>
                                           _
                                 ___  ___ | |__
                                / __|/ __|| '_ \
                                \__ \\__ \| | | |
                                |___/|___/|_| |_|
+</pre>
 
 - Connect to remote host (assuming id_rsa.pub is submitted)
 
@@ -733,11 +749,13 @@ Host name2
   Identity ~/.ssh/id_rsa.name2
 ```
 <br /><hr /><br />
+<pre>
                               __     _____ __  __
                               \ \   / /_ _|  \/  |
                                \ \ / / | || |\/| |
                                 \ V /  | || |  | |
                                  \_/  |___|_|  |_|
+</pre>
 
 - Redirect output of Ex commands to register
 
@@ -805,12 +823,14 @@ Example: To delete all \*.js files in buffer list
 
 _Can use :bwipeout to completely remove a buffer_
 <br /><hr /><br />
+<pre>
                       __        __    _ _   _
                       \ \      / / __(_) |_(_)_ __   __ _
                        \ \ /\ / / '__| | __| | '_ \ / _` |
                         \ V  V /| |  | | |_| | | | | (_| |
                          \_/\_/ |_|  |_|\__|_|_| |_|\__, |
                                                     |___/
+</pre>
 
 - Rule of English adjective order
 
@@ -828,11 +848,13 @@ http://www.jacklynch.net/Writing/index.html
 
 https://dynomight.net/2021/02/07/writing-as-a-craft/
 <br /><hr /><br />
+<pre>
                                __   __ _ __   __
                                \ \ / // \\ \ / /
                                 \ V // _ \\ V /
                                  | |/ ___ \| |
                                  |_/_/   \_\_|
+</pre>
 
 - Install yay (for manjaro)
 
