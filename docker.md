@@ -4,9 +4,11 @@
                      | |_| || (_) || (__ |   <|  __/| |
                      |____/  \___/  \___||_|\_\\___||_|
 
-[Archwiki Doc](https://wiki.archlinux.org/title/Docker)
+- [Archwiki Doc](https://wiki.archlinux.org/title/Docker)
 
-[Docker Docs](https://docs.docker.com/get-started/)
+ - [Docker Docs](https://docs.docker.com/get-started/)
+
+- [Docker container resource management](https://dzone.com/articles/docker-container-resource-management-cpu-ram-and-i)
 
 - A "container" is a virtually isolated environment. An "image" is formed from multiple layer of commands.
 

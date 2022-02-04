@@ -212,3 +212,19 @@ where,
 - D = limit domains traversed
 - l = depth of recursion
 - p = download related content like images
+
+- Lazy regex quatifier (works in js, not is sed, vim)
+
+Suppose there is a line like so:
+
+`"this is some string" "this is another string"`
+
+And the aims is to select everything within quotes as a string.
+
+A naive regex would be: `/".*"/`
+
+But it actually selects everything inside starting from first " to the end of line "
+
+To select only the content withing first closing quote, do : `/.*?/`
+
+That is, add a `?` aka a lazy quatifier (as opposed to normal greedy approach)
