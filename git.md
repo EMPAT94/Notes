@@ -1,8 +1,4 @@
-                                 ____ ___ _____
-                                / ___|_ _|_   _|
-                               | |  _ | |  | |
-                               | |_| || |  | |
-                                \____|___| |_|
+# Git
 
 - Tags: Mark a point in commit history (useful for releases and such)
 

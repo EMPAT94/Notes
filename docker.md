@@ -1,12 +1,8 @@
-                      ____                _
-                     |  _ \   ___    ___ | | __ ___  _ __
-                     | | | | / _ \  / __|| |/ // _ \| '__|
-                     | |_| || (_) || (__ |   <|  __/| |
-                     |____/  \___/  \___||_|\_\\___||_|
+# Docker
 
 - [Archwiki Doc](https://wiki.archlinux.org/title/Docker)
 
- - [Docker Docs](https://docs.docker.com/get-started/)
+- [Docker Docs](https://docs.docker.com/get-started/)
 
 - [Docker container resource management](https://dzone.com/articles/docker-container-resource-management-cpu-ram-and-i)
 

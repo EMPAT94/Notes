@@ -1,8 +1,4 @@
-                                          _
-                                ___  ___ | |__
-                               / __|/ __|| '_ \
-                               \__ \\__ \| | | |
-                               |___/|___/|_| |_|
+# SSH
 
 - Connect to remote host (assuming id_rsa.pub is submitted)
 

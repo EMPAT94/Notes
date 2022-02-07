@@ -1,8 +1,4 @@
-                              __     _____ __  __
-                              \ \   / /_ _|  \/  |
-                               \ \ / / | || |\/| |
-                                \ V /  | || |  | |
-                                 \_/  |___|_|  |_|
+# (NEO)VIM
 
 - Redirect output of Ex commands to register
 

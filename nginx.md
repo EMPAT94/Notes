@@ -1,11 +1,6 @@
-                                        _
-                          _ __    __ _ (_) _ __  __  __
-                         | '_ \  / _` || || '_ \ \ \/ /
-                         | | | || (_| || || | | | >  <
-                         |_| |_| \__, ||_||_| |_|/_/\_\
-                                 |___/
+# Nginx
 
-[Beginner's Guide](https://nginx.org/en/docs/beginners_guide.html#control)
+- [Beginner's Guide](https://nginx.org/en/docs/beginners_guide.html#control)
 
 - Some CLI commands:
 
