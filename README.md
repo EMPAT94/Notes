@@ -438,6 +438,10 @@ let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
 
+- Nodejs code to stream in a file one line at a times
+
+[Source code](./stream-file.js)
+
 
 # python
 

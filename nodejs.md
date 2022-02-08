@@ -30,3 +30,7 @@ Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...the
 let fraction = 1.234;
 let intPart = ~~fraction; // 1
 ```
+
+- Nodejs code to stream in a file one line at a times
+
+[Source code](./stream-file.js)
