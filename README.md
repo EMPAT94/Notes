@@ -445,13 +445,13 @@ let intPart = ~~fraction; // 1
 
 # python
 
-- [Google's Python Class](https://developers.google.com/edu/python/)
+- [Official site](https://www.python.org/)
 
-- [Learnpyton.org](https://www.learnpython.org/)
+- [Official docs](https://docs.python.org/3/tutorial/index.html)
 
-- [Exercism](https://exercism.org/tracks/python)
+- [Exercism site](https://exercism.org/tracks/python)
 
-
+- [Basics](./python/basics.md)
 
 
 # reactjs
