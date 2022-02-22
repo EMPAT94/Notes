@@ -4,7 +4,7 @@
 
 - Basics
 
-  - Strong and dynamic typing
+  - Strong (no automatic casting) and dynamic (infered from values at runtime) typing
   - Interpreted but can also by compiled
   - Object oriented but can use functional style
   - Scope by indentation (no brackets and semicolons)
@@ -21,7 +21,7 @@
     - Basic string quote stuff same as javascript
     - Add `r` before string to disable interpretation of special chars
     - Triple quotes for multiline strings
-    - Repeat strings with multiplication `3 * 'Hi'`
+    - Repeat: `3 * 'Hi'`
     - Slice: `str[x:y]` = `str.slice(x,y)`
     - Length: `len(str)` = `str.length`
 
@@ -107,4 +107,3 @@
     - Lambda: `lambda x: x + 2` = `x => x + 2`
     - Docstrings: `""" Describes function in a line. """` add just after `def` line
     - Annotations: Like ts for js; `def f(arg1: <type> = default) -> <type>:`
-

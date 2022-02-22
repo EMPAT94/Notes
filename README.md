@@ -445,13 +445,45 @@ let intPart = ~~fraction; // 1
 
 # python
 
+## Links
+
 - [Official site](https://www.python.org/)
 
 - [Official docs](https://docs.python.org/3/tutorial/index.html)
 
 - [Exercism site](https://exercism.org/tracks/python)
 
+## Notes from official docs (v3.10.2)
+
 - [Basics](./python/basics.md)
+
+Next: https://docs.python.org/3/tutorial/datastructures.html
+
+## Upcoming
+
+More Data Type
+
+Modules and Packaging
+
+I/O
+
+Error Handling
+
+Classes
+
+Standard Library
+
+Virtual Environment and External Packages
+
+Decided on a minor project?
+
+## May be useful
+
+Commandline stuff?
+
+Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
+
+[Python Language Reference](https://docs.python.org/3/reference/index.html)
 
 
 # reactjs
@@ -838,6 +870,110 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
+
+
+# Basics
+
+- Mounting Vue App:
+
+```html
+<div id="app"></div>
+```
+
+```js
+Vue.createApp({ ... }).mount("#app")
+```
+
+- Directives:
+
+  - v-bind:
+
+    - Dynamically bind javascript variables to html attributes
+
+    ```html
+    <div v-bind:title="some_var"></div>
+    ```
+
+    ```js
+    data() {
+        return {
+            some_var: "some_val"
+          }
+      }
+    ```
+
+    - Shorthand `v-bind:<attr>` => `:<attr>`
+
+    - Dynamic Attribute `:[expr]="some_var"`
+
+    - Can be used to pass props to child `:[prop_name]="prop_val"`
+
+    - v-bind:class TODO
+    - v-bind:style TODO
+
+  - v-on:
+
+    - Attach event listeners
+
+    ```html
+    <div v-on:click="some_fn"></div>
+    ```
+
+    ```js
+    methods: {
+        some_fn() { ... }
+      }
+    ```
+
+    - Shorthand `v-on:<event>` => `@<event>`
+
+  - v-model:
+
+    - 2-way data binding (between html form and javascript object)
+
+    ```html
+    <input v-model="some_var"></input>
+    ```
+
+    ```js
+    data() {
+        return {
+            some_var: "some_val"
+          }
+      }
+    ```
+
+  - v-if, v-elseif, v-else:
+
+    - Conditionally render html
+
+    ```html
+    <div v-if="some_var"></div>
+    <div v-elseif="some_var"></div>
+    <div v-else></div>
+    ```
+
+    - v-show is similar but uses css display to modify visibility
+
+  - v-once: TODO
+
+  - v-html: TODO
+
+- Component Properties (inside createApp({ ... })):
+
+  - data() { ... } = Data (object) passed to instance
+
+  - mounted() { ... } = Functions passed to instance
+
+  - computed() { ... } = Functions that return calculated strings when data() changes (cached!)
+
+  - watch() { ... } = Functions that run when data changes (async ops or data dependencies)
+
+  - Hooks:
+    - Types: created, mounted, updated, unmounted
+    - Usage: [before]<hook>() { ... }
+
+- Events:
 
 
 # Writing
