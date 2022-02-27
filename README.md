@@ -443,6 +443,9 @@ let intPart = ~~fraction; // 1
 [Source code](./stream-file.js)
 
 
+# Postgresql
+
+
 # python
 
 ## Links
@@ -872,7 +875,7 @@ Example: To delete all \*.js files in buffer list
 _Can use :bwipeout to completely remove a buffer_
 
 
-# Basics
+# vuejs
 
 - Mounting Vue App:
 

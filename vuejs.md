@@ -1,4 +1,4 @@
-# Basics
+# vuejs
 
 - Mounting Vue App:
 
