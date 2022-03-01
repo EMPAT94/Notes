@@ -296,6 +296,67 @@ git fetch origin
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
 
 
+# mongodb
+
+- Mongo Connection commands <conn>
+
+`<command> -h host -p port`
+
+- Mongo Authentication commands <auth>
+
+`<command> <conn> -u user -p pass --authenticationDatabase admin`
+
+- Mongo backup/restore for json files
+
+`mongoimport <conn> <auth> --type json --db db_name --collection coll_name --file ./path/to/ip_file.json`
+
+  - Don't forget to add `--jsonArray` if file is in that form
+
+`mongoexport <conn> <auth> -db db_name --collection coll_name -o ./path/to/op_file.json`
+
+- Mongo backup/restore for bson files with meta data (created under ./dump/<db_name>)
+
+`mongodump <conn> <auth> --db db_name`
+
+`mongorestore <conn> <auth> --db db_name ./path/to/dump`
+
+- Mongo auth
+
+  1. At the mongo command line, set the administrator:
+
+  ```sh
+  use admin;
+  db.addUser('admin','123456');
+  ```
+
+  2. Shutdown the server and exit
+
+  ```sh
+  db.shutdownServer();
+  exit
+  ```
+
+  3. Restart mongod with --auth
+
+  `$ sudo ./mongodb/bin/mongod --auth --dbpath /mnt/db/`
+
+  4.  Run mongo again in 2 ways:
+
+    - run mongo first then login:
+
+    ```sh
+    $ ./mongodb/bin/mongo localhost:27017
+    use admin
+    db.auth('admin','123456');
+    ```
+
+    - run & login to mongo in command line.
+
+    `$ ./mongodb/bin/mongo localhost:27017/admin -u admin -p 123456`
+
+    <https://docs.mongodb.com/manual/core/authentication/>
+
+
 # Nginx
 
 - [Beginner's Guide](https://nginx.org/en/docs/beginners_guide.html#control)
@@ -577,10 +638,9 @@ $ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
 $ du -sh <dir>
 ```
 
-where
-
-- s = summary
-- h = human readable format
+where,  
+ s = summary  
+ h = human readable format
 
 Example: Get size of all directories in current directory
 
@@ -689,14 +749,13 @@ youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestv
 nohup <job> < /dev/null > /dev/null 2>&1 & disown
 ```
 
-where
-
-- nohup = no hangup signal
-- \< /dev/null = no stdin (input)
-- \> /dev/null = no nohup file (output)
-- 2>&1 = redirect errors to stdout (which is null)
-- & = start in background
-- disown = detach from shell
+where,
+  - nohup = no hangup signal
+  - \< /dev/null = no stdin (input)
+  - \> /dev/null = no nohup file (output)
+  - 2>&1 = redirect errors to stdout (which is null)
+  - & = start in background
+  - disown = detach from shell
 
 Example: To start [mpv](https://mpv.io/) as music daemon
 
@@ -730,13 +789,12 @@ wget -r -l 1 -p -k -H -D domain.com,relateddomain.com http://domain.com/page/in/
 ```
 
 where,
-
-- r = recurse
-- k = patch local links
-- H = traverse domains other than original
-- D = limit domains traversed
-- l = depth of recursion
-- p = download related content like images
+  - r = recurse
+  - k = patch local links
+  - H = traverse domains other than original
+  - D = limit domains traversed
+  - l = depth of recursion
+  - p = download related content like images
 
 - Lazy regex quatifier (works in js, not is sed, vim)
 
@@ -753,6 +811,37 @@ But it actually selects everything inside starting from first " to the end of li
 To select only the content withing first closing quote, do : `/.*?/`
 
 That is, add a `?` aka a lazy quatifier (as opposed to normal greedy approach)
+
+- Add colour to console output (make sure to add _Reset_ at the end after adding colour)
+
+  - `\033[0m` : Reset
+  - `\033[1m` : Bold
+  - `\033[91m` : Red
+  - `\033[92m` : Green
+  - `\033[93m` : Blue
+
+  - JS Function
+
+  ```js
+  const colorize = (...args) => ({
+    black: `\x1b[30m${args.join(" ")}`,
+    red: `\x1b[31m${args.join(" ")}`,
+    green: `\x1b[32m${args.join(" ")}`,
+    yellow: `\x1b[33m${args.join(" ")}`,
+    blue: `\x1b[34m${args.join(" ")}`,
+    magenta: `\x1b[35m${args.join(" ")}`,
+    cyan: `\x1b[36m${args.join(" ")}`,
+    white: `\x1b[37m${args.join(" ")}`,
+    bgBlack: `\x1b[40m${args.join(" ")}\x1b[0m`,
+    bgRed: `\x1b[41m${args.join(" ")}\x1b[0m`,
+    bgGreen: `\x1b[42m${args.join(" ")}\x1b[0m`,
+    bgYellow: `\x1b[43m${args.join(" ")}\x1b[0m`,
+    bgBlue: `\x1b[44m${args.join(" ")}\x1b[0m`,
+    bgMagenta: `\x1b[45m${args.join(" ")}\x1b[0m`,
+    bgCyan: `\x1b[46m${args.join(" ")}\x1b[0m`,
+    bgWhite: `\x1b[47m${args.join(" ")}\x1b[0m`,
+  });
+  ```
 
 
 # SQL
