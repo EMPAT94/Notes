@@ -4,47 +4,45 @@
 
 - Connect wirelessly
 
-1. Connect adb with cable
-2. `adb tcpip 5555`
-3. `adb connect <phone-ip>:5555`
+  1. Connect adb with cable
+  2. `adb tcpip 5555`
+  3. `adb connect <phone-ip>:5555`
 
 - Push new files only
 
-```sh
-adb push [-n for dryrun] --sync __source__ __target__
-```
+  ```sh
+  adb push [-n for dryrun] --sync __source__ __target__
+  ```
 
 - Make an app fullscreen
 
-```sh
-adb shell settings put global policy_control immersive.full=com.package
-```
+  ```sh
+  adb shell settings put global policy_control immersive.full=com.package
+  ```
 
-where immersive.full can be replaced by immersive.status or immersive.navigation
+  where immersive.full can be replaced by immersive.status or immersive.navigation, to remove
 
-To remove
-
-```sh
-adb shell settings put global policy_control immersive.off=com.package
-```
+  ```sh
+  adb shell settings put global policy_control immersive.off=com.package
+  ```
 
 - Screenshot & Screenrecord
 
-```sh
-adb shell screenrecord /sdcard/test.mp4
-```
+  ```sh
+  adb shell screenrecord /sdcard/test.mp4
+  ```
 
-Close with Ctrl-C
+  Close with Ctrl-C
 
-```sh
-adb shell screencap /sdcard/test.png
-```
+  ```sh
+  adb shell screencap /sdcard/test.png
+  ```
 
-To pull file on pc and remove from phone
+  To pull file on pc and remove from phone
 
-```sh
-adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
-```
+  ```sh
+  adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
+  ```
 
 
 # Docker
@@ -61,146 +59,148 @@ adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
 
 - Start docker service
 
-```sh
-systemctl start docker.service
-```
+  ```sh
+  systemctl start docker.service
+  ```
 
 - Start now & enable automatic startup on login
 
-```sh
-systemctl enable --now docker.service
-```
+  ```sh
+  systemctl enable --now docker.service
+  ```
 
 - Seek help
 
-```sh
-docker [command] help
-```
+  ```sh
+  docker [command] help
+  ```
 
-```sh
-docker <command> [subcommand] --help
-```
+  ```sh
+  docker <command> [subcommand] --help
+  ```
 
 - Deploy a container
 
-```sh
-docker run <image-name> [<command>]
-```
+  ```sh
+  docker run <image-name> [<command>]
+  ```
 
-with following options:
+  with following options:
 
-- -d = detached mode
-- -e = environment variables
-- -p <host port>:<container port> = port redirect
-- -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
-- -i = interactive mode (keeps STDIN open)
-- -t = pseudo-tty
-- -name = assign a name to the container
-- -w = work directory inside container
-- -rm = automatically remove on exit
+  - -d = detached mode
+  - -e = environment variables
+  - -p <host port>:<container port> = port redirect
+  - -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
+  - -i = interactive mode (keeps STDIN open)
+  - -t = pseudo-tty
+  - -name = assign a name to the container
+  - -w = work directory inside container
+  - -rm = automatically remove on exit
 
-to get the rest of the options possible, run
+  to get the rest of the options possible, run
 
-```sh
-docker run --help
-```
+  ```sh
+  docker run --help
+  ```
 
 - Show deployed containers
 
-```sh
-docker ps [-a for all]
-```
+  ```sh
+  docker ps [-a for all]
+  ```
 
 - Execute a command in deployed container
 
-```sh
-docker exec [-it for interactive tty] <container-id> <command>
-```
+  ```sh
+  docker exec [-it for interactive tty] <container-id> <command>
+  ```
 
 - Stop a container
 
-```sh
-docker stop <container-id>
-```
+  ```sh
+  docker stop <container-id>
+  ```
 
 - Remove a container
 
-```sh
-docker rm <container-id>
-```
+  ```sh
+  docker rm <container-id>
+  ```
 
 - Force stop & remove a container
 
-```sh
-docker rm -f <container-id>
-```
+  ```sh
+  docker rm -f <container-id>
+  ```
 
 - Pull an image
 
-```sh
-docker pull <image-name>
-```
+  ```sh
+  docker pull <image-name>
+  ```
 
 - Show all images
 
-```sh
-docker images
-```
+  ```sh
+  docker images
+  ```
 
 - Remove an image
 
-```sh
-docker rm <image-name> [or <image-id> for unnamed images]
-```
+  ```sh
+  docker rm <image-name> [or <image-id> for unnamed images]
+  ```
 
 - Build an image
 
-```sh
-docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
-```
+  ```sh
+  docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
+  ```
 
-assuming current directory contains Dockerfile.
+  assuming current directory contains Dockerfile.
 
 - Create a named volume
 
-```sh
-docker volume create <some-name>
-```
+  ```sh
+  docker volume create <some-name>
+  ```
 
 - List all volumes
 
-```sh
-docker volume ls
-```
+  ```sh
+  docker volume ls
+  ```
 
 - Use host's network interface (reduces NAT latency)
 
-```sh
-docker run ... --net=host ...
-```
+  ```sh
+  docker run ... --net=host ...
+  ```
 
 - When mounting volumes "${PWD}" works, "${pwd}" doesn't. Keep env var case sensitivity in mind.
 
 - Can get instance properties of containers (eg ip) as by runnings inspect
 
-```sh
-docker inspect my-container
-```
+  ```sh
+  docker inspect my-container
+  ```
 
-- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on localhost.
+- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on trusted machines.
 
-```sh
-sudo gpasswd -a $USER docker
-```
+  ```sh
+  sudo gpasswd -a $USER docker
+  ```
 
 - To access localhost (outside container), use ip address of bridge interface
 
-```sh
-ip addr show docker0
-```
+  ```sh
+  ip addr show docker0
+  ```
 
 
 # Git
+
+## Tags
 
 - Tags: Mark a point in commit history (useful for releases and such)
 
@@ -208,25 +208,27 @@ ip addr show docker0
 
 - Create a tag (annotated)
 
-`git tag -a v0.2 -m "Release v0.2"`
+  `git tag -a v0.2 -m "Release v0.2"`
 
-Note that simple `git push` does not push a tag to remote, must do something like:
+  Note that simple `git push` does not push a tag to remote, must do something like:
 
-`git push origin <tag>`
+  `git push origin <tag>`
 
 - List tags
 
-`git tag -l`
+  `git tag -l`
 
 - Show specific tag details
 
-`git show v0.2`
+  `git show v0.2`
 
 - Delete all branches except main and featurex
 
-```sh
-git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
-```
+  ```sh
+  git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
+  ```
+
+## Submodules
 
 - Submodules: Make a repository a subdirectory of another repository
 
@@ -234,36 +236,37 @@ git branch | awk '!/main|featurex/ { print $1 }' | xargs git branch -D
 
 - Add a submodule
 
-```sh
-git submodule add <sub-repo-link>
-```
+  ```sh
+  git submodule add <sub-repo-link>
+  ```
 
-Creates a .gitmodules file with path and url of submodules
-Adds a submodule in detached HEAD state
+  Creates a .gitmodules file with path and url of submodules and adds a submodule in detached HEAD state
 
 - Clone with submodules
 
-```sh
-git clone --recurse-submodules <main-repo-link>
-```
+  ```sh
+  git clone --recurse-submodules <main-repo-link>
+  ```
 
 - If already clone but no submodules, do
 
-```sh
-git submodule update --init --recursive
-```
+  ```sh
+  git submodule update --init --recursive
+  ```
 
 - Update submodules from remote
 
-```sh
-git submodule update --remote [name]
-```
+  ```sh
+  git submodule update --remote [name]
+  ```
 
 - The 'foreach' command
 
-```sh
-git submodule foreach 'git pull'
-```
+  ```sh
+  git submodule foreach 'git pull'
+  ```
+
+## Worktrees
 
 - Worktrees: Make a directory for each working branch
 
@@ -271,27 +274,35 @@ git submodule foreach 'git pull'
 
 - Having multiple folders for each branch makes things easy for IDEs, compared to restructuring same folder multiple times
 
-- ! IMPORTANT ! Do not use with submodules
+- <span style="color:orange">IMPORTANT!</span> Do not use with submodules
 
 - [Docs](https://git-scm.com/docs/git-worktree)
 
 - Not essential but a better workflow is to start off with a bare repository and have one folder each for each branch:
 
-```sh
-# Clone repository only (no working tree)
-# .bare contains what .git would have if we did git clone without --bare
-git clone --bare <remote> .bare
+  - Clone bare repo
 
-# git command needs a .git to work with
-echo "gitdir: ./.bare > .git"
+  ```sh
+  git clone --bare <remote> .bare
+  ```
 
-# When cloning bare repos, remote stuff is not setup
-# Set it up so git fetch and etc start working
-git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  - git command needs a .git to work with
 
-# Fetch remote branches
-git fetch origin
-```
+  ```sh
+  echo "gitdir: ./.bare > .git"
+  ```
+
+  - Set remote brances up so git fetch and etc start working
+
+  ```sh
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  ```
+
+  - Fetch remote branches
+
+  ```sh
+  git fetch origin
+  ```
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
 
@@ -373,13 +384,13 @@ git fetch origin
   - Consists of "directives" that are like for eg a "simple" directive: `<command> [<key>] <value>;`
   - A "block" directive consits of a number of simple directives in braces for eg:
 
-  ```
-  <block_command> <value> {
-    <command1> <value>;
-    <command2> <value>;
-    <command3> <value>;
-  }
-  ```
+    ```
+    <block_command> <value> {
+      <command1> <value>;
+      <command2> <value>;
+      <command3> <value>;
+    }
+    ```
 
   - Braces form a "context", which is similar to a lexical scope of javascript braces
   - And just like javascript global scope, nginx's is called "main context".
@@ -391,28 +402,28 @@ git fetch origin
   - client request -> parse URI -> match longest location string -> append <value> and respond
   - Eg, 2 locations : /data/html /data/images with following config:
 
-  ```
-  server {
-    location / {
-      root /data/html;
-    }
+    ```
+    server {
+      location / {
+        root /data/html;
+      }
 
-    location /images {
-      root /data;
+      location /images {
+        root /data;
+      }
     }
-  }
-  ```
+    ```
 
   request : localhost/ => matches / => /data/html/index.html
   request : localhost/images/test.png => matches /images (longest) => /data/images/test.png
 
   - Regular expression:
 
-  ```
-  location ~ \.(gif|jpg|png)$ {
-    root /data/images;
-  }
-  ```
+    ```
+    location ~ \.(gif|jpg|png)$ {
+      root /data/images;
+    }
+    ```
 
 - Proxy:
 
@@ -420,88 +431,86 @@ git fetch origin
   - Client request -> Forward to specific server -> Receive reply from server -> Client response
   - Eg, request come on /proxy-this and need to be sent to a separate server on port 8080, and /proxy-that on port 8081, then config would be:
 
-  ```
-  server {
-      listen 80;
-      server_name somedomain.com; # This is optional
-      location /proxy-this/ {
-        proxy_pass        http://127.0.0.1:8080;
-      }
-      location /proxy-that/ {
-        proxy_pass        http://127.0.0.1:8081;
-      }
-  }
-  ```
+    ```
+    server {
+        listen 80;
+        server_name somedomain.com; # This is optional
+        location /proxy-this/ {
+          proxy_pass        http://127.0.0.1:8080;
+        }
+        location /proxy-that/ {
+          proxy_pass        http://127.0.0.1:8081;
+        }
+    }
+    ```
 
   - Note that the trailing slash in proxy_pass value changes where location is truncated
 
   - Helpful directives:
 
-  ```
-  proxy_http_version 1.1;
-  proxy_set_header Upgrade $http_upgrade;
-  proxy_set_header Connection 'upgrade';
-  proxy_set_header Host $host;
-  proxy_set_header  X-Real-IP        $remote_addr;
-  proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
-  proxy_cache_bypass $http_upgrade;
-  ```
+    ```
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_set_header  X-Real-IP        $remote_addr;
+    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+    proxy_cache_bypass $http_upgrade;
+    ```
 
 - Load balancing: This config will start balancing requests on 3 addresses (default round robin)
 
-```
-http {
-  upstream poxy-server {
-    server server_addr1;
-    server server_addr2;
-    server server_addr3;
-  }
+  ```
+  http {
+    upstream poxy-server {
+      server server_addr1;
+      server server_addr2;
+      server server_addr3;
+    }
 
-  server {
-    location / {
-      proxy_pass http://proxy-server;
+    server {
+      location / {
+        proxy_pass http://proxy-server;
+      }
     }
   }
-}
-```
+  ```
 
 
 # Nodejs
 
 - Node make a dynamic chain of promises
 
-Use
+  Use
 
-```
-arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
-```
+  ```
+  arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
+  ```
 
-to convert
+  to convert
 
-```
-const arr = [d1, d2, d3, ..., dn];
+  ```
+  const arr = [d1, d2, d3, ..., dn];
 
-function fn(d) {
-  return new Promise((res, rej) => { ...; res() });
-}
-```
+  function fn(d) {
+    return new Promise((res, rej) => { ...; res() });
+  }
+  ```
 
-into
+  into
 
-```
-Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
-```
+  ```
+  Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
+  ```
 
 - Get integer part of a fraction
 
-```
-let fraction = 1.234;
-let intPart = ~~fraction; // 1
-```
+  ```
+  let fraction = 1.234;
+  let intPart = ~~fraction; // 1
+  ```
 
-- Nodejs code to stream in a file one line at a times
-
-[Source code](./stream-file.js)
+- Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)
 
 
 # Postgresql

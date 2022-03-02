@@ -2,35 +2,33 @@
 
 - Node make a dynamic chain of promises
 
-Use
+  Use
 
-```
-arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
-```
+  ```
+  arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
+  ```
 
-to convert
+  to convert
 
-```
-const arr = [d1, d2, d3, ..., dn];
+  ```
+  const arr = [d1, d2, d3, ..., dn];
 
-function fn(d) {
-  return new Promise((res, rej) => { ...; res() });
-}
-```
+  function fn(d) {
+    return new Promise((res, rej) => { ...; res() });
+  }
+  ```
 
-into
+  into
 
-```
-Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
-```
+  ```
+  Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
+  ```
 
 - Get integer part of a fraction
 
-```
-let fraction = 1.234;
-let intPart = ~~fraction; // 1
-```
+  ```
+  let fraction = 1.234;
+  let intPart = ~~fraction; // 1
+  ```
 
-- Nodejs code to stream in a file one line at a times
-
-[Source code](./stream-file.js)
+- Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)

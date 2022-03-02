@@ -12,140 +12,140 @@
 
 - Start docker service
 
-```sh
-systemctl start docker.service
-```
+  ```sh
+  systemctl start docker.service
+  ```
 
 - Start now & enable automatic startup on login
 
-```sh
-systemctl enable --now docker.service
-```
+  ```sh
+  systemctl enable --now docker.service
+  ```
 
 - Seek help
 
-```sh
-docker [command] help
-```
+  ```sh
+  docker [command] help
+  ```
 
-```sh
-docker <command> [subcommand] --help
-```
+  ```sh
+  docker <command> [subcommand] --help
+  ```
 
 - Deploy a container
 
-```sh
-docker run <image-name> [<command>]
-```
+  ```sh
+  docker run <image-name> [<command>]
+  ```
 
-with following options:
+  with following options:
 
-- -d = detached mode
-- -e = environment variables
-- -p <host port>:<container port> = port redirect
-- -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
-- -i = interactive mode (keeps STDIN open)
-- -t = pseudo-tty
-- -name = assign a name to the container
-- -w = work directory inside container
-- -rm = automatically remove on exit
+  - -d = detached mode
+  - -e = environment variables
+  - -p <host port>:<container port> = port redirect
+  - -v <host dir> | <volumne name>:<container dir> = bound volume | named volume
+  - -i = interactive mode (keeps STDIN open)
+  - -t = pseudo-tty
+  - -name = assign a name to the container
+  - -w = work directory inside container
+  - -rm = automatically remove on exit
 
-to get the rest of the options possible, run
+  to get the rest of the options possible, run
 
-```sh
-docker run --help
-```
+  ```sh
+  docker run --help
+  ```
 
 - Show deployed containers
 
-```sh
-docker ps [-a for all]
-```
+  ```sh
+  docker ps [-a for all]
+  ```
 
 - Execute a command in deployed container
 
-```sh
-docker exec [-it for interactive tty] <container-id> <command>
-```
+  ```sh
+  docker exec [-it for interactive tty] <container-id> <command>
+  ```
 
 - Stop a container
 
-```sh
-docker stop <container-id>
-```
+  ```sh
+  docker stop <container-id>
+  ```
 
 - Remove a container
 
-```sh
-docker rm <container-id>
-```
+  ```sh
+  docker rm <container-id>
+  ```
 
 - Force stop & remove a container
 
-```sh
-docker rm -f <container-id>
-```
+  ```sh
+  docker rm -f <container-id>
+  ```
 
 - Pull an image
 
-```sh
-docker pull <image-name>
-```
+  ```sh
+  docker pull <image-name>
+  ```
 
 - Show all images
 
-```sh
-docker images
-```
+  ```sh
+  docker images
+  ```
 
 - Remove an image
 
-```sh
-docker rm <image-name> [or <image-id> for unnamed images]
-```
+  ```sh
+  docker rm <image-name> [or <image-id> for unnamed images]
+  ```
 
 - Build an image
 
-```sh
-docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
-```
+  ```sh
+  docker build -t [<image-namespace>/]<new-image-name>[:<image-tag>] .
+  ```
 
-assuming current directory contains Dockerfile.
+  assuming current directory contains Dockerfile.
 
 - Create a named volume
 
-```sh
-docker volume create <some-name>
-```
+  ```sh
+  docker volume create <some-name>
+  ```
 
 - List all volumes
 
-```sh
-docker volume ls
-```
+  ```sh
+  docker volume ls
+  ```
 
 - Use host's network interface (reduces NAT latency)
 
-```sh
-docker run ... --net=host ...
-```
+  ```sh
+  docker run ... --net=host ...
+  ```
 
 - When mounting volumes "${PWD}" works, "${pwd}" doesn't. Keep env var case sensitivity in mind.
 
 - Can get instance properties of containers (eg ip) as by runnings inspect
 
-```sh
-docker inspect my-container
-```
+  ```sh
+  docker inspect my-container
+  ```
 
-- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on localhost.
+- Add current user to docker group (to avoid typing 'sudo' on every docker command); recommended only on trusted machines.
 
-```sh
-sudo gpasswd -a $USER docker
-```
+  ```sh
+  sudo gpasswd -a $USER docker
+  ```
 
 - To access localhost (outside container), use ip address of bridge interface
 
-```sh
-ip addr show docker0
-```
+  ```sh
+  ip addr show docker0
+  ```
