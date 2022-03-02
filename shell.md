@@ -2,164 +2,143 @@
 
 - Use user argument or default Valued
 
-```sh
-VAL=${1:-"<default>"}
-```
-
-Example: assuming above default is "/tmp" and the script is run
-
-1. with argument /home then VAL = /home
-2. with no argument then VAL = /tmp
+  ```sh
+  VAL=${1:-"<default>"}
+  ```
 
 - Reuse previous shell command
 
-```sh
-$ !!
-```
+  ```sh
+  $ !!
+  ```
 
-Example: check git root and cd if proper
+  Example: check git root and cd if proper
 
-```sh
-$ git rev-parse --show-toplevel
-/git/root
-$ cd $(!!)
-```
+  ```sh
+  $ git rev-parse --show-toplevel
+  /git/root
+  $ cd $(!!)
+  ```
 
 - Reinstall xcode-select @MACOS
 
-```sh
-$ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
-```
+  ```sh
+  $ sudo rm -rf $(xcode-select --print-path) && xcode-select --install
+  ```
 
 - Mount external ntfs hdd @MACOS
 
-1. `brew cask install osxfuse`
-2. Reboot
-3. `brew install ntfs-3g`
-4. Connect hdd
-5. `mkdir ~/NTFS`
-6. `diskutil list` (check MS drive num eg disk2s1)
-7. `sudo umount /dev/disk2s1`
-8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
+  1. `brew cask install osxfuse`
+  2. Reboot
+  3. `brew install ntfs-3g`
+  4. Connect hdd
+  5. `mkdir ~/NTFS`
+  6. `diskutil list` (check MS drive num eg disk2s1)
+  7. `sudo umount /dev/disk2s1`
+  8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
 
 - Check size of a directory
 
-```sh
-$ du -sh <dir>
-```
+  ```sh
+  $ du -sh <dir>
+  ```
 
-where,  
- s = summary  
- h = human readable format
+  where,
 
-Example: Get size of all directories in current directory
+  - s = summary
+  - h = human readable format
 
-```sh
-$ du -sh ./*/
-```
+  Example: Get size of all directories in current directory
+
+  ```sh
+  $ du -sh ./*/
+  ```
 
 - Move new files only (do not overwrite if exists)
 
-```sh
-$ mv -vn <source> <target>
-```
+  ```sh
+  $ mv -vn <source> <target>
+  ```
 
-where
+  where,
 
-- v = verbose
-- n = no overwrite
+  - v = verbose
+  - n = no overwrite
 
 - if/else
 
-```sh
-$ if [ <test> ]; then <something>; fi
-```
+  ```sh
+  $ if [ <test> ]; then <something>; fi
+  ```
 
-for command sucess | fail, simply do this (not no sq brackets)
+  for command sucess | fail, simply do this (not no sq brackets)
 
-```sh
-$ if command; then <sucess>; else <fail>; fi
-```
+  ```sh
+  $ if command; then <sucess>; else <fail>; fi
+  ```
 
 - for loop
 
-```sh
-for <variable> in <list>; do <command>; done
-```
+  ```sh
+  for <variable> in <list>; do <command>; done
+  ```
 
-Example: Add all dot files to gitignore
+  Example: Add all dot files to gitignore
 
-```sh
-for file in .*; do echo $file >> .gitignore; done
-```
+  ```sh
+  for file in .*; do echo $file >> .gitignore; done
+  ```
 
 - Script strict mode
 
-_Ignore the \ in \# below, kept for formatting reasons_
+  _Ignore the \ in \# below, kept for formatting reasons_
 
-```sh
-\#!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
-```
+  ```sh
+  \#!/usr/bin/env bash
+  set -euo pipefail
+  IFS=$'\n\t'
+  ```
 
-[http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+  [http://redsymbol.net/articles/unofficial-bash-strict-mode/](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 
 - Find command
 
-```sh
-find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
-```
+  ```sh
+  find <path> [-type | -size] -name "regex" [-exec <another cmd> | -delete]
+  ```
 
-Example: find and delete all dot files in current directory
+  Example: find and delete all dot files in current directory
 
-```sh
-find . -name ".*" -delete
-```
+  ```sh
+  find . -name ".*" -delete
+  ```
 
-as an alternative, `fd` works as follows
+  as an alternative, `fd` works as follows
 
-```sh
-fd "regex"
-```
+  ```sh
+  fd "regex"
+  ```
 
 - Remove duplicate lines from a file
 
-```sh
-awk '!l[$0]++' file > newfile
-```
+  ```sh
+  awk '!l[$0]++' file > newfile
+  ```
 
-if order is not important
+  if order is not important
 
-```sh
-sort -u file > newfile
-```
-
-- Download songs from youtube
-
-[https://youtube-dl.org/](https://youtube-dl.org/)
-
-Only audio:
-
-```sh
-youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] [ "URL" | -a  ./fileName ]
-```
-
-_where fileName is a list of urls separated by blank lines;_
-
-Best video+audio:
-
-```sh
-youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4  -o '%(title)s.%(ext)s' "VIDEO-LINK"
-```
+  ```sh
+  sort -u file > newfile
+  ```
 
 - Start a background job
 
-```sh
-nohup <job> < /dev/null > /dev/null 2>&1 & disown
-```
+  ```sh
+  nohup <job> < /dev/null > /dev/null 2>&1 & disown
+  ```
 
-where,
+  where,
+
   - nohup = no hangup signal
   - \< /dev/null = no stdin (input)
   - \> /dev/null = no nohup file (output)
@@ -167,38 +146,39 @@ where,
   - & = start in background
   - disown = detach from shell
 
-Example: To start [mpv](https://mpv.io/) as music daemon
+  Example: To start [mpv](https://mpv.io/) as music daemon
 
-```sh
-nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
-```
+  ```sh
+  nohup mpv --no-audio-display --shuffle ~/Music < /dev/null > /dev/null 2>&1 & disown
+  ```
 
 - Mount Ram as disk
 
-```sh
-sudo mount -t tmpfs -o size=5g tmpfs /mnt/ramfs
-```
+  ```sh
+  sudo mount -t tmpfs -o size=5g tmpfs /mnt/ramfs
+  ```
 
-where a new temporary mount point /mnt/ramfs is created with 5 Gigabytes of capacity;
-to unmount, do
+  where a new temporary mount point /mnt/ramfs is created with 5 Gigabytes of capacity;
+  to unmount, do
 
-```sh
-umount /mnt/ramfs
-```
+  ```sh
+  umount /mnt/ramfs
+  ```
 
 - Watch a file for change and run command when changes
 
-```sh
-while true; do watch -g ls -l <filename> && <cmd>; sleep 5; done
-```
+  ```sh
+  while true; do watch -g ls -l <filename> && <cmd>; sleep 5; done
+  ```
 
 - Download a webpage and all it's linked pages and content
 
-```sh
-wget -r -l 1 -p -k -H -D domain.com,relateddomain.com http://domain.com/page/in/domain
-```
+  ```sh
+  wget -r -l 1 -p -k -H -D domain.com,relateddomain.com http://domain.com/page/in/domain
+  ```
 
-where,
+  where,
+
   - r = recurse
   - k = patch local links
   - H = traverse domains other than original
@@ -208,27 +188,27 @@ where,
 
 - Lazy regex quatifier (works in js, not is sed, vim)
 
-Suppose there is a line like so:
+  Suppose there is a line like so:
 
-`"this is some string" "this is another string"`
+  `"this is some string" "this is another string"`
 
-And the aims is to select everything within quotes as a string.
+  And the aims is to select everything within quotes as a string.
 
-A naive regex would be: `/".*"/`
+  A naive regex would be: `/".*"/`
 
-But it actually selects everything inside starting from first " to the end of line "
+  But it actually selects everything inside starting from first " to the end of line "
 
-To select only the content withing first closing quote, do : `/.*?/`
+  To select only the content withing first closing quote, do : `/.*?/`
 
-That is, add a `?` aka a lazy quatifier (as opposed to normal greedy approach)
+  That is, add a `?` aka a lazy quatifier (as opposed to normal greedy approach)
 
 - Add colour to console output (make sure to add _Reset_ at the end after adding colour)
 
-  - `\033[0m` : Reset
-  - `\033[1m` : Bold
-  - `\033[91m` : Red
-  - `\033[92m` : Green
-  - `\033[93m` : Blue
+  `\033[0m` : Reset
+  `\033[1m` : Bold
+  `\033[91m` : Red
+  `\033[92m` : Green
+  `\033[93m` : Blue
 
   - JS Function
 
@@ -252,3 +232,43 @@ That is, add a `?` aka a lazy quatifier (as opposed to normal greedy approach)
     bgWhite: `\x1b[47m${args.join(" ")}\x1b[0m`,
   });
   ```
+
+## youtube-dl
+
+- Download songs from youtube
+
+  [https://youtube-dl.org/](https://youtube-dl.org/)
+
+  Only audio:
+
+  ```sh
+  youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] <"URL" | -a  ./fileName>
+  ```
+
+  _where fileName is a list of urls separated by blank lines;_
+
+  Best video+audio:
+
+  ```sh
+  youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4  -o '%(title)s.%(ext)s' <"video-link">
+  ```
+
+  Note the brackets for the above are part of the command.
+
+## gpg
+
+- Encrypt file for self
+
+  ```sh
+  gpg --encrypt --recipient <self@mail.com> <file>
+  ```
+
+  This will create an encryped `<file>.gpg` file in same directory. Opening it normally will show gibberish.
+
+- Decrypt a file
+
+  ```sh
+  gpg --decrypt <file>.gpg
+  ```
+
+  This will ask for your gpg passphrase and output the original `<file>`.

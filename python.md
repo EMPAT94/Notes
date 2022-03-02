@@ -8,6 +8,8 @@
 
 - [Exercism site](https://exercism.org/tracks/python)
 
+- [Awsome python github](https://github.com/vinta/awesome-python)
+
 ## Notes from official docs (v3.10.2)
 
 - [Basics](./python/basics.md)
