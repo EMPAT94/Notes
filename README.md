@@ -977,6 +977,194 @@ Host name2
 ```
 
 
+# System
+
+- [Official Site](https://systemd.io/)
+
+> Systemd is a suite of basic building blocks for a Linux system. It provides a system and service manager that runs as PID 1 and starts the rest of the system.
+
+- [A blog from creator](https://0pointer.de/blog/projects/systemd.html)
+
+- [Arch Wiki](https://wiki.archlinux.org/title/Systemd)
+
+## Units:
+
+- Services (Daemons) [Uses `systemctl`]
+- Timers (similar to Cron)
+- Mounts (File system mounts, from /etc/fstab)
+- Devices
+- Sockets
+
+- List all units for a type:
+
+  ```sh
+  systemctl list-units --type <name>
+  ```
+
+## Serices:
+
+- Start a service:
+
+  ```sh
+  systemctl start <name>
+  ```
+
+- Stop a service:
+
+  ```sh
+  systemctl stop <name>
+  ```
+
+- Enable a service to start on boot:
+
+  ```sh
+  systemctl enable <name>
+  ```
+
+- Disable a service from starting on boot:
+
+  ```sh
+  systemctl disable <name>
+  ```
+
+- Disable a service from being started by other services:
+
+  ```sh
+  systemctl mask <name>
+  ```
+
+- Status of a service:
+
+  ```sh
+  systemctl status <name>
+  ```
+
+  - Enable [or disable or mask] and start immediatly:
+
+  ```sh
+  systemctl enable [disable | mask] --now <name>
+  ```
+
+  - Reload service units
+
+  ```sh
+  systemctl daemon-reload
+  ```
+
+## Journal:
+
+- [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Journal)
+
+> systemd has its own logging system called the journal; running a separate logging daemon is not required. To read the log, use `man journalctl(1)`
+
+- Show all messages since boot:
+
+  ```sh
+  journalctl -b [-n for nth boot, 0 = current, 1 = previous etc]
+  ```
+
+- Show all messages with prority higher than n [2 = critical, 3 = error, 4 = warn]:
+
+  ```sh
+  journalctl -p n
+  ```
+
+- Show all messages for a unit:
+
+  ```sh
+  journalctl -u <unit-name>
+  ```
+
+- Show all messages for an executable:
+
+  ```sh
+  journalctl /path/to/executable
+  ```
+
+## Timers:
+
+- [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Timers)
+
+> Timers are systemd unit files with a suffix of .timer. Timers are like other unit configuration files and are loaded from the same paths but include a [Timer] section which defines when and how the timer activates.
+
+> For each .timer file, a matching .service file exists (e.g. foo.timer and foo.service). The .timer file activates and controls the .service file.
+
+### Example of a timer service:
+
+- [Website link #Demo](https://fedoramagazine.org/systemd-timers-for-scheduling-tasks/)
+
+- Executable to run (can be any language, using a bash script here). Inside $HOME/bin/schedule-test.sh:
+
+  ```sh
+  #!/usr/bin/env bash
+  echo "This is only a test: $(date)" >> "$HOME/schedule-test-output.txt"
+  ```
+
+  - Make sure the executable is... executable.
+
+    ```sh
+    chmod u+x $HOME/bin/schedule-test.sh
+    ```
+
+- Systemd Service Unit inside ~/.config/systemd/user/schedule-test.service:
+
+  ```ini
+  [Unit]
+  Description=A job to test the systemd scheduler
+
+  [Service]
+  Type=simple
+  ExecStart=/home/<user>/bin/schedule-test.sh
+
+  [Install]
+  WantedBy=default.target
+  ```
+
+- Systemd Timer Unit inside ~/.config/systemd/user/schedule-test.timer:
+
+  ```ini
+  [Unit]
+  Description=Schedule a message every 1 minute
+
+  [Timer]
+
+  #Execute job if it missed a run due to machine being off
+  Persistent=true
+
+  #Run 120 seconds after boot for the first time
+  OnBootSec=120
+
+  #Run every 1 minute thereafter
+  OnUnitActiveSec=60
+
+  #File describing job to execute
+  Unit=schedule-test.service
+
+  [Install]
+
+  # So systemd can manage automatically
+  WantedBy=timers.target
+  ```
+
+  - Can use `OnCalendar` instead of `OnUnitActiveSec`
+
+- Reload daemons and start service to test:
+
+  ```sh
+  systemctl --user daemon-reload
+  systemctl --user start schedule-test.service
+  tail $HOME/schedule-test-output.txt
+  ```
+
+- Enable timer if test pass and check status:
+
+  ```sh
+  systemctl --user enable --now schedule-test.timer
+  systemctl --user status schedule-test.timer
+  tail -f $HOME/schedule-test-output.txt
+  ```
+
+
 # (NEO)VIM
 
 - Redirect output of Ex commands to register
