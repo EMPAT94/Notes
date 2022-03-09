@@ -483,13 +483,13 @@
 
   Use
 
-  ```
+  ```js
   arr.reduce((c, d) => c.then(() => fn(d)), Promise.resolve()).catch(error);
   ```
 
   to convert
 
-  ```
+  ```js
   const arr = [d1, d2, d3, ..., dn];
 
   function fn(d) {
@@ -499,13 +499,21 @@
 
   into
 
-  ```
+  ```js
   Promise.resolve().then(() => fn(d1)).then(() => fn(d2)).then(() => fn(d3))...then(() => fn(dn)).catch(error)
   ```
 
+  - In newer versions:
+
+    ```js
+    for (const d of arr) {
+      await fn(d);
+    }
+    ```
+
 - Get integer part of a fraction
 
-  ```
+  ```js
   let fraction = 1.234;
   let intPart = ~~fraction; // 1
   ```
@@ -599,7 +607,48 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
 - Split bundle by view (or route), load on-demand. Network requests are the slowest part of app life-cycle.
 
 
-# rsync
+# rsync (Remote Sync)
+
+From `man rsync`:
+
+> Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon.
+
+> It is famous for its delta-transfer algo‐ rithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination.
+
+- Basic Usage:
+
+  ```sh
+  rsync [options] <src> <dest>
+  ```
+
+  src/dest can be local or remote, but not both remote!
+
+- Important options:
+
+  - --help, -h
+  - --verbose, -v
+  - --quiet, -q
+  - --dry-run, -n
+  - --recursive, -r
+  - --archive, -a (recursive and preserve file metadata)
+  - --backup, -b (preexisting dest files renamed)
+  - --backup-dir=DIR (store backups in different dir on dest)
+  - --compress, -z
+  - --delete (remove dest files not in src)
+  - --exclude=PATTERN
+  - --include=PATTERN
+  - --partial (keep partially transferred files, fill on next transfer)
+  - --progress
+  - --stats
+  - -P = --partial + --progress
+
+- Replicate data from folder1 to folder2:
+
+  ```sh
+  rsync -avzP --delete folder1/ folder2
+  ```
+
+  Note the trailing slash; without slash it will put folder1 inside folder2
 
 
 # Shell
@@ -682,6 +731,19 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
   ```
 
 - for loop
+
+  ```sh
+  for ((expr1;expr2;expr3)); do <command>; done;
+  ```
+
+  Example: Loop from 1 to END
+
+  ```sh
+  END=5
+  for ((i=1;i<=END;i++)); do echo $i; done;
+  ```
+
+- for in loop
 
   ```sh
   for <variable> in <list>; do <command>; done
@@ -942,7 +1004,7 @@ select count(*) from table;
 
   - May also disable `PermitRootLogin`
 
-  - Reload ssh daemon via systemctl
+  - Reload ssh daemon via systemctl `sudo systemctl reload sshd`
 
   - May change default ssh porto
 
