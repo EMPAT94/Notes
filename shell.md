@@ -80,6 +80,19 @@
 - for loop
 
   ```sh
+  for ((expr1;expr2;expr3)); do <command>; done;
+  ```
+
+  Example: Loop from 1 to END
+
+  ```sh
+  END=5
+  for ((i=1;i<=END;i++)); do echo $i; done;
+  ```
+
+- for in loop
+
+  ```sh
   for <variable> in <list>; do <command>; done
   ```
 
