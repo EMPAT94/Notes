@@ -41,7 +41,7 @@
 
   - May also disable `PermitRootLogin`
 
-  - Reload ssh daemon via systemctl
+  - Reload ssh daemon via systemctl `sudo systemctl reload sshd`
 
   - May change default ssh porto
 
