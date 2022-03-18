@@ -149,3 +149,17 @@
   ```sh
   ip addr show docker0
   ```
+
+- To Change default logger and data-root directory, add following to /etc/docker/daemon.json
+
+  ```json
+  {
+    "log-driver": "local",
+    "log-opts": {
+      "max-size": "10m"
+    },
+    "data-root": "/mnt/volume/docker"
+  }
+  ```
+
+  - Note that local log driver does not show logs with docker compose

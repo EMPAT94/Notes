@@ -37,6 +37,18 @@
   7. `sudo umount /dev/disk2s1`
   8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
 
+- Mount an attached block storage (pre-formatted) to instance using fstab
+
+  - Check currently attached volumes `lsblk` (ensure attached but not mounted)
+
+  - Get UUID of volume `blkid`
+
+  - Add entry in /etc/fstab `UUID=<from above> /mount/point format options`
+
+  - Mount all fstab volumes `sudo mount -a`
+
+  - Check currently attached volumes `lsblk` (ensure mounted)
+
 - Check size of a directory
 
   ```sh
@@ -285,3 +297,15 @@
   ```
 
   This will ask for your gpg passphrase and output the original `<file>`.
+
+- Export public key to server (so can encrypt files there)
+
+  ```sh
+  gpg --armor --export <self@mail.com> > pub.key
+  ```
+
+  - Copy `pub.key` to server (via scp or copy-paste), then
+
+  ```sh
+  gpg --import pub.key
+  ```

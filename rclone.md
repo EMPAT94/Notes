@@ -4,6 +4,8 @@
 
 > Rclone is a command line program to manage files on cloud storage.
 
+- I followed the steps for [Storj](https://storj.com) [here](https://docs.storj.io/dcs/how-tos/sync-files-with-rclone/rclone-with-hosted-gateway/)
+
 - To add/edit a cloud provider
 
   ```sh
@@ -11,8 +13,6 @@
   ```
 
   and follow the prompts
-
-  - I followed the steps for [Storj](https://storj.com) [here](https://docs.storj.io/dcs/how-tos/sync-files-with-rclone/rclone-with-hosted-gateway/)
 
 ## Bucket commands
 

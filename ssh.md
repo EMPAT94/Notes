@@ -15,9 +15,9 @@
     ```
 
     where,  
-       t = type of key algo  
-       f = file name of generated keys  
-       C = comment regarding who and where of key usage
+     t = type of key algo  
+     f = file name of generated keys  
+     C = comment regarding who and where of key usage
 
   - Ensure passphrase is entered, it is remembered later
 

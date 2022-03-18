@@ -197,6 +197,20 @@
   ip addr show docker0
   ```
 
+- To Change default logger and data-root directory, add following to /etc/docker/daemon.json
+
+  ```json
+  {
+    "log-driver": "local",
+    "log-opts": {
+      "max-size": "10m"
+    },
+    "data-root": "/mnt/volume/docker"
+  }
+  ```
+
+  - Note that local log driver does not show logs with docker compose
+
 
 # Git
 
@@ -531,6 +545,32 @@
 
 - [Quick Reference](https://zaiste.net/posts/postgresql-primer-for-busy-people/)
 
+- Executing psql
+
+  ```sh
+  psql -U <username> -d <database>
+  ```
+
+- Backing up postgres (use `pg_dumpall` for... all)
+
+  ```sh
+  pg_dump -U username dbname | xz -4 > /tmp/postgres_dump_$(date +"%y-%m-%d_%H_%M").sqlxz
+  ```
+
+- Restoring from dump
+
+  ```sh
+  xz -d < /tmp/postgres_dump_<date>.sql.xz | <docker exec> psql -U  <user> -d <db>
+  ```
+
+  - If restoring a particularly big dump or throwing errors, `docker cp` it inside container and restore from within.
+
+- To run above commands inside docker container (denoted by `<docker exec>`)
+
+  ```sh
+  docker exec -it <postgres-container-name> <command>
+  ```
+
 
 # python
 
@@ -583,6 +623,8 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
 
 > Rclone is a command line program to manage files on cloud storage.
 
+- I followed the steps for [Storj](https://storj.com) [here](https://docs.storj.io/dcs/how-tos/sync-files-with-rclone/rclone-with-hosted-gateway/)
+
 - To add/edit a cloud provider
 
   ```sh
@@ -590,8 +632,6 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
   ```
 
   and follow the prompts
-
-  - I followed the steps for [Storj](https://storj.com) [here](https://docs.storj.io/dcs/how-tos/sync-files-with-rclone/rclone-with-hosted-gateway/)
 
 ## Bucket commands
 
@@ -720,7 +760,7 @@ From `man rsync`:
 - Replicate data from folder1 to folder2:
 
   ```sh
-  rsync -avzP --delete folder1/ folder2
+  rsync -avrzP --delete folder1/ folder2
   ```
 
   Note the trailing slash; without slash it will put folder1 inside folder2
@@ -764,6 +804,18 @@ From `man rsync`:
   6. `diskutil list` (check MS drive num eg disk2s1)
   7. `sudo umount /dev/disk2s1`
   8. `sudo /usr/local/bin/ntfs-3g /dev/disk2s1 ~/NTFS -olocal -oallow_other`
+
+- Mount an attached block storage (pre-formatted) to instance using fstab
+
+  - Check currently attached volumes `lsblk` (ensure attached but not mounted)
+
+  - Get UUID of volume `blkid`
+
+  - Add entry in /etc/fstab `UUID=<from above> /mount/point format options`
+
+  - Mount all fstab volumes `sudo mount -a`
+
+  - Check currently attached volumes `lsblk` (ensure mounted)
 
 - Check size of a directory
 
@@ -1014,6 +1066,18 @@ From `man rsync`:
 
   This will ask for your gpg passphrase and output the original `<file>`.
 
+- Export public key to server (so can encrypt files there)
+
+  ```sh
+  gpg --armor --export <self@mail.com> > pub.key
+  ```
+
+  - Copy `pub.key` to server (via scp or copy-paste), then
+
+  ```sh
+  gpg --import pub.key
+  ```
+
 
 # SQL
 
@@ -1053,9 +1117,9 @@ select count(*) from table;
     ```
 
     where,  
-       t = type of key algo  
-       f = file name of generated keys  
-       C = comment regarding who and where of key usage
+     t = type of key algo  
+     f = file name of generated keys  
+     C = comment regarding who and where of key usage
 
   - Ensure passphrase is entered, it is remembered later
 

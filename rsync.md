@@ -36,7 +36,7 @@ From `man rsync`:
 - Replicate data from folder1 to folder2:
 
   ```sh
-  rsync -avzP --delete folder1/ folder2
+  rsync -avrzP --delete folder1/ folder2
   ```
 
   Note the trailing slash; without slash it will put folder1 inside folder2
