@@ -114,6 +114,22 @@
   for file in .*; do echo $file >> .gitignore; done
   ```
 
+- Arrays
+
+  An array in shell is within `()` brackets and looped like so:
+
+  ```sh
+  arr=(
+    "a"
+    "b"
+    "c"
+  )
+
+  for alph in ${arr[*]}; do echo $alph; done;
+  ```
+
+  Note that on cli, direct `$arr` works for looping but not in script!
+
 - Script strict mode
 
   _Ignore the \ in \# below, kept for formatting reasons_
