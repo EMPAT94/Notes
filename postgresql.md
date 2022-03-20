@@ -17,7 +17,7 @@
 - Backing up postgres (use `pg_dumpall` for... all)
 
   ```sh
-  pg_dump -U username dbname | xz -4 > /tmp/postgres_dump_$(date +"%y-%m-%d_%H_%M").sqlxz
+  pg_dump -U username dbname | xz -4 > /tmp/postgres_dump_$(date +"%Y-%m-%d_%H_%M").sql.xz
   ```
 
 - Restoring from dump

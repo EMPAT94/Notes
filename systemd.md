@@ -184,3 +184,7 @@
   systemctl --user status schedule-test.timer
   tail -f $HOME/schedule-test-output.txt
   ```
+
+- If want to run sudo, put files in `/etc/systemd/system` and use `sudo systemctl`
+
+- If want to run as user but need sudo as well, add `User=username` in [Service]

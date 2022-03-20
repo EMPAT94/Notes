@@ -554,7 +554,7 @@
 - Backing up postgres (use `pg_dumpall` for... all)
 
   ```sh
-  pg_dump -U username dbname | xz -4 > /tmp/postgres_dump_$(date +"%y-%m-%d_%H_%M").sqlxz
+  pg_dump -U username dbname | xz -4 > /tmp/postgres_dump_$(date +"%Y-%m-%d_%H_%M").sql.xz
   ```
 
 - Restoring from dump
@@ -763,6 +763,8 @@ From `man rsync`:
   rsync -avrzP --delete folder1/ folder2
   ```
 
+  - For scripts, remove `-P` and use `-q --progress` instead
+
   Note the trailing slash; without slash it will put folder1 inside folder2
 
 
@@ -881,6 +883,22 @@ From `man rsync`:
   ```sh
   for file in .*; do echo $file >> .gitignore; done
   ```
+
+- Arrays
+
+  An array in shell is within `()` brackets and looped like so:
+
+  ```sh
+  arr=(
+    "a"
+    "b"
+    "c"
+  )
+
+  for alph in ${arr[*]}; do echo $alph; done;
+  ```
+
+  Note that on cli, direct `$arr` works for looping but not in script!
 
 - Script strict mode
 
@@ -1367,6 +1385,10 @@ select count(*) from table;
   systemctl --user status schedule-test.timer
   tail -f $HOME/schedule-test-output.txt
   ```
+
+- If want to run sudo, put files in `/etc/systemd/system` and use `sudo systemctl`
+
+- If want to run as user but need sudo as well, add `User=username` in [Service]
 
 
 # (NEO)VIM
