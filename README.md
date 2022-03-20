@@ -1,4 +1,45 @@
 
+Table of Contents
+=================
+
+* [ADB](#adb)
+* [Docker](#docker)
+* [Git](#git)
+   * [Tags](#tags)
+   * [Submodules](#submodules)
+   * [Worktrees](#worktrees)
+* [mongodb](#mongodb)
+* [Nginx](#nginx)
+* [Nodejs](#nodejs)
+* [Postgresql](#postgresql)
+* [python](#python)
+   * [Links](#links)
+   * [Notes from official docs (v3.10.2)](#notes-from-official-docs-v3102)
+   * [Upcoming](#upcoming)
+   * [May be useful](#may-be-useful)
+* [rclone](#rclone)
+   * [Bucket commands](#bucket-commands)
+   * [Object commands](#object-commands)
+* [reactjs](#reactjs)
+* [rsync (Remote Sync)](#rsync-remote-sync)
+* [Shell](#shell)
+   * [youtube-dl](#youtube-dl)
+   * [gpg](#gpg)
+* [SQL](#sql)
+* [SSH](#ssh)
+* [System](#system)
+   * [Units:](#units)
+   * [Serices:](#serices)
+   * [Journal:](#journal)
+   * [Timers:](#timers)
+      * [Example of a timer service:](#example-of-a-timer-service)
+* [(NEO)VIM](#neovim)
+* [vuejs](#vuejs)
+* [Writing](#writing)
+* [YAY](#yay)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 
 # ADB
 
@@ -763,7 +804,7 @@ From `man rsync`:
   rsync -avrzP --delete folder1/ folder2
   ```
 
-  - For scripts, remove `-P` and use `-q --progress` instead
+  - For scripts, remove `-v -P` and use `-q --progress` instead
 
   Note the trailing slash; without slash it will put folder1 inside folder2
 
