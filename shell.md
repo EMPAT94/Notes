@@ -227,6 +227,14 @@
   - l = depth of recursion
   - p = download related content like images
 
+- Generate a random base64 string (May be used as token or password)
+
+  ```sh
+  head -n1 /dev/urandom | base64
+  ```
+
+  - number after `n` changes length of string
+
 - Lazy regex quatifier (works in js, not is sed, vim)
 
   Suppose there is a line like so:

@@ -26,10 +26,10 @@
 - [SQL](#sql)
 - [SSH](#ssh)
 - [systemd](#systemd)
-  - [Units:](#units)
-  - [Serices:](#serices)
-  - [Journal:](#journal)
-  - [Timers:](#timers)
+  - [Units](#units)
+  - [Serices](#serices)
+  - [Journal](#journal)
+  - [Timers](#timers)
     - [Example of a timer service:](#example-of-a-timer-service)
 - [(NEO)VIM](#neovim)
 - [vuejs](#vuejs)
@@ -1024,6 +1024,14 @@ From `man rsync`:
   - l = depth of recursion
   - p = download related content like images
 
+- Generate a random base64 string (May be used as token or password)
+
+  ```sh
+  head -n1 /dev/urandom | base64
+  ```
+
+  - number after `n` changes length of string
+
 - Lazy regex quatifier (works in js, not is sed, vim)
 
   Suppose there is a line like so:
@@ -1233,7 +1241,7 @@ select count(*) from table;
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd)
 
-## Units:
+## Units
 
 - Services (Daemons) [Uses `systemctl`]
 - Timers (similar to Cron)
@@ -1247,7 +1255,7 @@ select count(*) from table;
   systemctl list-units --type <name>
   ```
 
-## Serices:
+## Serices
 
 - Start a service:
 
@@ -1297,7 +1305,7 @@ select count(*) from table;
   systemctl daemon-reload
   ```
 
-## Journal:
+## Journal
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Journal)
 
@@ -1312,7 +1320,7 @@ select count(*) from table;
 - Show all messages with prority higher than n [2 = critical, 3 = error, 4 = warn]:
 
   ```sh
-  journalctl -p n
+  journalctl -p <n>
   ```
 
 - Show all messages for a unit:
@@ -1321,13 +1329,28 @@ select count(*) from table;
   journalctl -u <unit-name>
   ```
 
+  - If unit is in `~/.config/` then instead of `-u`, use `--user-unit`
+
 - Show all messages for an executable:
 
   ```sh
   journalctl /path/to/executable
   ```
 
-## Timers:
+- Clear up old logs
+
+  ```shh
+  # Check size
+  journalctl --disk-usage
+
+  # Rotate logs
+  sudo journalctl --rotate
+
+  # Remove all logs beyond 7d
+  sudo journalctl --vacuum-size=7d
+  ```
+
+## Timers
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Timers)
 
