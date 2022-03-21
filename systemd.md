@@ -8,7 +8,7 @@
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd)
 
-## Units:
+## Units
 
 - Services (Daemons) [Uses `systemctl`]
 - Timers (similar to Cron)
@@ -22,7 +22,7 @@
   systemctl list-units --type <name>
   ```
 
-## Serices:
+## Serices
 
 - Start a service:
 
@@ -72,7 +72,7 @@
   systemctl daemon-reload
   ```
 
-## Journal:
+## Journal
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Journal)
 
@@ -87,7 +87,7 @@
 - Show all messages with prority higher than n [2 = critical, 3 = error, 4 = warn]:
 
   ```sh
-  journalctl -p n
+  journalctl -p <n>
   ```
 
 - Show all messages for a unit:
@@ -96,13 +96,28 @@
   journalctl -u <unit-name>
   ```
 
+  - If unit is in `~/.config/` then instead of `-u`, use `--user-unit`
+
 - Show all messages for an executable:
 
   ```sh
   journalctl /path/to/executable
   ```
 
-## Timers:
+- Clear up old logs
+
+  ```shh
+  # Check size
+  journalctl --disk-usage
+
+  # Rotate logs
+  sudo journalctl --rotate
+
+  # Remove all logs beyond 7d
+  sudo journalctl --vacuum-size=7d
+  ```
+
+## Timers
 
 - [Arch Wiki](https://wiki.archlinux.org/title/Systemd/Timers)
 
