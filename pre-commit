@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+#
+# This pre-commit hook generates a "README.md" with toc for this repository
+# and pushes changed files into empat.github.io repo with front matter `---` added
+# for rendering on website
+#
+
+TMP="/tmp/file"
+README="./README.md"
+EMPAT="/mnt/Data/Projects/empat94.github.io/_notes"
+
+echo "Generating README.md..."
+echo > $TMP # Clear file
+for file in *.md; do
+  if [ $file != "README.md" ]; then
+    echo >> $TMP
+    cat $file >> $TMP
+    echo >> $TMP
+  fi
+done
+# https://github.com/ekalinin/github-markdown-toc
+add-toc $TMP > $README # Add Toc
+cat $TMP >> $README
+prettier -w $README # Format
+git add $README
+
+echo "Adding front-matter..."
+for file in *.md; do
+  if [ $file != "README.md" ]; then
+    echo -e "---\n---\n" > $TMP
+    cat $file >> $TMP
+    cp $TMP $EMPAT/$file
+  fi
+done
+
+echo "DONE!"
+
