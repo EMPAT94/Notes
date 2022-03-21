@@ -1,45 +1,42 @@
+# Table of Contents
 
-Table of Contents
-=================
-
-* [ADB](#adb)
-* [Docker](#docker)
-* [Git](#git)
-   * [Tags](#tags)
-   * [Submodules](#submodules)
-   * [Worktrees](#worktrees)
-* [mongodb](#mongodb)
-* [Nginx](#nginx)
-* [Nodejs](#nodejs)
-* [Postgresql](#postgresql)
-* [python](#python)
-   * [Links](#links)
-   * [Notes from official docs (v3.10.2)](#notes-from-official-docs-v3102)
-   * [Upcoming](#upcoming)
-   * [May be useful](#may-be-useful)
-* [rclone](#rclone)
-   * [Bucket commands](#bucket-commands)
-   * [Object commands](#object-commands)
-* [reactjs](#reactjs)
-* [rsync (Remote Sync)](#rsync-remote-sync)
-* [Shell](#shell)
-   * [youtube-dl](#youtube-dl)
-   * [gpg](#gpg)
-* [SQL](#sql)
-* [SSH](#ssh)
-* [System](#system)
-   * [Units:](#units)
-   * [Serices:](#serices)
-   * [Journal:](#journal)
-   * [Timers:](#timers)
-      * [Example of a timer service:](#example-of-a-timer-service)
-* [(NEO)VIM](#neovim)
-* [vuejs](#vuejs)
-* [Writing](#writing)
-* [YAY](#yay)
+- [ADB](#adb)
+- [Docker](#docker)
+- [Git](#git)
+  - [Tags](#tags)
+  - [Submodules](#submodules)
+  - [Worktrees](#worktrees)
+- [mongodb](#mongodb)
+- [Nginx](#nginx)
+- [Nodejs](#nodejs)
+- [Postgresql](#postgresql)
+- [python](#python)
+  - [Links](#links)
+  - [Notes from official docs (v3.10.2)](#notes-from-official-docs-v3102)
+  - [Upcoming](#upcoming)
+  - [May be useful](#may-be-useful)
+- [rclone](#rclone)
+  - [Bucket commands](#bucket-commands)
+  - [Object commands](#object-commands)
+- [reactjs](#reactjs)
+- [rsync (Remote Sync)](#rsync-remote-sync)
+- [Shell](#shell)
+  - [youtube-dl](#youtube-dl)
+  - [gpg](#gpg)
+- [SQL](#sql)
+- [SSH](#ssh)
+- [systemd](#systemd)
+  - [Units:](#units)
+  - [Serices:](#serices)
+  - [Journal:](#journal)
+  - [Timers:](#timers)
+    - [Example of a timer service:](#example-of-a-timer-service)
+- [(NEO)VIM](#neovim)
+- [vuejs](#vuejs)
+- [Writing](#writing)
+- [YAY](#yay)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
-
 
 # ADB
 
@@ -84,7 +81,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
   ```sh
   adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
   ```
-
 
 # Docker
 
@@ -252,7 +248,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
   - Note that local log driver does not show logs with docker compose
 
-
 # Git
 
 ## Tags
@@ -361,7 +356,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
 
-
 # mongodb
 
 - Mongo Connection commands <conn>
@@ -421,7 +415,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
     - run & login to mongo in command line.
 
       `$ ./mongodb/bin/mongo localhost:27017/admin -u admin -p 123456`
-
 
 # Nginx
 
@@ -531,7 +524,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
   }
   ```
 
-
 # Nodejs
 
 - Node make a dynamic chain of promises
@@ -575,7 +567,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 - Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)
 
-
 # Postgresql
 
 - [Official site](https://www.postgresql.org)
@@ -611,7 +602,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
   ```sh
   docker exec -it <postgres-container-name> <command>
   ```
-
 
 # python
 
@@ -656,7 +646,6 @@ Commandline stuff?
 Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
 
 [Python Language Reference](https://docs.python.org/3/reference/index.html)
-
 
 # rclone
 
@@ -732,7 +721,6 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
   rclone sync [--progress] SRC DST
   ```
 
-
 # reactjs
 
 - Use absolute imports `@component/Button`
@@ -761,7 +749,6 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
   - Makes it trivial to add new components
 
 - Split bundle by view (or route), load on-demand. Network requests are the slowest part of app life-cycle.
-
 
 # rsync (Remote Sync)
 
@@ -804,10 +791,9 @@ From `man rsync`:
   rsync -avrzP --delete folder1/ folder2
   ```
 
-  - For scripts, remove `-v -P` and use `-q --progress` instead
+  - For scripts, remove `-v -P` and use `-q --partial` instead
 
   Note the trailing slash; without slash it will put folder1 inside folder2
-
 
 # Shell
 
@@ -1137,7 +1123,6 @@ From `man rsync`:
   gpg --import pub.key
   ```
 
-
 # SQL
 
 - Distinct Query
@@ -1157,7 +1142,6 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
-
 
 # SSH
 
@@ -1239,8 +1223,7 @@ select count(*) from table;
     Identity ~/.ssh/<key-name>
   ```
 
-
-# System
+# systemd
 
 - [Official Site](https://systemd.io/)
 
@@ -1431,7 +1414,6 @@ select count(*) from table;
 
 - If want to run as user but need sudo as well, add `User=username` in [Service]
 
-
 # (NEO)VIM
 
 - Redirect output of Ex commands to register
@@ -1499,7 +1481,6 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
-
 
 # vuejs
 
@@ -1604,7 +1585,6 @@ Vue.createApp({ ... }).mount("#app")
 
 - Events:
 
-
 # Writing
 
 - Rule of English adjective order
@@ -1622,7 +1602,6 @@ http://www.jacklynch.net/Writing/index.html
 - Dynomight
 
 https://dynomight.net/2021/02/07/writing-as-a-craft/
-
 
 # YAY
 
@@ -1693,4 +1672,3 @@ yay -Runs __package__
 ```
 
 where u = unneeded packages, n = remove config files, s = unneeded dependencies
-

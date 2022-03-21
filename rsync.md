@@ -39,6 +39,6 @@ From `man rsync`:
   rsync -avrzP --delete folder1/ folder2
   ```
 
-  - For scripts, remove `-v -P` and use `-q --progress` instead
+  - For scripts, remove `-v -P` and use `-q --partial` instead
 
   Note the trailing slash; without slash it will put folder1 inside folder2
