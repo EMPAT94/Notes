@@ -1,4 +1,14 @@
-# vuejs
+# Vuejs
+
+## End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).
+
+## Milestones
+
+- Apr 30
+
+## Notes
+
+### From official Docs
 
 - Mounting Vue App:
 

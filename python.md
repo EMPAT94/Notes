@@ -1,4 +1,4 @@
-# python
+# Python
 
 ## Links
 
@@ -10,29 +10,36 @@
 
 - [Awsome python github](https://github.com/vinta/awesome-python)
 
-## Notes from official docs (v3.10.2)
+## End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts
+
+## Milestones
+
+1. Go through official docs (2 weeks) (~ Apr 14)
+2. Reproduce current scripts (esp backup and monitoring) in python (2 weeks) (~ Apr 30)
+
+## Notes
+
+### From official docs:
 
 - [Basics](./python/basics.md)
 
-Next: https://docs.python.org/3/tutorial/datastructures.html
+- Datastructures https://docs.python.org/3/tutorial/datastructures.html
 
-## Upcoming
+- More Data Type
 
-More Data Type
+- Modules and Packaging
 
-Modules and Packaging
+- I/O
 
-I/O
+- Error Handling
 
-Error Handling
+- Classes
 
-Classes
+- Standard Library
 
-Standard Library
+- Virtual Environment and External Packages
 
-Virtual Environment and External Packages
-
-Decided on a minor project?
+- Decided on a minor project?
 
 ## May be useful
 
