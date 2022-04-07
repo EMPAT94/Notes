@@ -292,6 +292,31 @@
 
   - The KILL signal does not have ANY possibility of the being resisted. It always works because a KILL signal cannot be handled. This is both its blessing and its curse. It is signal number 9.
 
+## curl
+
+- Send an email using gmail smtp
+
+  ```sh
+  curl --ssl-reqd \
+    --url smtp://smtp.gmail.com \
+    --mail-from sender@gmail.com \
+    --mail-rcpt recipient@mail.com \
+    --user "sender@gmail.com:apppassword" \
+    --upload-file mail.txt
+  ```
+
+  where mail.txt:
+
+  ```txt
+  From: Sender Name <sender@gmail.com>
+  To: Recipient Name <recipient@mail.com>
+  Subject: an example.com example email
+  Date: Mon, 5 Nov 1994 12:10:00
+
+  Dear Recipient,
+  This is an example email.
+  ```
+
 ## vlc [cli mode]
 
 - Start vlc with ncurses interface
