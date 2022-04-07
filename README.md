@@ -6,6 +6,13 @@
   - [Tags](#tags)
   - [Submodules](#submodules)
   - [Worktrees](#worktrees)
+- [haskell](#haskell)
+  - [Installing on Arch-like systems](#installing-on-arch-like-systems)
+  - [Starting a new haskell project](#starting-a-new-haskell-project)
+  - [Notes](#notes)
+    - [From official docs:](#from-official-docs)
+    - [From tutorials:](#from-tutorials)
+    - [From youtube videos:](#from-youtube-videos)
 - [mongodb](#mongodb)
 - [Nginx](#nginx)
 - [Nodejs](#nodejs)
@@ -14,8 +21,8 @@
   - [Links](#links)
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
-  - [Notes](#notes)
-    - [From official docs:](#from-official-docs)
+  - [Notes](#notes-1)
+    - [From official docs:](#from-official-docs-1)
   - [May be useful](#may-be-useful)
 - [rclone](#rclone)
   - [Bucket commands](#bucket-commands)
@@ -23,6 +30,7 @@
 - [reactjs](#reactjs)
 - [rsync (Remote Sync)](#rsync-remote-sync)
 - [Shell](#shell)
+  - [curl](#curl)
   - [vlc [cli mode]](#vlc-cli-mode)
   - [youtube-dl](#youtube-dl)
   - [gpg](#gpg)
@@ -39,8 +47,8 @@
 - [Vuejs](#vuejs)
   - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
   - [Milestones](#milestones-1)
-  - [Notes](#notes-1)
-    - [From official Docs](#from-official-docs-1)
+  - [Notes](#notes-2)
+    - [From official Docs](#from-official-docs-2)
 - [Writing](#writing)
 - [YAY](#yay)
 
@@ -364,6 +372,44 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
 
+# haskell
+
+[Official Site](https://www.haskell.org/)
+
+[Official Docs and Resources](https://www.haskell.org/documentation/)
+
+[GHC Official Site](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/index.html)
+
+[Stack Overflow Beginner->Expert](https://stackoverflow.com/questions/1012573/getting-started-with-haskell?rq=1)
+
+[Learn You a Haskell: Online Book/Tutorial](http://learnyouahaskell.com/chapters)
+
+[Monday Morning Haskell: Collection of specific tutorials](https://mmhaskell.com/)
+
+## Installing on Arch-like systems
+
+```sh
+
+sudo pacman -S stack
+
+stack ghc
+
+```
+
+## Starting a new haskell project
+
+```sh
+stack new <project>
+```
+
+## Notes
+
+### From official docs:
+
+### From tutorials:
+
+### From youtube videos:
+
 # mongodb
 
 - Mongo Connection commands <conn>
@@ -622,6 +668,8 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 - [Exercism site](https://exercism.org/tracks/python)
 
 - [Awsome python github](https://github.com/vinta/awesome-python)
+
+- [Standard Lib](https://docs.python.org/3/py-modindex.html)
 
 ## End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts
 
@@ -1103,6 +1151,31 @@ From `man rsync`:
   - The QUIT signal is the harshest of the ignorable signals. It's meant to be used when an application is misbehaving and needs to be killed now, and by default it traditionally left a core dump file. It is signal number 3.
 
   - The KILL signal does not have ANY possibility of the being resisted. It always works because a KILL signal cannot be handled. This is both its blessing and its curse. It is signal number 9.
+
+## curl
+
+- Send an email using gmail smtp
+
+  ```sh
+  curl --ssl-reqd \
+    --url smtp://smtp.gmail.com \
+    --mail-from sender@gmail.com \
+    --mail-rcpt recipient@mail.com \
+    --user "sender@gmail.com:apppassword" \
+    --upload-file mail.txt
+  ```
+
+  where mail.txt:
+
+  ```txt
+  From: Sender Name <sender@gmail.com>
+  To: Recipient Name <recipient@mail.com>
+  Subject: an example.com example email
+  Date: Mon, 5 Nov 1994 12:10:00
+
+  Dear Recipient,
+  This is an example email.
+  ```
 
 ## vlc [cli mode]
 
