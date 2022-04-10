@@ -2,6 +2,7 @@
 
 - [ADB](#adb)
 - [Docker](#docker)
+- [elixir](#elixir)
 - [Git](#git)
   - [Tags](#tags)
   - [Submodules](#submodules)
@@ -22,7 +23,9 @@
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
   - [Notes](#notes-1)
-    - [From official docs:](#from-official-docs-1)
+    - [Installing packages in a Virtual Environment](#installing-packages-in-a-virtual-environment)
+    - [From official docs and exercism](#from-official-docs-and-exercism)
+    - [From Exercism Syllabus](#from-exercism-syllabus)
   - [May be useful](#may-be-useful)
 - [rclone](#rclone)
   - [Bucket commands](#bucket-commands)
@@ -48,7 +51,7 @@
   - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
   - [Milestones](#milestones-1)
   - [Notes](#notes-2)
-    - [From official Docs](#from-official-docs-2)
+    - [From official Docs](#from-official-docs-1)
 - [Writing](#writing)
 - [YAY](#yay)
 
@@ -264,6 +267,22 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
   - Note that local log driver does not show logs with docker compose
 
+# elixir
+
+- [Official Site](https://elixir-lang.org/)
+
+- [Official Learning Resource](https://github.com/dwyl/learn-elixir)
+
+- [Elixir School: Online guide/tutorial](https://elixirschool.com/en/why)
+
+- [Blog Series](https://inquisitivedeveloper.com/tag/lwm-elixir/)
+
+- [Exercism Track](https://exercism.org/tracks/elixir)
+
+- [Koans](https://github.com/elixirkoans/elixir-koans)
+
+- [Programming Elixir - Dave Thomas: Book](https://doc.lagout.org/programmation/Functional%20Programming/Programming%20Elixir_%20Functional%2C%20Concurrent%2C%20Pragmatic%2C%20Fun%20%5BThomas%202014-10-19%5D.pdf)
+
 # Git
 
 ## Tags
@@ -385,6 +404,8 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 [Learn You a Haskell: Online Book/Tutorial](http://learnyouahaskell.com/chapters)
 
 [Monday Morning Haskell: Collection of specific tutorials](https://mmhaskell.com/)
+
+https://serokell.io/blog/haskell-in-production
 
 ## Installing on Arch-like systems
 
@@ -665,11 +686,19 @@ stack new <project>
 
 - [Official docs](https://docs.python.org/3/tutorial/index.html)
 
-- [Exercism site](https://exercism.org/tracks/python)
-
-- [Awsome python github](https://github.com/vinta/awesome-python)
-
 - [Standard Lib](https://docs.python.org/3/py-modindex.html)
+
+- [Exercism site: Guided Exercises](https://exercism.org/tracks/python)
+
+- [Awsome python collection github](https://github.com/vinta/awesome-python)
+
+- [Automate The Boring Stuff: Book](https://automatetheboringstuff.com/2e/)
+
+- [Think Python: Book](https://www.greenteapress.com/thinkpython/html/index.html)
+
+- [Practical Python: Series of Article](https://dabeaz-course.github.io/practical-python/)
+
+- [Snarky Canadian: Blog series of python](https://snarky.ca/)
 
 ## End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts
 
@@ -680,7 +709,20 @@ stack new <project>
 
 ## Notes
 
-### From official docs:
+### Installing packages in a Virtual Environment
+
+- [Source](https://snarky.ca/a-quick-and-dirty-guide-on-how-to-install-packages-for-python/)
+
+  ```python
+  python3.10 -m venv --prompt . .venv
+  echo "*" > .venv/.gitignore
+  source .venv/bin/activate
+  python3.10 -m pip install --upgrade pip
+  ```
+
+  To deactivate: `source .venv/bin/deactivate`
+
+### From official docs and exercism
 
 - [Basics](./python/basics.md)
 
@@ -701,6 +743,10 @@ stack new <project>
 - Virtual Environment and External Packages
 
 - Decided on a minor project?
+
+### From Exercism Syllabus
+
+- [Source](https://exercism.org/tracks/python/concepts)
 
 ## May be useful
 
@@ -1455,7 +1501,7 @@ select count(*) from table;
   sudo journalctl --rotate
 
   # Remove all logs beyond 7d
-  sudo journalctl --vacuum-size=7d
+  sudo journalctl --vacuum-time=7d
   ```
 
 ## Timers

@@ -12,6 +12,8 @@
 
 [Monday Morning Haskell: Collection of specific tutorials](https://mmhaskell.com/)
 
+https://serokell.io/blog/haskell-in-production
+
 ## Installing on Arch-like systems
 
 ```sh
