@@ -114,7 +114,7 @@
   sudo journalctl --rotate
 
   # Remove all logs beyond 7d
-  sudo journalctl --vacuum-size=7d
+  sudo journalctl --vacuum-time=7d
   ```
 
 ## Timers
