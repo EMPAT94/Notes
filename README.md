@@ -266,6 +266,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
   ```
 
   - Note that local log driver does not show logs with docker compose
+  - Other notable options instead of local: journald, syslog,
 
 # elixir
 

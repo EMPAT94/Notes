@@ -163,3 +163,4 @@
   ```
 
   - Note that local log driver does not show logs with docker compose
+  - Other notable options instead of local: journald, syslog,
