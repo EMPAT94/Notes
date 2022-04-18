@@ -2,7 +2,14 @@
 
 - [11ty](#11ty)
   - [Important Links](#important-links)
-  - [Working Setup](#working-setup)
+  - [Contrite setup](#contrite-setup)
+  - [Working setup](#working-setup)
+    - [Page](#page)
+    - [Layouts](#layouts)
+  - [Collections](#collections)
+  - [Pagination](#pagination)
+  - [Data Files](#data-files)
+  - [Shortcodes](#shortcodes)
 - [ADB](#adb)
 - [Docker](#docker)
 - [elixir](#elixir)
@@ -73,7 +80,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 [Official Site](https://www.11ty.dev/)
 
-## Working Setup
+## Contrite setup
 
 1. Make dir, setup npm, install 11ty
 
@@ -94,6 +101,139 @@ npx @11ty/eleventy --serve
 3. PROFIT!
 
 NOTE: Add npm start script as so: `"start": "npx @11ty/eleventy --serve"`
+
+## Working setup
+
+### Page
+
+> The main "content" of any cms
+
+- To create a page, can use html, markdown or js
+
+- js uses `exports.render = (_) => ""` to render
+
+- js uses `exports.data = {}` for front-matter
+
+- markdown files pre-processed for Liquid tags by default
+
+### Layouts
+
+> Layouts are "templates" that give structure to the "content"
+
+To create a "home" layout:
+
+```js
+// _includes/home.js
+
+exports.data = {};
+
+exports.render = (data) => `<html> ${data.page.content} </html>`;
+```
+
+then include it in content file home.md:
+
+```md
+---
+layout: home
+---
+
+# This is a home page
+```
+
+NOTE: To have home layout use a default layout, just add it in the exports.data section.
+
+## Collections
+
+> Collections are used to group related content
+
+To create a collection `x`, use yaml array in front-matter:
+
+```md
+---
+tags: x
+---
+```
+
+To access collection `x`:
+
+```js
+exports.render = (d) => `${data.collections.x.map((p) => p.url).join("\n")}`;
+```
+
+NOTE: The word "tags" is a reserved keyword.
+
+## Pagination
+
+> Output multiple HTML files from a single template.
+
+To create a paginated list of `x` collection, add following front-matter to List.md:
+
+```md
+---
+pagination:
+  data: collections.x
+  size: 1
+  alias: posts
+---
+
+<ol>
+{% for post in posts %}
+  <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+{% endfor %}
+</ol>
+```
+
+## Data Files
+
+> json, js, yaml, toml et al
+
+To create a data of say, some planets, we would add following in `_data/planets.json`:
+
+```json
+[
+  { "name": "Mercury" },
+  { "name": "Venus" },
+  { "name": "Earth" },
+  { "name": "Mars" },
+  { "name": "Saturn" }
+]
+```
+
+And the data is used by adding a "data" key in front-matter. Here we create a page for each planet using pagination:
+
+```md
+---
+pagination:
+  data: planets
+  size: 1
+  alias: planet
+permalink: "planets/{{ planet.name | slug }}/"
+---
+
+# This is a page for {{ planet.name }}
+```
+
+NOTE: json, js are built-in. yaml & toml require external packages
+
+## Shortcodes
+
+> Discount renders
+
+To add a shortcode that takes first & last name and returns a div card:
+
+```js
+// .eleventy.js
+
+module.exports = function (config) {
+  config.addShortcode("user", (f, l) => `<div class="card"> ${f} ${l} </div>`);
+};
+```
+
+To use above shortcode in say, user.js:
+
+```js
+module.render = ({ first, last }) => `${this.user(first, last)}`;
+```
 
 # ADB
 
