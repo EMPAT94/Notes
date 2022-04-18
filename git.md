@@ -68,6 +68,8 @@
 
 ## Worktrees
 
+- [Docs](https://git-scm.com/docs/git-worktree)
+
 - Worktrees: Make a directory for each working branch
 
 - Useful when working on multiple branches, to avoid stash/pop unmerged paths confusion and work without disturbing other branches. Parallel branches ftw!
@@ -75,8 +77,6 @@
 - Having multiple folders for each branch makes things easy for IDEs, compared to restructuring same folder multiple times
 
 - <span style="color:orange">IMPORTANT!</span> Do not use with submodules
-
-- [Docs](https://git-scm.com/docs/git-worktree)
 
 - Not essential but a better workflow is to start off with a bare repository and have one folder each for each branch:
 
@@ -105,3 +105,5 @@
   ```
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
+
+- Worktree commands help: `git worktree help`

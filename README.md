@@ -1,8 +1,13 @@
 # Table of Contents
 
+- [11ty](#11ty)
+  - [Important Links](#important-links)
+  - [Working Setup](#working-setup)
 - [ADB](#adb)
 - [Docker](#docker)
 - [elixir](#elixir)
+  - [TDD](#tdd)
+    - [Recommended deps](#recommended-deps)
 - [Git](#git)
   - [Tags](#tags)
   - [Submodules](#submodules)
@@ -14,12 +19,17 @@
     - [From official docs:](#from-official-docs)
     - [From tutorials:](#from-tutorials)
     - [From youtube videos:](#from-youtube-videos)
+- [HUGO](#hugo)
+  - [Links](#links)
+  - [Commands](#commands)
+  - [Directory structure](#directory-structure)
+  - [hugo without theme](#hugo-without-theme)
 - [mongodb](#mongodb)
 - [Nginx](#nginx)
 - [Nodejs](#nodejs)
 - [Postgresql](#postgresql)
 - [Python](#python)
-  - [Links](#links)
+  - [Links](#links-1)
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
   - [Notes](#notes-1)
@@ -56,6 +66,34 @@
 - [YAY](#yay)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
+# 11ty
+
+## Important Links
+
+[Official Site](https://www.11ty.dev/)
+
+## Working Setup
+
+1. Make dir, setup npm, install 11ty
+
+```sh
+mkdir /tmp/test
+cd /tmp/test
+npm init -y
+npm install --save-dev @11ty/eleventy
+```
+
+2. Create some content, and serve
+
+```sh
+echo "# This is index" > index.md
+npx @11ty/eleventy --serve
+```
+
+3. PROFIT!
+
+NOTE: Add npm start script as so: `"start": "npx @11ty/eleventy --serve"`
 
 # ADB
 
@@ -288,6 +326,23 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 - [Learn you an erlang for greater good: Some concepts apply to elixir](https://learnyousomeerlang.com/content)
 
+- [Reddit Link](https://www.reddit.com/r/elixir/)
+
+## TDD
+
+Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --seed 0`
+
+- --stale executes only tests for source and test files which are changed.
+- --max-failures 1 stops execution after first failing test.
+- --listen-on-stdin allows you press Enter and have tests re-run.
+- --trace prints names of tests instead of dots, so you can see which tests are executed in more descriptive way.
+- --seed 0 forces tests to execute in same order they are mentioned in source file, so that you will have predictable consecutive runs of the tests.
+
+### Recommended deps
+
+- :mix_test_watch, Re-run test on file change, use options from above
+- :ex_unit_notifier, Send test result notification, Combine with above
+
 # Git
 
 ## Tags
@@ -358,6 +413,8 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ## Worktrees
 
+- [Docs](https://git-scm.com/docs/git-worktree)
+
 - Worktrees: Make a directory for each working branch
 
 - Useful when working on multiple branches, to avoid stash/pop unmerged paths confusion and work without disturbing other branches. Parallel branches ftw!
@@ -365,8 +422,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 - Having multiple folders for each branch makes things easy for IDEs, compared to restructuring same folder multiple times
 
 - <span style="color:orange">IMPORTANT!</span> Do not use with submodules
-
-- [Docs](https://git-scm.com/docs/git-worktree)
 
 - Not essential but a better workflow is to start off with a bare repository and have one folder each for each branch:
 
@@ -395,6 +450,8 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
   ```
 
 - It is possible to set this up in a single shell command and bind an alias in .gitconfig
+
+- Worktree commands help: `git worktree help`
 
 # haskell
 
@@ -435,6 +492,66 @@ stack new <project>
 ### From tutorials:
 
 ### From youtube videos:
+
+# HUGO
+
+## Links
+
+- [Official Site](https://www.hugotutorial.com/posts/)
+
+- [Blogs](https://www.hugotutorial.com/posts/)
+
+## Commands
+
+- Install: `yay -S hugo`
+
+- Help: `hugo help`
+
+- New Site: `hugo new site <site-name>`
+
+- New Post: `hugo new posts/<post-name>.md`
+
+  - Dir `post` is not mandatory, can be changed
+
+  - Adds file with date-name.md and some front-matter
+
+- Build: `hugo`
+
+- Serve: `hugo server [options]`
+  - -D for drafts enabled
+  - -p <port>
+  - --navigateToChanged
+
+## Directory structure
+
+```
+/hugo-site
+├── archetypes
+├── content
+├── data
+├── layouts
+└── static
+```
+
+- archetypes: `hugo new <archetype>` Set custom front-matter and content (markdown)
+
+- content: meat of site (markdown)
+
+  - Also determines relative urls and layout used depending on dir name and structure
+
+- data: lotsa shared front-matter of sorts (json, yaml, toml)
+
+- layouts: templates for content (html)
+
+- static: (img, css, js blah)
+
+## hugo without theme
+
+Hugo pulls data from `content/`, `data/`, `static/` and structures it by templates defined in `layouts/` dir.
+
+Content -> Layout mapping: [Template Lookup Order](https://gohugo.io/templates/lookup-order/)
+
+NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up without writing 4 more files and skimming docs and posts for hours. Not what I am looking for.
 
 # mongodb
 
