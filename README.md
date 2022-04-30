@@ -15,6 +15,9 @@
 - [elixir](#elixir)
   - [TDD](#tdd)
     - [Recommended deps](#recommended-deps)
+  - [Notes](#notes)
+    - [Optimizations](#optimizations)
+    - [Exercism Syllabus](#exercism-syllabus)
 - [Git](#git)
   - [Tags](#tags)
   - [Submodules](#submodules)
@@ -22,7 +25,7 @@
 - [haskell](#haskell)
   - [Installing on Arch-like systems](#installing-on-arch-like-systems)
   - [Starting a new haskell project](#starting-a-new-haskell-project)
-  - [Notes](#notes)
+  - [Notes](#notes-1)
     - [From official docs:](#from-official-docs)
     - [From tutorials:](#from-tutorials)
     - [From youtube videos:](#from-youtube-videos)
@@ -39,7 +42,7 @@
   - [Links](#links-1)
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
-  - [Notes](#notes-1)
+  - [Notes](#notes-2)
     - [Installing packages in a Virtual Environment](#installing-packages-in-a-virtual-environment)
     - [From official docs and exercism](#from-official-docs-and-exercism)
     - [From Exercism Syllabus](#from-exercism-syllabus)
@@ -63,11 +66,12 @@
   - [Timers](#timers)
     - [Example of a timer service:](#example-of-a-timer-service)
   - [Systemd service order](#systemd-service-order)
+- [tailwindcss](#tailwindcss)
 - [(NEO)VIM](#neovim)
 - [Vuejs](#vuejs)
   - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
   - [Milestones](#milestones-1)
-  - [Notes](#notes-2)
+  - [Notes](#notes-3)
     - [From official Docs](#from-official-docs-1)
 - [Writing](#writing)
 - [YAY](#yay)
@@ -468,6 +472,10 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
 
 - [Reddit Link](https://www.reddit.com/r/elixir/)
 
+https://joyofelixir.com/toc.html
+
+https://www.poeticoding.com/category/elixir/
+
 ## TDD
 
 Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --seed 0`
@@ -482,6 +490,55 @@ Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --see
 
 - :mix_test_watch, Re-run test on file change, use options from above
 - :ex_unit_notifier, Send test result notification, Combine with above
+
+## Notes
+
+### Optimizations
+
+1. Pattern matching is _fastest_ in getting values into variables
+
+### Exercism Syllabus
+
+Data Types:
+
+- Strings
+- Integer
+- Float
+- Boolean
+- Atom (like a "Symbol" in js, value is itself)
+- CharList ?
+- Binary ?
+- Bitstring ?
+
+Data Structures:
+
+Tuples: `{"any", "type", 1, false}`
+
+- Contiguous Memory Structure
+- Cheap Read
+- Expensive Write
+
+List: `["here", "too", 123, true]`
+
+- Linked List
+- Cheap Write
+- Expensive Read
+
+Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
+
+- Cheap addition/deletion
+- Expensive Read
+- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}`
+- Read key:
+  - `map[key]`; `nil` on invalid key; useful for dynamically created maps
+  - `map.key` when key is atom; error on invalid key; useful for static maps
+- Update map:
+  - Update existing `%{map | existing_key: new_value }`
+  - Add new value `Map.put(map, key, value)`
+
+Keywords: ?
+
+Structs: ?
 
 # Git
 
@@ -1900,6 +1957,8 @@ local-fs-pre.target
                             v
                   graphical.target
 ```
+
+# tailwindcss
 
 # (NEO)VIM
 

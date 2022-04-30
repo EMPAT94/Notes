@@ -25,14 +25,14 @@ cat $TMP >> $README
 prettier -w $README # Format
 git add $README
 
-echo "Adding front-matter..."
-for file in *.md; do
-  if [ $file != "README.md" ]; then
-    echo -e "---\n---\n" > $TMP
-    cat $file >> $TMP
-    cp $TMP $EMPAT/$file
-  fi
-done
+# echo "Adding front-matter..."
+# for file in *.md; do
+#   if [ $file != "README.md" ]; then
+#     echo -e "---\n---\n" > $TMP
+#     cat $file >> $TMP
+#     cp $TMP $EMPAT/$file
+#   fi
+# done
 
 echo "DONE!"
 

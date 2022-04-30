@@ -20,6 +20,10 @@
 
 - [Reddit Link](https://www.reddit.com/r/elixir/)
 
+https://joyofelixir.com/toc.html
+
+https://www.poeticoding.com/category/elixir/
+
 ## TDD
 
 Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --seed 0`
@@ -34,3 +38,52 @@ Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --see
 
 - :mix_test_watch, Re-run test on file change, use options from above
 - :ex_unit_notifier, Send test result notification, Combine with above
+
+## Notes
+
+### Optimizations
+
+1. Pattern matching is _fastest_ in getting values into variables
+
+### Exercism Syllabus
+
+Data Types:
+
+- Strings
+- Integer
+- Float
+- Boolean
+- Atom (like a "Symbol" in js, value is itself)
+- CharList ?
+- Binary ?
+- Bitstring ?
+
+Data Structures:
+
+Tuples: `{"any", "type", 1, false}`
+
+- Contiguous Memory Structure
+- Cheap Read
+- Expensive Write
+
+List: `["here", "too", 123, true]`
+
+- Linked List
+- Cheap Write
+- Expensive Read
+
+Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
+
+- Cheap addition/deletion
+- Expensive Read
+- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}`
+- Read key:
+  - `map[key]`; `nil` on invalid key; useful for dynamically created maps
+  - `map.key` when key is atom; error on invalid key; useful for static maps
+- Update map:
+  - Update existing `%{map | existing_key: new_value }`
+  - Add new value `Map.put(map, key, value)`
+
+Keywords: ?
+
+Structs: ?
