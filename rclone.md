@@ -71,3 +71,15 @@
   ```sh
   rclone sync [--progress] SRC DST
   ```
+
+## Password inside shell script
+
+```env
+RCLONE_CONFIG_PASS=whateverthepasswordis
+```
+
+```sh
+export $(cat /home/ubuntu/nextcloud/.env | xargs -0)
+# ... rclone commands
+unset RCLONE_CONFIG_PASS
+```

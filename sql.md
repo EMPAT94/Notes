@@ -1,5 +1,23 @@
 # SQL
 
+## [Postgres](./postgresql.md)
+
+## Sqlite3
+
+- Describe table
+
+  ```sql
+  .schema <table>
+  ```
+
+  - NOTE: no `;` at the end
+
+  ```sql
+  .header on
+  .mode column
+  pragma table_info("<table>")
+  ```
+
 - Distinct Query
 
 ```sql
@@ -17,3 +35,9 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
+
+## MySQL
+
+## VoltDB
+
+## Scylla

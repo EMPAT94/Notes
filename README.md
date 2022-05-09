@@ -11,13 +11,22 @@
   - [Data Files](#data-files)
   - [Shortcodes](#shortcodes)
 - [ADB](#adb)
+- [adonisjs](#adonisjs)
+  - [Resources](#resources)
+  - [Notes](#notes)
+    - [From Official Docs](#from-official-docs)
 - [Docker](#docker)
 - [elixir](#elixir)
+  - [Resources](#resources-1)
   - [TDD](#tdd)
     - [Recommended deps](#recommended-deps)
-  - [Notes](#notes)
+  - [Notes](#notes-1)
     - [Optimizations](#optimizations)
     - [Exercism Syllabus](#exercism-syllabus)
+      - [Data Types](#data-types)
+      - [Data Structures](#data-structures)
+      - [Control Flow](#control-flow)
+      - [Modules](#modules)
 - [Git](#git)
   - [Tags](#tags)
   - [Submodules](#submodules)
@@ -25,8 +34,8 @@
 - [haskell](#haskell)
   - [Installing on Arch-like systems](#installing-on-arch-like-systems)
   - [Starting a new haskell project](#starting-a-new-haskell-project)
-  - [Notes](#notes-1)
-    - [From official docs:](#from-official-docs)
+  - [Notes](#notes-2)
+    - [From official docs:](#from-official-docs-1)
     - [From tutorials:](#from-tutorials)
     - [From youtube videos:](#from-youtube-videos)
 - [HUGO](#hugo)
@@ -37,12 +46,20 @@
 - [mongodb](#mongodb)
 - [Nginx](#nginx)
 - [Nodejs](#nodejs)
+- [PETAL Stack](#petal-stack)
+  - [Setup](#setup)
+  - [<a href="./elixir.md">Elixir</a>](#elixir-1)
+  - [<a href="./tailwindcss.md">Tailwind</a>](#tailwind)
+  - [<a href="./alpine.md">Alpine</a>](#alpine)
+  - [Phoenix](#phoenix)
+    - [Links](#links-1)
+  - [Notes](#notes-3)
 - [Postgresql](#postgresql)
 - [Python](#python)
-  - [Links](#links-1)
+  - [Links](#links-2)
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
-  - [Notes](#notes-2)
+  - [Notes](#notes-4)
     - [Installing packages in a Virtual Environment](#installing-packages-in-a-virtual-environment)
     - [From official docs and exercism](#from-official-docs-and-exercism)
     - [From Exercism Syllabus](#from-exercism-syllabus)
@@ -50,6 +67,7 @@
 - [rclone](#rclone)
   - [Bucket commands](#bucket-commands)
   - [Object commands](#object-commands)
+  - [Password inside shell script](#password-inside-shell-script)
 - [reactjs](#reactjs)
 - [rsync (Remote Sync)](#rsync-remote-sync)
 - [Shell](#shell)
@@ -58,6 +76,11 @@
   - [youtube-dl](#youtube-dl)
   - [gpg](#gpg)
 - [SQL](#sql)
+  - [<a href="./postgresql.md">Postgres</a>](#postgres)
+  - [Sqlite3](#sqlite3)
+  - [MySQL](#mysql)
+  - [VoltDB](#voltdb)
+  - [Scylla](#scylla)
 - [SSH](#ssh)
 - [systemd](#systemd)
   - [Units](#units)
@@ -71,8 +94,8 @@
 - [Vuejs](#vuejs)
   - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
   - [Milestones](#milestones-1)
-  - [Notes](#notes-3)
-    - [From official Docs](#from-official-docs-1)
+  - [Notes](#notes-5)
+    - [From official Docs](#from-official-docs-2)
 - [Writing](#writing)
 - [YAY](#yay)
 
@@ -283,6 +306,18 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
   adb pull /sdcard/test.mp4 ./ && adb shell rm /sdcard/test.mp4
   ```
 
+# adonisjs
+
+> A fully featured web framework for Node.js
+
+## Resources
+
+- [Official Site](https://adonisjs.com/)
+
+## Notes
+
+### From Official Docs
+
 # Docker
 
 - [Archwiki Doc](https://wiki.archlinux.org/title/Docker)
@@ -452,6 +487,8 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
 
 # elixir
 
+## Resources
+
 - [Official Site](https://elixir-lang.org/)
 
 - [Official Learning Resource](https://github.com/dwyl/learn-elixir)
@@ -470,7 +507,7 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
 
 - [Learn you an erlang for greater good: Some concepts apply to elixir](https://learnyousomeerlang.com/content)
 
-- [Reddit Link](https://www.reddit.com/r/elixir/)
+- [Reddit Community Link](https://www.reddit.com/r/elixir/)
 
 https://joyofelixir.com/toc.html
 
@@ -499,18 +536,15 @@ Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --see
 
 ### Exercism Syllabus
 
-Data Types:
+#### Data Types
 
-- Strings
+- Bitstring (just sequence of bits) > Binary (Bitstring % 8 === 0) > Strings (UTF-8 Binary)
 - Integer
 - Float
 - Boolean
 - Atom (like a "Symbol" in js, value is itself)
-- CharList ?
-- Binary ?
-- Bitstring ?
 
-Data Structures:
+#### Data Structures
 
 Tuples: `{"any", "type", 1, false}`
 
@@ -524,11 +558,15 @@ List: `["here", "too", 123, true]`
 - Cheap Write
 - Expensive Read
 
-Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
+Charlist: `['a', 'b', 'c'] = 'abc'`
+
+- List of Integers representing valid Unicode code points
+
+Maps: `%{"any" => :value, 123 => true, "keys" => :too}`
 
 - Cheap addition/deletion
 - Expensive Read
-- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}`
+- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}` and `map.a = 1`
 - Read key:
   - `map[key]`; `nil` on invalid key; useful for dynamically created maps
   - `map.key` when key is atom; error on invalid key; useful for static maps
@@ -539,6 +577,20 @@ Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
 Keywords: ?
 
 Structs: ?
+
+#### Control Flow
+
+if
+
+unless
+
+case
+
+cond
+
+with
+
+#### Modules
 
 # Git
 
@@ -961,6 +1013,77 @@ NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up witho
 
 - Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)
 
+# PETAL Stack
+
+> Phoenix Elixir Tailwind Alpine Liveview
+
+## Setup
+
+1. Install Elixir using package-manager `yay -S elixir`
+   a. Check: `elixir -v`
+2. Setup hex archive manager `mix local.hex && mix local.rebar`
+   a. Check: `mix hex`
+3. Install Phoenix `mix archive.install hex phx_new`
+4. Create new project `mix phx.new <project_name>`
+5. Setup tailwind
+6. Setup alpine
+
+## [Elixir](./elixir.md)
+
+## [Tailwind](./tailwindcss.md)
+
+## [Alpine](./alpine.md)
+
+## Phoenix
+
+> Phoenix is a web development framework written in Elixir which implements the server-side Model View Controller (MVC) pattern.
+
+### Links
+
+- [Official Site](https://hexdocs.pm/phoenix/overview.html)
+
+## Notes
+
+Base setup includes:
+
+- Database Mapper (Ecto)
+- Telemetry
+- Mailer (Swoosh)
+- Http/websocket connection server (Cowboy)
+- Testing framework (Floki)
+- Tasks to generate stuff (like auth, schemas etc) automatically `mix help --search "phx"`
+
+Regarding Ecto:
+
+1. Setup DB - config/config.exs (and other imports if auto-gen) and lib/<project>/repo.ex. An example for "test" sqlite3 setup:
+
+```elixir
+# config/config.exs
+config :test,
+  ecto_repos: [Test.Repo]
+
+config :test, Test.Repo,
+  database: Path.expand("../test_dev.db", Path.dirname(__ENV__.file)),
+```
+
+```elixir
+# test/repo.ex
+defmodule Test.Repo do
+  use Ecto.Repo,
+    otp_app: :test,
+    adapter: Ecto.Adapters.SQLite3
+end
+
+```
+
+2. Setup Schema and Migrations
+
+Schema is what maps data from db to elixir format, and contain change(set).
+
+Migrations are used to create/alter tables.
+
+Schemas and Migrations are tightly coupled if generated using overarching cli commands, although can be created manually and loosely coupled. No approach better or worse.
+
 # Postgresql
 
 - [Official site](https://www.postgresql.org)
@@ -1148,6 +1271,18 @@ Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
   ```sh
   rclone sync [--progress] SRC DST
   ```
+
+## Password inside shell script
+
+```env
+RCLONE_CONFIG_PASS=whateverthepasswordis
+```
+
+```sh
+export $(cat /home/ubuntu/nextcloud/.env | xargs -0)
+# ... rclone commands
+unset RCLONE_CONFIG_PASS
+```
 
 # reactjs
 
@@ -1606,6 +1741,24 @@ From `man rsync`:
 
 # SQL
 
+## [Postgres](./postgresql.md)
+
+## Sqlite3
+
+- Describe table
+
+  ```sql
+  .schema <table>
+  ```
+
+  - NOTE: no `;` at the end
+
+  ```sql
+  .header on
+  .mode column
+  pragma table_info("<table>")
+  ```
+
 - Distinct Query
 
 ```sql
@@ -1623,6 +1776,12 @@ delete from table where col = val;
 ```sql
 select count(*) from table;
 ```
+
+## MySQL
+
+## VoltDB
+
+## Scylla
 
 # SSH
 
@@ -1968,6 +2127,8 @@ local-fs-pre.target
 2. `:__commands__`
 3. `:redir END`
 4. `"ap`
+
+- Redirect output of telesope to quickfix `C-q`
 
 - Run bash (or any shell) for buffer content
 

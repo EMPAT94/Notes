@@ -1,5 +1,7 @@
 # elixir
 
+## Resources
+
 - [Official Site](https://elixir-lang.org/)
 
 - [Official Learning Resource](https://github.com/dwyl/learn-elixir)
@@ -18,7 +20,7 @@
 
 - [Learn you an erlang for greater good: Some concepts apply to elixir](https://learnyousomeerlang.com/content)
 
-- [Reddit Link](https://www.reddit.com/r/elixir/)
+- [Reddit Community Link](https://www.reddit.com/r/elixir/)
 
 https://joyofelixir.com/toc.html
 
@@ -47,18 +49,15 @@ Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --see
 
 ### Exercism Syllabus
 
-Data Types:
+#### Data Types
 
-- Strings
+- Bitstring (just sequence of bits) > Binary (Bitstring % 8 === 0) > Strings (UTF-8 Binary)
 - Integer
 - Float
 - Boolean
 - Atom (like a "Symbol" in js, value is itself)
-- CharList ?
-- Binary ?
-- Bitstring ?
 
-Data Structures:
+#### Data Structures
 
 Tuples: `{"any", "type", 1, false}`
 
@@ -72,11 +71,15 @@ List: `["here", "too", 123, true]`
 - Cheap Write
 - Expensive Read
 
-Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
+Charlist: `['a', 'b', 'c'] = 'abc'`
+
+- List of Integers representing valid Unicode code points
+
+Maps: `%{"any" => :value, 123 => true, "keys" => :too}`
 
 - Cheap addition/deletion
 - Expensive Read
-- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}`
+- When key is atom, shortcut: `%{a: 1, b: 2} = %{:a => 1, :b => 2}` and `map.a = 1`
 - Read key:
   - `map[key]`; `nil` on invalid key; useful for dynamically created maps
   - `map.key` when key is atom; error on invalid key; useful for static maps
@@ -87,3 +90,17 @@ Maps: `%{"any" => "value", 123 => true, "keys" => "too"}`
 Keywords: ?
 
 Structs: ?
+
+#### Control Flow
+
+if
+
+unless
+
+case
+
+cond
+
+with
+
+#### Modules

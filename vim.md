@@ -7,6 +7,8 @@
 3. `:redir END`
 4. `"ap`
 
+- Redirect output of telesope to quickfix `C-q`
+
 - Run bash (or any shell) for buffer content
 
 ```
