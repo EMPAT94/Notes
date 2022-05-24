@@ -4,6 +4,18 @@
 
 ## Sqlite3
 
+- Show all tables
+
+  ```sql
+  .tables
+  ```
+
+- Create table (don't forget semicolon at end)
+
+  ```sql
+  create table [if not exists] <name> ( ... );
+  ```
+
 - Describe table
 
   ```sql
@@ -20,21 +32,21 @@
 
 - Distinct Query
 
-```sql
-select distinct col1, col2 from table;
-```
+  ```sql
+  select distinct col1, col2 from table;
+  ```
 
 - Delete Query
 
-```sql
-delete from table where col = val;
-```
+  ```sql
+  delete from table where col = val;
+  ```
 
 - Count Query
 
-```sql
-select count(*) from table;
-```
+  ```sql
+  select count(*) from table;
+  ```
 
 ## MySQL
 

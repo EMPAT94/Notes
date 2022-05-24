@@ -164,3 +164,9 @@
 
   - Note that local log driver does not show logs with docker compose
   - Other notable options instead of local: journald, syslog,
+
+### Troubleshoot
+
+- Permission denied error solution: `sudo aa-remove-unknown`
+
+> It turned out that AppArmor service was messing up with Docker. AppArmor (or "Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles.

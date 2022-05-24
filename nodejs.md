@@ -40,3 +40,7 @@
   ```
 
 - Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)
+
+## Websocket
+
+- low-level interface is net.Socket as an point for tcp connection

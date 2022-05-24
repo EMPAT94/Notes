@@ -15,18 +15,36 @@
   - [Resources](#resources)
   - [Notes](#notes)
     - [From Official Docs](#from-official-docs)
-- [Docker](#docker)
+- [alpinejs](#alpinejs)
+  - [Notes](#notes-1)
+    - [From official docs <a href="">link</a>](#from-official-docs-link)
+      - [Lifecycle](#lifecycle)
+      - [State (Data Handling)](#state-data-handling)
+      - [Directives (Template Handling)](#directives-template-handling)
+      - [Events (Change Handling)](#events-change-handling)
+- [Browser APIs](#browser-apis)
+  - [Tips n Tricks](#tips-n-tricks)
+  - [Web Sockets](#web-sockets)
+  - [Web Workers](#web-workers)
+    - [Shared Web Workers](#shared-web-workers)
+    - [Broadcast Channels](#broadcast-channels)
+- [Cypress](#cypress)
+  - [Notes](#notes-2)
+    - [From Official Docs](#from-official-docs-1)
+    - [From Project](#from-project)
+- [Docker](#docker) \* [Troubleshoot](#troubleshoot)
 - [elixir](#elixir)
   - [Resources](#resources-1)
   - [TDD](#tdd)
     - [Recommended deps](#recommended-deps)
-  - [Notes](#notes-1)
+  - [Notes](#notes-3)
     - [Optimizations](#optimizations)
     - [Exercism Syllabus](#exercism-syllabus)
       - [Data Types](#data-types)
       - [Data Structures](#data-structures)
       - [Control Flow](#control-flow)
       - [Modules](#modules)
+      - [Typespec and Doc](#typespec-and-doc)
 - [Git](#git)
   - [Tags](#tags)
   - [Submodules](#submodules)
@@ -34,8 +52,8 @@
 - [haskell](#haskell)
   - [Installing on Arch-like systems](#installing-on-arch-like-systems)
   - [Starting a new haskell project](#starting-a-new-haskell-project)
-  - [Notes](#notes-2)
-    - [From official docs:](#from-official-docs-1)
+  - [Notes](#notes-4)
+    - [From official docs:](#from-official-docs-2)
     - [From tutorials:](#from-tutorials)
     - [From youtube videos:](#from-youtube-videos)
 - [HUGO](#hugo)
@@ -46,6 +64,7 @@
 - [mongodb](#mongodb)
 - [Nginx](#nginx)
 - [Nodejs](#nodejs)
+  - [Websocket](#websocket)
 - [PETAL Stack](#petal-stack)
   - [Setup](#setup)
   - [<a href="./elixir.md">Elixir</a>](#elixir-1)
@@ -53,13 +72,13 @@
   - [<a href="./alpine.md">Alpine</a>](#alpine)
   - [Phoenix](#phoenix)
     - [Links](#links-1)
-  - [Notes](#notes-3)
+  - [Notes](#notes-5)
 - [Postgresql](#postgresql)
 - [Python](#python)
   - [Links](#links-2)
   - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
   - [Milestones](#milestones)
-  - [Notes](#notes-4)
+  - [Notes](#notes-6)
     - [Installing packages in a Virtual Environment](#installing-packages-in-a-virtual-environment)
     - [From official docs and exercism](#from-official-docs-and-exercism)
     - [From Exercism Syllabus](#from-exercism-syllabus)
@@ -94,8 +113,8 @@
 - [Vuejs](#vuejs)
   - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
   - [Milestones](#milestones-1)
-  - [Notes](#notes-5)
-    - [From official Docs](#from-official-docs-2)
+  - [Notes](#notes-7)
+    - [From official Docs](#from-official-docs-3)
 - [Writing](#writing)
 - [YAY](#yay)
 
@@ -318,6 +337,135 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
 
 ### From Official Docs
 
+# alpinejs
+
+- [Official Site](https://alpinejs.dev)
+
+## Notes
+
+### From official docs [link]()
+
+#### Lifecycle
+
+x-init
+
+#### State (Data Handling)
+
+x-data
+
+x-model
+
+#### Directives (Template Handling)
+
+x-text
+
+x-show
+
+x-for
+
+x-if
+
+x-html
+
+#### Events (Change Handling)
+
+x-on (@)
+
+x-effect
+
+$watch
+
+x-bind (:)
+
+# Browser APIs
+
+## Tips n Tricks
+
+```js
+location.href = "/some/url"; // <-- This simulates a link click, allowing back navigation
+location.replace("/some/url"); // <-- Does not do the above
+```
+
+## Web Sockets
+
+```js
+// Connected to backend web socket server
+const ws = new WebSocket("ws://whatever:port/and/path");
+
+// Receive message from server
+ws.onmessage = (event) => console.log("Received from websocket: ", event.data);
+
+// Send message to server
+ws.send("whatever");
+```
+
+## Web Workers
+
+From main script:
+
+```js
+// Start a new Web Worker (`service-worker.js`)
+const worker = new Worker("path/to/service-worker.js");
+
+// Received messages from Worker
+worker.onmessage = (event) => console.log("Main: ", event.data);
+
+// Send message to Worker
+worker.postMessage(["Hello", "from", "main!"]);
+```
+
+From worker script:
+
+```js
+onmessage = function (e) {
+  console.log("Worker: ", e.data.join(" "));
+  postMessage("hello from worker!");
+};
+```
+
+### Shared Web Workers
+
+- Shared by any script using same protocol, host and port
+
+- Mostly similar to dedicated Worker, except communication happens via "port" explicitly (instead of assumed in case of dedicated)
+
+From main script:
+
+```js
+// Start a new Web Worker (`shared-worker.js`)
+const worker = new SharedWorker("path/to/shared-worker.js");
+
+// Received messages from Worker
+worker.onmessage = (event) => console.log("Main: ", event.data);
+
+// Send message to Worker
+worker.postMessage(["Hello", "from", "main!"]);
+```
+
+From shared-worker script:
+
+```js
+onconnect = function (e) {
+  let port = e.ports[0];
+  port.onmessage = function (e) {
+    console.log("Worker: ", e.data.join(" "));
+    port.postMessage("Hello from worker!");
+  };
+};
+```
+
+### Broadcast Channels
+
+# Cypress
+
+- [Official Site](https://www.cypress.io/)
+
+## Notes
+
+### From Official Docs
+
+### From Project
+
 # Docker
 
 - [Archwiki Doc](https://wiki.archlinux.org/title/Docker)
@@ -485,6 +633,12 @@ module.render = ({ first, last }) => `${this.user(first, last)}`;
   - Note that local log driver does not show logs with docker compose
   - Other notable options instead of local: journald, syslog,
 
+### Troubleshoot
+
+- Permission denied error solution: `sudo aa-remove-unknown`
+
+> It turned out that AppArmor service was messing up with Docker. AppArmor (or "Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles.
+
 # elixir
 
 ## Resources
@@ -591,6 +745,37 @@ cond
 with
 
 #### Modules
+
+module constants
+
+struts
+
+#### Typespec and Doc
+
+Create new type and assign it to spec:
+
+```elixir
+@type address_map() :: %{street: String.t(), postal_code: String.t(), city: String.t()}
+@type address_tuple() :: {street :: String.t(), postal_code :: String.t(), city :: String.t()}
+@type address() :: address_map() | address_tuple()
+
+@doc """
+Formats the address as an uppercase multiline string.
+"""
+@spec format_address(address()) :: String.t()
+def format_address(%{street: street, postal_code: postal_code, city: city}) do
+  format_address({street, postal_code, city})
+end
+
+def format_address({street, postal_code, city}) do
+  """
+  #{String.upcase(street)}
+  #{String.upcase(postal_code)} #{String.upcase(city)}
+  """
+end
+```
+
+List of types: [Typespecs](https://hexdocs.pm/elixir/typespecs.html)
 
 # Git
 
@@ -1013,11 +1198,17 @@ NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up witho
 
 - Nodejs code to stream in a file one line at a times: [Source code](./stream-file.js)
 
+## Websocket
+
+- low-level interface is net.Socket as an point for tcp connection
+
 # PETAL Stack
 
 > Phoenix Elixir Tailwind Alpine Liveview
 
 ## Setup
+
+[Youtube Link](https://www.youtube.com/watch?v=vZBHkvTAb2U)
 
 1. Install Elixir using package-manager `yay -S elixir`
    a. Check: `elixir -v`
@@ -1026,7 +1217,38 @@ NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up witho
 3. Install Phoenix `mix archive.install hex phx_new`
 4. Create new project `mix phx.new <project_name>`
 5. Setup tailwind
+   1. `$ cd assets && npm init -y`
+   1. `assets $ npm i -D tailwindcss autoprefixer postcss postcss-import`
+   1. `assets $ npx tailwindcss init -p`
+   1. Add `postcss-import: {}` to postcss.config.js at the top
+   1. Add `mode: 'jit'` and `content: ["../lib/*_web/**.*ex", "./js/**/*.js"]` to tailwindcss.config.js
+   1. Remove phoenix.css import and add three tailwind imports in app.css
+   1. Remove app.css import in app.js
+   1. In dev.exs, add watcher for tailwind:
+      ```
+      npx: [
+        "tailwindcss",
+        "-i=css/app.css",
+        "-o=../priv/static/assets/app.css"
+        "--postcss",
+        "--watch",
+        cd: Path.expand("../assets", __DIR__)
+      ]
+      ```
 6. Setup alpine
+   1. `assets $ npm i alpinejs`
+   1. in app.js:
+   ```js
+   import Alpine from "alpinejs";
+   window.Alpine = Alpine;
+   Alpine.start();
+   ```
+7. In mix.exs `aliases`
+
+   1. add `"cmd --cd assets npm install"` to `setup` tail
+   1. add `"cmd --cd assets npm run deploy"` to `assets.deploy` head
+
+8. In assets/package.json, add script: `"deploy": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css"`
 
 ## [Elixir](./elixir.md)
 
@@ -1046,7 +1268,7 @@ NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up witho
 
 Base setup includes:
 
-- Database Mapper (Ecto)
+- Database Mapper (Ecto, Adapter)
 - Telemetry
 - Mailer (Swoosh)
 - Http/websocket connection server (Cowboy)
@@ -1078,11 +1300,17 @@ end
 
 2. Setup Schema and Migrations
 
-Schema is what maps data from db to elixir format, and contain change(set).
+Schema is what maps data from db to elixir format, and contains changesets.
 
-Migrations are used to create/alter tables.
+Migrations are used to create/alter tables such that they approach the state specified by schemas.
 
-Schemas and Migrations are tightly coupled if generated using overarching cli commands, although can be created manually and loosely coupled. No approach better or worse.
+Regarding Assets:
+
+Phoenix uses esbuild to pack css and js from `assets/` dir and served from `priv/static` dir. Static assets are _not_ copied over automatically!
+
+Regarding Templates:
+
+Be careful with variables in rendered html. If rendering from inside functions, make sure to use `@variable` instead of `assign.variable`
 
 # Postgresql
 
@@ -1515,7 +1743,7 @@ From `man rsync`:
   as an alternative, `fd` works as follows
 
   ```sh
-  fd [-iL] "regex"
+  fd -t [d|f] [-HIL] "regex"
   ```
 
 - Remove duplicate lines from a file
@@ -1745,6 +1973,18 @@ From `man rsync`:
 
 ## Sqlite3
 
+- Show all tables
+
+  ```sql
+  .tables
+  ```
+
+- Create table (don't forget semicolon at end)
+
+  ```sql
+  create table [if not exists] <name> ( ... );
+  ```
+
 - Describe table
 
   ```sql
@@ -1761,21 +2001,21 @@ From `man rsync`:
 
 - Distinct Query
 
-```sql
-select distinct col1, col2 from table;
-```
+  ```sql
+  select distinct col1, col2 from table;
+  ```
 
 - Delete Query
 
-```sql
-delete from table where col = val;
-```
+  ```sql
+  delete from table where col = val;
+  ```
 
 - Count Query
 
-```sql
-select count(*) from table;
-```
+  ```sql
+  select count(*) from table;
+  ```
 
 ## MySQL
 
@@ -1787,16 +2027,16 @@ select count(*) from table;
 
 - Connect to remote host
 
-  ```sh
-  ssh <username>@<hostname/ip> [-p <port>]
+  ```shell
+  $ ssh <username>@<hostname/ip> [-p <port>]
   ```
 
 - Setup keys (no password login)
 
   - Generate keys on client
 
-    ```sh
-    ssh-keygen -t ed25519  -f ~/.ssh/<key-name> -C "<Some comment>"
+    ```shell
+    $ ssh-keygen -t ed25519  -f ~/.ssh/<key-name> -C "<Some comment>"
     ```
 
     where,  
@@ -1808,8 +2048,8 @@ select count(*) from table;
 
   - Copy public key to remote server
 
-    ```sh
-    ssh-copy-id  -i ~/.ssh/<key-name>.pub <username>@<hostname>
+    ```shell
+    $ ssh-copy-id  -i ~/.ssh/<key-name>.pub <username>@<hostname>
     ```
 
     where,  
@@ -1817,8 +2057,8 @@ select count(*) from table;
 
   - Turn off password authentication on remote server
 
-    ```sh
-    sudo sed -i \
+    ```shell
+    $ sudo sed -i \
       -e 's/#\?PasswordAuthentication yes/PasswordAuthentication no/' \
       -e 's/PubkeyAuthentication no/PubkeyAuthentication yes/' \
       /etc/ssh/sshd_config
@@ -1834,26 +2074,33 @@ select count(*) from table;
 
   - Should use tool like fail2ban to reject unauthorized attempts
 
+  - To disable login banner/info:
+
+    ```shell
+    $ sed -i 's/PrintLastLog yes/PrintLastLog no/' /etc/ssh/sshd_config
+    $ touch /home/$USER/.hushlogin
+    ```
+
 - Add a known host to ssh config for easier connection (also used by scp & rsync), using ssh config
 
-  ```sh
-  touch ~/.ssh/config && chmod 600 ~/.ssh/config
+  ```shell
+  $ touch ~/.ssh/config && chmod 600 ~/.ssh/config
   ```
 
-  ```sh
+  ```config
   Host server-name # server-name is pattern matched
     HostName <hostname/ip> # indentation optional but recommended
     User <username>
     Port <port>
   ```
 
-  ```sh
-  ssh server-name
+  ```shell
+  $ ssh server-name
   ```
 
 - Recommended - generate a new ssh key pair for every remote host (so even if stolen, cannot compromise others). Can add in config as:
 
-  ```sh
+  ```config
   Host name1
     ...
     Identity ~/.ssh/<key-name>
@@ -2188,6 +2435,12 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
+
+- Search and Replace (Using neovim telesope)
+
+  - Search for a term `:Telescope live_grep`
+  - Put all results in quickfix buffer `<C-q>`
+  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g | update`
 
 # Vuejs
 

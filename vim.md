@@ -67,3 +67,9 @@ Example: To delete all \*.js files in buffer list
 ```
 
 _Can use :bwipeout to completely remove a buffer_
+
+- Search and Replace (Using neovim telesope)
+
+  - Search for a term `:Telescope live_grep`
+  - Put all results in quickfix buffer `<C-q>`
+  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g | update`

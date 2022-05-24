@@ -155,7 +155,7 @@
   as an alternative, `fd` works as follows
 
   ```sh
-  fd [-iL] "regex"
+  fd -t [d|f] [-HIL] "regex"
   ```
 
 - Remove duplicate lines from a file
