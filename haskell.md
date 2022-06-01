@@ -14,7 +14,9 @@
 
 https://serokell.io/blog/haskell-in-production
 
-## Installing on Arch-like systems
+## Notes
+
+- Installing on Arch-like systems
 
 ```sh
 
@@ -24,16 +26,8 @@ stack ghc
 
 ```
 
-## Starting a new haskell project
+- Starting a new haskell project
 
 ```sh
 stack new <project>
 ```
-
-## Notes
-
-### From official docs:
-
-### From tutorials:
-
-### From youtube videos:

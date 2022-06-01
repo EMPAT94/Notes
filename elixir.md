@@ -10,7 +10,7 @@
 
 - [Elixir School: Online guide/tutorial](https://elixirschool.com/en/why)
 
-- [Blog Series](https://inquisitivedeveloper.com/tag/lwm-elixir/)
+- [Learn Elixir With Me: Blog Series](https://inquisitivedeveloper.com/tag/lwm-elixir/)
 
 - [Exercism Track](https://exercism.org/tracks/elixir)
 

@@ -20,13 +20,6 @@
 
 - [Snarky Canadian: Blog series of python](https://snarky.ca/)
 
-## End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts
-
-## Milestones
-
-1. Go through official docs (2 weeks) (~ Apr 14)
-2. Reproduce current scripts (esp backup and monitoring) in python (2 weeks) (~ Apr 30)
-
 ## Notes
 
 ### Installing packages in a Virtual Environment

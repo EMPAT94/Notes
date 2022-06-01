@@ -30,6 +30,18 @@
   pragma table_info("<table>")
   ```
 
+- Insert Query
+
+  ```sql
+  insert into <table> (<col1>, <col2>, ...) values (<v1>, <v2>, ...), (<vk>, <vl>, ...);
+  ```
+
+- Update Query
+
+  ```sql
+  update <table> set <key> = <val>, ... [from select ...] where <key> = <val>;
+  ```
+
 - Distinct Query
 
   ```sql

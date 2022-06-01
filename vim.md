@@ -72,4 +72,14 @@ _Can use :bwipeout to completely remove a buffer_
 
   - Search for a term `:Telescope live_grep`
   - Put all results in quickfix buffer `<C-q>`
-  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g | update`
+  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g[ci] | update`
+  - Capture groups are defined by `\1` `\2` etc and original string by `&`
+
+- Check diff of files
+
+  ```shell
+  $ nvim -d -R file_one file_two
+  ```
+
+  - -d = diff
+  - -R = Readonly

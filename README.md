@@ -28,20 +28,32 @@
   - [Web Workers](#web-workers)
     - [Shared Web Workers](#shared-web-workers)
     - [Broadcast Channels](#broadcast-channels)
-- [Cypress](#cypress)
+- [Clojure](#clojure)
+  - [Resources](#resources-1)
+  - [Notes (from braveclojure)](#notes-from-braveclojure)
+    - [Syntax](#syntax)
+    - [Data Types](#data-types)
+    - [Data Structures](#data-structures)
+    - [Operators](#operators)
+    - [Bindings](#bindings)
+    - [Conditionals](#conditionals)
+    - [Loops](#loops)
+- [commonlisp](#commonlisp)
   - [Notes](#notes-2)
+- [Cypress](#cypress)
+  - [Notes](#notes-3)
     - [From Official Docs](#from-official-docs-1)
     - [From Project](#from-project)
 - [Docker](#docker) \* [Troubleshoot](#troubleshoot)
 - [elixir](#elixir)
-  - [Resources](#resources-1)
+  - [Resources](#resources-2)
   - [TDD](#tdd)
     - [Recommended deps](#recommended-deps)
-  - [Notes](#notes-3)
+  - [Notes](#notes-4)
     - [Optimizations](#optimizations)
     - [Exercism Syllabus](#exercism-syllabus)
-      - [Data Types](#data-types)
-      - [Data Structures](#data-structures)
+      - [Data Types](#data-types-1)
+      - [Data Structures](#data-structures-1)
       - [Control Flow](#control-flow)
       - [Modules](#modules)
       - [Typespec and Doc](#typespec-and-doc)
@@ -50,19 +62,20 @@
   - [Submodules](#submodules)
   - [Worktrees](#worktrees)
 - [haskell](#haskell)
-  - [Installing on Arch-like systems](#installing-on-arch-like-systems)
-  - [Starting a new haskell project](#starting-a-new-haskell-project)
-  - [Notes](#notes-4)
-    - [From official docs:](#from-official-docs-2)
-    - [From tutorials:](#from-tutorials)
-    - [From youtube videos:](#from-youtube-videos)
+  - [Notes](#notes-5)
 - [HUGO](#hugo)
   - [Links](#links)
   - [Commands](#commands)
   - [Directory structure](#directory-structure)
   - [hugo without theme](#hugo-without-theme)
+- [Janet](#janet)
+  - [Resources](#resources-3)
+  - [Notes](#notes-6)
+    - [<em>Very</em> Basics](#very-basics)
 - [mongodb](#mongodb)
 - [Nginx](#nginx)
+- [nim](#nim)
+  - [Resources](#resources-4)
 - [Nodejs](#nodejs)
   - [Websocket](#websocket)
 - [PETAL Stack](#petal-stack)
@@ -72,13 +85,12 @@
   - [<a href="./alpine.md">Alpine</a>](#alpine)
   - [Phoenix](#phoenix)
     - [Links](#links-1)
-  - [Notes](#notes-5)
+  - [Notes](#notes-7)
 - [Postgresql](#postgresql)
+  - [Notes](#notes-8)
 - [Python](#python)
   - [Links](#links-2)
-  - [End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts](#end-goal--learn-basics-of-python-and-be-proficient-enough-to-write-ad-hoc-scripts)
-  - [Milestones](#milestones)
-  - [Notes](#notes-6)
+  - [Notes](#notes-9)
     - [Installing packages in a Virtual Environment](#installing-packages-in-a-virtual-environment)
     - [From official docs and exercism](#from-official-docs-and-exercism)
     - [From Exercism Syllabus](#from-exercism-syllabus)
@@ -111,10 +123,8 @@
 - [tailwindcss](#tailwindcss)
 - [(NEO)VIM](#neovim)
 - [Vuejs](#vuejs)
-  - [End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).](#end-goal-be-able-to-quickly-prototype-web-apps-like-within-a-few-hours-quick)
-  - [Milestones](#milestones-1)
-  - [Notes](#notes-7)
-    - [From official Docs](#from-official-docs-3)
+  - [Notes](#notes-10)
+    - [From official Docs](#from-official-docs-2)
 - [Writing](#writing)
 - [YAY](#yay)
 
@@ -456,6 +466,147 @@ onconnect = function (e) {
 
 ### Broadcast Channels
 
+# Clojure
+
+## Resources
+
+- [Official Site](https://clojure.org/index)
+
+- [Clojure for the Brave and True:](https://www.braveclojure.com/)
+
+- [Clojure Resources #1](https://clojuredocs.org/)
+- [Clojure Resources #2](https://clojure-doc.org/)
+
+- [Clojure by example](https://kimh.github.io/clojure-by-example/#about-this-page)
+
+- [Clojurescript Koans](http://clojurescriptkoans.com/)
+
+- [Exercism Track: Guided Tutorials](https://exercism.org/tracks/clojure)
+
+## Notes (from braveclojure)
+
+### Syntax
+
+> (operator operand1 operand2 ... operandn)
+
+NOTE: The above expression is called a "form" (it is common to all Lisps)
+
+OPINION: Should just call 'em expressions and be done with it
+
+### Data Types
+
+- `nil`
+- Booleans: `true`, `false`
+- Numbers: integers `1`, floats `1.2`, ratios `1/2`
+- Strings: `"only double quotes work"`
+- Regex: `#"regular-expression-here"`
+- Keywords: `:colon-prefixed-symbols`
+  - Very fast lookup, so used as keys and params
+
+### Data Structures
+
+- Maps: `{:keyword-keys "value can be anything"}`
+
+  - Get: `(get {:key "value"} :key)` => Lookup by key
+  - Get-in: `(get-in {:a {:b "value"}} [:a :b])` => Nested
+  - `(:key {:key "value"})` == `({:key "value"} :key)` == `"value"`
+
+- Vectors (Arrays): `[1 2 3 "anything" :goes]`
+
+  - Get: `(get [1 2 3] 0)` => Lookup by index
+  - Add: `(conj [1 2 3] 4)` => Adds to **end** of vector
+
+- Lists (Linked Lists): `'(1 2 3 "anything" :goes)`
+
+  - Get: `(nth '(1 2 3) 0)` => Lookup by iterating
+  - Add: `(conj '(1 2 3) 4)` => Adds to **start** of list
+
+- Sets: `#{"some" :values 1 1/4}`
+
+  - Add: `(conj #{:a :b} :c)`
+  - Contains: `(contains? #{1 2 3} 2)` => Check inclusion, returns true/false
+  - Can use Map-like `get` and `:key` lookup too
+
+### Operators
+
+> `(are_forms? x y z)` => `true`
+
+- Equality: `(= x y)`
+- Logical:
+  - `(or x y)` => First truthy or first false/nil
+  - `(and x y)` => First false/nil or last truthy
+- Scope: `(do x y z)`
+
+### Bindings
+
+> `def` is all where all bindings start
+
+- `(def const "value")` => symbol `const` is now bound to `"value"`
+
+- `(defn fun-name "document string" [param & rest] (print "This is some form") {:last-form "returned"}) `
+
+  - Functions can be "arity overloaded"
+  - Function parameters can be "destructured"
+
+- `(fn [arg] (print arg))` == `#(print %)` ==> anon fn
+
+### Conditionals
+
+- `(if <cond> <then> <else>)` => all things inside `<>` are individual forms
+
+  - If no `else` then returns `nil` on `false`
+
+- `(when <cond> <form1> <form2> <form3>)`
+
+  - A combination of `if` and `do`
+
+### Loops
+
+- `(loop TODO)`
+
+# commonlisp
+
+- [Official Site](https://common-lisp.net/)
+
+https://lispcookbook.github.io/cl-cookbook/getting-started.html
+
+https://cliki.net/
+
+https://gigamonkeys.com/book/
+
+https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/
+
+https://learnxinyminutes.com/docs/common-lisp/
+
+https://exercism.org/tracks/common-lisp/
+
+http://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm
+
+IMPORTANT: I will be using SBCL implementation, so any notes that follow will be for same
+
+## Notes
+
+Installing quicklist (a package manager)
+
+```shell
+$ curl -O https://beta.quicklisp.org/quicklisp.lisp
+$ sbcl --load quicklisp.lisp
+* (quicklisp-quickstart:install)
+* (ql:system-apropos "vecto")
+* (ql:quickload "vecto")
+* (ql:add-to-init-file)
+* (quit)
+```
+
+Making REPL usable (since no history or completion by default)
+
+```shell
+$ rlwrap -c sbcl --disable-debugger
+```
+
+> If using neovim (as you should be), use Iron.nvim.
+> It provides a nice repl integration for _many_ languages, including lisp.
+
 # Cypress
 
 - [Official Site](https://www.cypress.io/)
@@ -651,7 +802,7 @@ onconnect = function (e) {
 
 - [Elixir School: Online guide/tutorial](https://elixirschool.com/en/why)
 
-- [Blog Series](https://inquisitivedeveloper.com/tag/lwm-elixir/)
+- [Learn Elixir With Me: Blog Series](https://inquisitivedeveloper.com/tag/lwm-elixir/)
 
 - [Exercism Track](https://exercism.org/tracks/elixir)
 
@@ -903,7 +1054,9 @@ List of types: [Typespecs](https://hexdocs.pm/elixir/typespecs.html)
 
 https://serokell.io/blog/haskell-in-production
 
-## Installing on Arch-like systems
+## Notes
+
+- Installing on Arch-like systems
 
 ```sh
 
@@ -913,19 +1066,11 @@ stack ghc
 
 ```
 
-## Starting a new haskell project
+- Starting a new haskell project
 
 ```sh
 stack new <project>
 ```
-
-## Notes
-
-### From official docs:
-
-### From tutorials:
-
-### From youtube videos:
 
 # HUGO
 
@@ -986,6 +1131,120 @@ Hugo pulls data from `content/`, `data/`, `static/` and structures it by templat
 Content -> Layout mapping: [Template Lookup Order](https://gohugo.io/templates/lookup-order/)
 
 NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up without writing 4 more files and skimming docs and posts for hours. Not what I am looking for.
+
+# Janet
+
+> Janet is a functional (and imperative) cross-platform interpreted (and compiled) lisp-inspired language with batteries-included api that makes a good system scripting language, or a language to embed in other programs.
+
+> The entire language (core library, interpreter, compiler, assembler, PEG) is less than 1MB.
+
+## Resources
+
+[Official Site](https://janet-lang.org)
+
+## Notes
+
+### _Very_ Basics
+
+> Starting off with minimum required to do anything
+
+Data Types:
+
+> Comments start with a `#`
+
+- `nil`
+- booleans: `true`, `false`
+- symbols (conventionally `small-letters` with hypens)
+- keywords: `:symbols` starting with colon
+- numbers: like javascript number `1` `-1.1` `1e10` (unlike js, `4r100` = 16: `rn` = base `n`)
+
+Data Structures:
+
+- strings: `"strings are in double quotes"` or in n\`s like lua's `[[ ... ]]`
+- buffer: mutable `@`strings
+- tuples: `[1 2 3]` list of values
+- arrays: mutable `@`tuples
+- structs: like elixir's `{:keyword "value"}` pairs (or js objects, or clisp plists)
+- tables: mutable `@`structs
+
+Bindings:
+
+> anything with paren tuple `(...)` is "called" (conventionally called "forms")
+
+- Variable definition: `([def | var] <name> <expr>)`
+
+  - immutable `def` or mutable `var`
+  - bind any value retured by `<expr>` to a symbol `<name>`
+  - works as variable assignment but can also destructure (pattern match) on lists and dicts
+  - use `(let [<name> <expr> <name2> <expr2>] ...)` for multiple `def` bindings sugar
+
+- Variable reassignment: `(set <name> <expr>)`
+
+  - only works on `var`
+  - `name` must exists and be an initialized value or a declared datastructure
+
+- Function definition: `([defn | fn] [<name>] <args> <body>)`
+
+  - yes, `name` is optional in case of `fn`. functions form closure.
+  - arguments are literal tuples `[...]` but can be destructured from `struct`s
+  - use `&` for variadic arguments: `[a b c & rest]`
+  - body is zero or more forms `(...)`
+  - last form is returned implicitly
+  - `defn` is short for binding `fn` to `<name>` using `def`
+
+Conditionals:
+
+- If conditional: `(if <expr> <true-form> [<false-form>])`
+
+  - lazy eval (does not evaluate forms until needed)
+  - if no `false-form` but `cond` is `false`, then returns `nil`
+
+- Cond conditional: `(cond <expr> (body) <expr2> (body2) <expr3> (body3))`
+
+  - Can be used instead of multiple if-else-if-else nesting
+
+- Case conditional:
+
+  - think `switch` statements elsewhere
+
+- When conditional:
+
+  - like `if` without `false-form`; returns `nil` on `false` implicitly
+
+Loops:
+
+> OPINION: Avoiding mutable loops and stick to functional paradigm
+
+- While loop: `(while <cond> <body>)`
+
+  - Usually works with mutable `vars` with side effects in body
+
+- For loop: `(for <var> <start-expr> <end-expr> <body>)`
+
+- loop loop: `(loop [<var> <verb> <values> <modifiers> <cond>] <body>)`
+
+  - Ex1: `(loop [i :range [0 10] :when (even? i)] (print i))`
+
+    - `i` is a var, `:range` is a verb, `:when` is a modifier
+
+  - Ex2: `(loop [name :in names] (print name))`
+
+    - `name` is a var, `:in` is a verb and `names` is a list
+
+  - Ex2 can be written using `each` and `map` resp as:
+
+    - `(each name names (print name))`
+
+    - `(map print names)`
+
+  - Ex3: `(loop [[k v] :pairs some_struct] (print k " -> " v))`
+
+    - Above for looping across a dict
+
+Arithmetic `(<op> <expr> <expr2>)` and Comparisons `(<cmp> <expr> <expr2>)` work as usual:
+
+- Use `(not= <expr> <expr2>)` for checking unequality
+- Use `(deep= <mutable> <mutable>)` for checking contents of mutable structures
 
 # mongodb
 
@@ -1155,6 +1414,22 @@ NOTE: Leaving in favor of [11ty](./11ty.md), couldn't get a single page up witho
   }
   ```
 
+# nim
+
+## Resources
+
+- [Official Site](https://nim-lang.org/)
+
+- [Github Wiki](https://github.com/nim-lang/Nim/wiki)
+
+- [Peter Devlog: Good articles on nim](https://peterme.net)
+
+- [Build Your Own X](https://xmonader.github.io/nimdays/book_intro.html)
+
+https://scripter.co/notes/nim/#
+
+https://nimbyexample.com/
+
 # Nodejs
 
 - Node make a dynamic chain of promises
@@ -1322,6 +1597,8 @@ Be careful with variables in rendered html. If rendering from inside functions, 
 
 - [Quick Reference](https://zaiste.net/posts/postgresql-primer-for-busy-people/)
 
+## Notes
+
 - Executing psql
 
   ```sh
@@ -1369,13 +1646,6 @@ Be careful with variables in rendered html. If rendering from inside functions, 
 - [Practical Python: Series of Article](https://dabeaz-course.github.io/practical-python/)
 
 - [Snarky Canadian: Blog series of python](https://snarky.ca/)
-
-## End-Goal : Learn basics of python and be proficient enough to write ad-hoc scripts
-
-## Milestones
-
-1. Go through official docs (2 weeks) (~ Apr 14)
-2. Reproduce current scripts (esp backup and monitoring) in python (2 weeks) (~ Apr 30)
 
 ## Notes
 
@@ -1999,6 +2269,18 @@ From `man rsync`:
   pragma table_info("<table>")
   ```
 
+- Insert Query
+
+  ```sql
+  insert into <table> (<col1>, <col2>, ...) values (<v1>, <v2>, ...), (<vk>, <vl>, ...);
+  ```
+
+- Update Query
+
+  ```sql
+  update <table> set <key> = <val>, ... [from select ...] where <key> = <val>;
+  ```
+
 - Distinct Query
 
   ```sql
@@ -2440,15 +2722,19 @@ _Can use :bwipeout to completely remove a buffer_
 
   - Search for a term `:Telescope live_grep`
   - Put all results in quickfix buffer `<C-q>`
-  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g | update`
+  - Run replace interactive on all results `:cdo s/<sterm>/<rterm>/g[ci] | update`
+  - Capture groups are defined by `\1` `\2` etc and original string by `&`
+
+- Check diff of files
+
+  ```shell
+  $ nvim -d -R file_one file_two
+  ```
+
+  - -d = diff
+  - -R = Readonly
 
 # Vuejs
-
-## End-Goal: Be able to quickly prototype web-apps (like within-a-few-hours quick).
-
-## Milestones
-
-- Apr 30
 
 ## Notes
 

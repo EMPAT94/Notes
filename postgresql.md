@@ -8,6 +8,8 @@
 
 - [Quick Reference](https://zaiste.net/posts/postgresql-primer-for-busy-people/)
 
+## Notes
+
 - Executing psql
 
   ```sh
