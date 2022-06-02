@@ -68,8 +68,22 @@ Done!
 
 ## Tip n Tricks
 
-Reloading Caddyfile without downtime
+Reloading Caddyfile without downtime:
 
 ```shell
 $ docker exec -w /etc/caddy caddy_caddy_1 caddy reload
+```
+
+Adding multiple reverse-proxy routes on same domain:
+
+```Caddyfile
+api.<mydomain>.com {
+    route /routeone/* {
+        reverse_proxy localhost:8080
+    }
+
+    route /routetwo/* {
+        reverse_proxy localhost:8081
+    }
+}
 ```
