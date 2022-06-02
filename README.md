@@ -31,6 +31,7 @@
 - [Caddy](#caddy)
   - [Resources](#resources-1)
   - [Setup](#setup)
+  - [Tip n Tricks](#tip-n-tricks)
 - [Clojure](#clojure)
   - [Resources](#resources-2)
   - [Notes (from braveclojure)](#notes-from-braveclojure)

@@ -1,6 +1,6 @@
 # Caddy
 
-> Caddy is a web server with automatic https, certificate renewal and http to https routing.
+> Caddy is a web server with automatic certificate renewal and http to https routing.
 
 ## Resources
 
@@ -30,7 +30,7 @@ version: "3"
 
 services:
   caddy:
-    image: caddy:<version-that-was-pulled>
+    image: caddy:2
     network_mode: host
     volumes:
       - $PWD/Caddyfile:/etc/caddy/Caddyfile
@@ -52,11 +52,10 @@ volumes:
 # The entirety of ngnix nextcloud config turned into this:
 
 nextcloud.<mydomain>.com {
-    encode zstd gzip
-    rewrite /.well-known/carddav /remote.php/dav
-    rewrite /.well-known/caldav /remote.php/dav
-    reverse_proxy localhost:8080
-  }
+  rewrite /.well-known/carddav /remote.php/dav
+  rewrite /.well-known/caldav /remote.php/dav
+  reverse_proxy localhost:8080
+}
 ```
 
 Finally, to run things:
@@ -66,3 +65,11 @@ $ docker-compose up -d
 ```
 
 Done!
+
+## Tip n Tricks
+
+Reloading Caddyfile without downtime
+
+```shell
+$ docker exec -w /etc/caddy caddy_caddy_1 caddy reload
+```
