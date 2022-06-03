@@ -51,7 +51,7 @@ volumes:
 ```Caddyfile
 # The entirety of ngnix nextcloud config turned into this:
 
-nextcloud.<mydomain>.com {
+nextcloud.mydomain.com {
   rewrite /.well-known/carddav /remote.php/dav
   rewrite /.well-known/caldav /remote.php/dav
   reverse_proxy localhost:8080
@@ -77,7 +77,7 @@ $ docker exec -w /etc/caddy caddy_caddy_1 caddy reload
 Adding multiple reverse-proxy routes on same domain:
 
 ```Caddyfile
-api.<mydomain>.com {
+api.mydomain.com {
     route /routeone/* {
         reverse_proxy localhost:8080
     }
@@ -85,5 +85,21 @@ api.<mydomain>.com {
     route /routetwo/* {
         reverse_proxy localhost:8081
     }
+}
+```
+
+Adding basic authentication:
+
+```shell
+$ docker run -it --rm -w /etc/caddy caddy:<ver> caddy hash-password
+```
+
+This gives us a hased password, which we add like so:
+
+```Caddyfile
+secureroute.mydomain.com {
+  basicauth * {
+      username <hash-string>
+  }
 }
 ```
