@@ -7,18 +7,20 @@ I currently have following storage options:
 - Laptop: 1 TB SSD (Local)
 - Phone: 128 GB (Local)
 - External: 1 TB HDD (Local)
+
 - Mega.nz: 50 GB (Remote)
 - Oracle VPS: 50 GB (Remote)
 - Nextcloud: 100 GB (Remote)
 - Storj: 150 GB (Remote)
-- Github: ~ (Remote text-only versioned)
+
+- Github: ~ (Remote text-only versioned git backups)
 
 ## Strategies:
 
 - Multi-Media (Photos, Videos, Music, Ebooks and other Documents)
 
   - Laptop <-> Phone (can generate in either) (every week)
-  - Nextcloud (auto-sync from Laptop)
+  - Nextcloud (auto-sync)
   - External HDD (once a month)
 
 - Notes, (Encrypted) Keys, Text data
@@ -26,6 +28,7 @@ I currently have following storage options:
   - Laptop (generated)
   - Github (immediate)
   - Phone (every week)
+  - Nextcloud (auto-sync)
   - External HDD (once a month)
 
 - Project Repositories
@@ -34,11 +37,11 @@ I currently have following storage options:
   - Github (immediate)
   - External HDD (once a month)
 
-- Deployed Apps (Config and DB)
+- [Hobby] Deployed Apps (Config and DB)
 
-  - VPS (generated)
-  - Daily automatic encrypted push backup to Storj
-  - Daily automatic pull to Laptop from VPS
+  - VPS local backups (also generates)
+  - Daily automatic encrypted push to Storj
+  - Daily automatic pull to Laptop
 
 ## Notes:
 
@@ -48,11 +51,13 @@ I currently have following storage options:
 
 - For VPS (generated), I actually store backups elsewhere in a local dir (away from active app data). At any point in time, atleast 7 days' backup exists in any location.
 
+- I use systemd timers (in lieu of cron jobs) for automatic backup scripts. And I have a slack channel that receives only failure notifications.
+
 ## Tools:
 
 - [Syncthing]() Laptop <-> Phone
 - [Rsync]() Laptop <- VPS
-- [Rclone]() VPS -> Storj
+- [Rclone]() VPS -> Storj/Mega
 - [Mega.nz App]() for Laptop -> Mega.nz
 - [Webdav]() for Laptop -> Nextcloud
 - [Git]() for Laptop -> Github

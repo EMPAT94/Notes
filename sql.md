@@ -60,6 +60,18 @@
   select count(*) from table;
   ```
 
+- Backup Sqlite3 (non-interactively)
+
+  ```shell
+  $ sqlite3 <name>.db ".backup '<name>.backup.db'"
+  ```
+
+  - Alternatively, compress it with `xz`
+
+  ```shell
+  $ xz --compress --threads=0 --quiet <name>.backup.db
+  ```
+
 ## MySQL
 
 ## VoltDB

@@ -378,3 +378,22 @@
   ```sh
   gpg --import pub.key
   ```
+
+## beets
+
+- Seek help
+
+  ```shell
+  $ beet help [command]
+  ```
+
+- For all tracks in albumFolder, import metadata, fix filenames and copy to Dir:
+
+  ```shell
+  $ beets -d ~/Dir import [-S <url>] [-s | -g] albumFolder
+  ```
+
+  where  
+  \-S - Source URL (musicbrainz)
+  \-s - Import as single track (Artist -> Track)
+  \-g - Import as album (Album -> Track)

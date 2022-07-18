@@ -8,6 +8,8 @@
 
 - [Standard Lib](https://docs.python.org/3/py-modindex.html)
 
+- [Hitchhiker's Guide to Python: Online Docs](https://docs.python-guide.org/)
+
 - [Exercism site: Guided Exercises](https://exercism.org/tracks/python)
 
 - [Awsome python collection github](https://github.com/vinta/awesome-python)
@@ -20,51 +22,21 @@
 
 - [Snarky Canadian: Blog series of python](https://snarky.ca/)
 
-## Notes
+- [Youtube: What does it take to be an expert in python](https://www.youtube.com/watch?v=7lmCu8wz8ro)
+
+- [Pep8: Code formatting guideline](https://www.python.org/dev/peps/pep-0008)
+
+- [Python Language Reference](https://docs.python.org/3/reference/index.html)
 
 ### Installing packages in a Virtual Environment
 
 - [Source](https://snarky.ca/a-quick-and-dirty-guide-on-how-to-install-packages-for-python/)
 
   ```python
-  python3.10 -m venv --prompt . .venv
+  python -m venv --prompt . .venv
   echo "*" > .venv/.gitignore
   source .venv/bin/activate
-  python3.10 -m pip install --upgrade pip
+  python -m pip install --upgrade pip
   ```
 
   To deactivate: `source .venv/bin/deactivate`
-
-### From official docs and exercism
-
-- [Basics](./python/basics.md)
-
-- Datastructures https://docs.python.org/3/tutorial/datastructures.html
-
-- More Data Type
-
-- Modules and Packaging
-
-- I/O
-
-- Error Handling
-
-- Classes
-
-- Standard Library
-
-- Virtual Environment and External Packages
-
-- Decided on a minor project?
-
-### From Exercism Syllabus
-
-- [Source](https://exercism.org/tracks/python/concepts)
-
-## May be useful
-
-Commandline stuff?
-
-Code formatting [Pep8](https://www.python.org/dev/peps/pep-0008)
-
-[Python Language Reference](https://docs.python.org/3/reference/index.html)
