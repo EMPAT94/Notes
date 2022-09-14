@@ -154,9 +154,10 @@
 
   ```json
   {
-    "log-driver": "local",
+    "log-driver": "json-file",
     "log-opts": {
-      "max-size": "10m"
+      "max-size": "10m",
+      "max-file": "3"
     },
     "data-root": "/mnt/volume/docker"
   }

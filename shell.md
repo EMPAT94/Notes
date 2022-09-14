@@ -336,7 +336,7 @@
   Only audio:
 
   ```sh
-  youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 -o '%(title)s.%(ext)s' [--yes-playlist] <"URL" | -a  ./fileName>
+  youtube-dl --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --output '%(title)s.%(ext)s' [--yes-playlist] <"URL" | --batch-file  ./fileName>
   ```
 
   _where fileName is a list of urls separated by blank lines;_
@@ -354,7 +354,7 @@
 - Encrypt file for self
 
   ```sh
-  gpg --encrypt --recipient <self@mail.com> <file>
+  gpg --encrypt ["name" | --recipient <self@mail.com>] <file>
   ```
 
   This will create an encryped `<file>.gpg` file in same directory. Opening it normally will show gibberish.
@@ -390,7 +390,7 @@
 - For all tracks in albumFolder, import metadata, fix filenames and copy to Dir:
 
   ```shell
-  $ beets -d ~/Dir import [-S <url>] [-s | -g] albumFolder
+  $ beets -d ~/Dir import [-S <url>] [-s <file> | -g <folder>]
   ```
 
   where  

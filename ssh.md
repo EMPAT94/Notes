@@ -67,6 +67,8 @@
     HostName <hostname/ip> # indentation optional but recommended
     User <username>
     Port <port>
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/<private-key>
   ```
 
   ```shell
