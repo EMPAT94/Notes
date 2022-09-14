@@ -1,7 +1,5 @@
 # SQL
 
-## [Postgres](./postgresql.md)
-
 ## Sqlite3
 
 - Show all tables
@@ -72,8 +70,28 @@
   $ xz --compress --threads=0 --quiet <name>.backup.db
   ```
 
+### MAP1 Databases (Sqlite) Lecture Notes
+
+- [MAP1 Course](../map1-course.md)
+
+## [Postgres](./postgresql.md)
+
 ## MySQL
 
 ## VoltDB
 
 ## Scylla
+
+## Redis
+
+## IndexDB
+
+## MongoDB
+
+## Realm
+
+## Neo4j
+
+## ArrangoDB
+
+## CouchDB
