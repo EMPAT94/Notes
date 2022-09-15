@@ -4,7 +4,7 @@ From `man rsync`:
 
 > Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon.
 
-> It is famous for its delta-transfer algo‐ rithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination.
+> It is famous for its delta-transfer algorithm, which reduces the amount of data sent over the network by sending only the differences between the source files and the existing files in the destination.
 
 - Basic Usage:
 

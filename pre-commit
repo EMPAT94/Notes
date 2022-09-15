@@ -1,20 +1,4 @@
 #!/usr/bin/env bash
 
-TMP="/tmp/file"
-README="./README.md"
-
-echo "Generating README.md..."
-echo > $TMP # Clear file
-
-for file in *.md; do
-  if [ $file != "README.md" ]; then
-    cat $file >> $TMP
-  fi
-done
-
-# https://github.com/ekalinin/github-markdown-toc
-add-toc $TMP > $README # Add Toc
-prettier -w $README # Format
-git add $README # Add to commit
-
-
+$HOME/.local/bin/copy_notes_to_site
+echo "Copied notes to empat.github.io"

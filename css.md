@@ -1,5 +1,9 @@
 # css
 
+- [MDN Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+
+- [freeCodeCamp youtube link](https://www.youtube.com/watch?v=a_iQb1lnAEQ)
+
 ## Selectors
 
 ```css
