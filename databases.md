@@ -1,14 +1,26 @@
 # Databases
 
+## Resources
+
+- [Awesome Databases Collection Github](https://github.com/pingcap/awesome-database-learning)
+
 ## RDBMS Notes
+
+### Terminology
+
+- Tables - Collection of entities
+
+- Columns - Single Attribute
+
+- Rows - Single Entity
 
 ### Normalization
 
 - 1st Form
 
-  - Primary key
+  - Must have a Primary key
   - No repetition of column data
-  - No multivalue attrs
+  - No multivalue attributes
 
 - 2st Form
 
@@ -19,11 +31,25 @@
 - 3st Form
 
   - No dependencies in between columns of same table
-  - No derived values
+  - No derived values stored
 
 ### Denormalization
 
-- [Sqlite](./databases/sqlite.md)
+### Multiplicity (Foreign Relations)
+
+- One to One
+
+- One to Many
+
+- Many to Many
+
+  - Requires extra table to hold relations (junction table)
+
+---
+
+## Database Implementations
+
+- [Sqlite](./sqlite.md)
 
 - [Postgres](./postgresql.md)
 

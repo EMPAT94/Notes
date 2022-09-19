@@ -68,6 +68,20 @@
   - .b = spaces after
   - x = s(String)/d(Int)/f(Float)/c(Char)
 
+## User Input
+
+```java
+import java.util.Scanner;
+
+//...
+
+Scanner ip = new Scanner(System.in);
+
+//...
+
+input.close();
+```
+
 ### Type casting
 
 ### Data Structures

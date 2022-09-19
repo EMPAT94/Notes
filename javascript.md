@@ -1,6 +1,21 @@
-# javascript
+# Javascript
+
+- [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/javascript)
+
+- [Comprehensive Tutorial](https://javascript.info/)
 
 ## Notes
+
+### Variables
+
+- Declaration:
+  - var: Function Scope (hoised), Variable, Redeclarable
+  - let: block scope, Variable, Not Redeclarable
+  - const: block scope, Constant, Not Redeclarable
+
+### Comments
+
+## Tips
 
 - Make a dynamic chain of promises
 
