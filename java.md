@@ -8,6 +8,8 @@
 
 - [Dev.java tutorial/docs beginner](https://dev.java/learn/)
 
+- [Central Connecticut State University: Introduction to Computer Science using Java](https://chortle.ccsu.edu/Java5/index.html)
+
 ## Notes
 
 ### Data types
@@ -28,13 +30,15 @@
 
 - char ('a', 'x') 4B
 
-- boolean (true, false) 1 bit
+- boolean (true, false) 1B (only 1 bit is actually used)
 
-- String (not primitive)
+> Below types are not primitive
+
+- String, Arrays, Classes, Objects, Interfaces ...
 
 ### Variables
 
-- Syntax: `<modifier> <type> <name> = <value>;`
+- Syntax: `<modifier> <type> <name> = <expression>;`
 
 - Example: `int x = 1;`
 
@@ -55,6 +59,18 @@
 
 ### Operators
 
+- Arithmetic `+` `-` `/` `*` `%`
+
+- Logical `&&` `||` `!`
+
+- Bitwise `<<` `>>` `&` `|`
+
+- Comparison `==` `<` `>` `<=` `>=` `!=`
+
+- Other Operators `+` `++` `-` `--` `=`
+
+> some operators (like `+`) are overloaded depending on the operads and position
+
 ### Printing
 
 - Normal string output to screen: `System.out.print[ln]("...")`
@@ -68,7 +84,7 @@
   - .b = spaces after
   - x = s(String)/d(Int)/f(Float)/c(Char)
 
-## User Input
+## User Input (Scanner Class)
 
 ```java
 import java.util.Scanner;
@@ -76,6 +92,10 @@ import java.util.Scanner;
 //...
 
 Scanner ip = new Scanner(System.in);
+System.out.print("Enter something: ");
+<type> someVar = ip.next[Int | Float | Double | ...]();
+
+// For Strings it is simply "next" not "nextString"
 
 //...
 
@@ -84,4 +104,8 @@ input.close();
 
 ### Type casting
 
-### Data Structures
+- integers => 7 / 3 = 2
+
+- real => 7.0 / 3 = 2.333...
+
+- real variable for int expression => double x = 7 / 3 => x = 2.0
