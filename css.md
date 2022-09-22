@@ -102,3 +102,7 @@
 - word-spacing
 - white-space
 - background-color (not specific to typography)
+
+## Box-model
+
+> content, padding, border, margin.

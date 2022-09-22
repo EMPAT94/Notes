@@ -63,11 +63,11 @@
 
 - Logical `&&` `||` `!`
 
-- Bitwise `<<` `>>` `&` `|`
+- Bitwise `<<` `>>` `&` `~` = complement `|` = inclusive OR `^` = exclusive OR
 
 - Comparison `==` `<` `>` `<=` `>=` `!=`
 
-- Other Operators `+` `++` `-` `--` `=`
+- Other Operators `+` `++` `-` `--` `=` and so on.
 
 > some operators (like `+`) are overloaded depending on the operads and position
 
@@ -89,23 +89,93 @@
 ```java
 import java.util.Scanner;
 
-//...
-
 Scanner ip = new Scanner(System.in);
 System.out.print("Enter something: ");
 <type> someVar = ip.next[Int | Float | Double | ...]();
 
-// For Strings it is simply "next" not "nextString"
-
-//...
+// For next word it is simply use "next" (space terminates)
+// For next line it is use "nextLine" (newline/enter terminates)
 
 input.close();
 ```
 
-### Type casting
+### Type casting gotchas
 
 - integers => 7 / 3 = 2
 
 - real => 7.0 / 3 = 2.333...
 
+- Addition of precision results in implicit casting (like assigning an int value to a double var)
+
+- Loss of precision results in compiler error (like assigning a double value to an int var)
+
+  - Explicit casting is required to ignore errors: `int x = (int) 1.0;`
+
 - real variable for int expression => double x = 7 / 3 => x = 2.0
+
+- System.out.println(3 + 2 + 1 + "") => 6
+
+- System.out.println("" + 3 + 2 + 1) => 321
+
+### Conditionals (Branching | Selection)
+
+- if else
+
+- switch case
+
+### Loops
+
+- for
+
+- while
+
+### Classes & Objects
+
+```java
+/*
+
+syntax:
+
+<modifier> class <class_name> extends <another_class> implements <interfaces> {
+
+    // fields
+    <modifier> <type> <var_name>;
+
+    // constructor
+    <modifier> <class_name>(<type> <var>) {
+      <var_name> = <var>;
+    }
+
+    // methods
+    <modifier> <type> <fn_name>(<params>) {
+        ...
+    }
+}
+
+modifier = public, private, protected, static etc
+
+constructor is optional and can be overloaded like methods
+
+*/
+
+// Example Public Bike Class
+
+public class Bike {
+
+  static int numWheels = 2;
+  int fuelTank = 12; // Ltr
+
+  public Bike(int fuelTankInLtr) {
+    fuelTank = fuelTankInLtr;
+  }
+}
+
+// Creating a new Bike Object
+
+Bike b = new Bike(18);
+
+```
+
+### Enum Classes
+
+### Interfaces
