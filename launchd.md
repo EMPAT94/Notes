@@ -59,8 +59,8 @@
 
 1. Verify `plutil com.zettelmerken.dailyreview.plist`
 
-1. Load agent `launchctl load ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
+1. Load agent `launchctl load -w ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
 
-1. Enable service `launchctl enable com.zettelmerken.dailyreview`
+1. Unload agent `launchctl unload -w ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
 
-> Note that load/start might be deprecated in favour of newer commands. Still work fine though.
+1. Start/Stop (for debugging) `launchctl start com.zettelmerken.dailyreview`
