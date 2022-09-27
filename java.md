@@ -2,13 +2,17 @@
 
 - [Official Site](https://www.java.com/en/)
 
-- [Official Docs](https://docs.oracle.com/en/java/javase/18/)
+- [Official Docs Java 19](https://docs.oracle.com/en/java/javase/19/)
+
+- [Official Docs Java 18](https://docs.oracle.com/en/java/javase/18/)
 
 - [Official Tutorial](https://docs.oracle.com/javase/tutorial/)
 
 - [Dev.java tutorial/docs beginner](https://dev.java/learn/)
 
 - [Central Connecticut State University: Introduction to Computer Science using Java](https://chortle.ccsu.edu/Java5/index.html)
+
+- [Java Programming for Beginners – Full Course: youtube video from freecodecamp.org](https://www.youtube.com/watch?v=A74TOX803D0)
 
 ## Notes
 
@@ -90,11 +94,15 @@
 import java.util.Scanner;
 
 Scanner ip = new Scanner(System.in);
-System.out.print("Enter something: ");
-<type> someVar = ip.next[Int | Float | Double | ...]();
 
-// For next word it is simply use "next" (space terminates)
-// For next line it is use "nextLine" (newline/enter terminates)
+System.out.print("Enter something: ");
+String something = ip.nextLine();
+System.out.println("Something is " + something);
+
+// <type> someVar = ip.next[Int | Float | Double | ...]();
+// For next word use "next" (space terminates)
+// For next line use "nextLine" (newline/enter terminates)
+// Careful when using nextLine _after_ other next* as they leave newline in buffer
 
 input.close();
 ```
@@ -121,6 +129,23 @@ input.close();
 
 - if else
 
+  Syntax:
+
+  ```
+  if (<expression>) {}
+  else if (<xepression>) {}
+  else {}
+  ```
+
+  Example:
+
+  ```java
+  int num = 9;
+
+  if (num % 2 == 0) System.out.println("Number is even.");
+  else System.out.print("Number is odd.");
+  ```
+
 - switch case
 
 ### Loops
@@ -134,7 +159,7 @@ input.close();
 ```java
 /*
 
-syntax:
+Syntax:
 
 <modifier> class <class_name> extends <another_class> implements <interfaces> {
 
@@ -175,7 +200,3 @@ public class Bike {
 Bike b = new Bike(18);
 
 ```
-
-### Enum Classes
-
-### Interfaces

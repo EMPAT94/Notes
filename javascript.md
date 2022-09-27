@@ -4,6 +4,8 @@
 
 - [Comprehensive Tutorial](https://javascript.info/)
 
+- [A good breakdown of function terminology](https://dev.to/aaron_powell/named-function-vs-variable-function-11m0)
+
 ## Notes
 
 ### Variables

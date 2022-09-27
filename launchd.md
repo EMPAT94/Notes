@@ -57,7 +57,7 @@
    </plist>
    ```
 
-1. Verify `plutil com.zettelmerken.dailyreview.plist`
+1. Verify `plutil ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
 
 1. Load agent `launchctl load -w ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
 
