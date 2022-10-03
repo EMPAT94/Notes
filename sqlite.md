@@ -1,10 +1,21 @@
-# Sqlite
+# Sqlite 3
 
-- Show all tables
+## Cli shell commands
+
+- Help
 
   ```sql
-  .tables
+  .help
   ```
+
+- Some useful commands:
+
+  - Open a new connection `.open`
+  - List of databases attached `.databases`
+  - List of tables present `.tables`
+  - Read an sql file `.read <file>`
+  - Describe a table `.schema <table>` `pragma table_info("<table>")`
+  - Display options `.header on` `.mode column`
 
 - Create table (don't forget semicolon at end)
 
@@ -26,20 +37,6 @@
   foreign key ("column_id") references "foreign_table"("foreign_id")
   ```
 
-- Describe table
-
-  ```sql
-  .schema <table>
-  ```
-
-  - NOTE: no `;` at the end
-
-  ```sql
-  .header on
-  .mode column
-  pragma table_info("<table>")
-  ```
-
 - Insert Query
 
   ```sql
@@ -49,26 +46,36 @@
 - Update Query
 
   ```sql
-  update <table> set <key> = <val>, ... [from select ...] where <key> = <val>;
-  ```
-
-- Distinct Query
-
-  ```sql
-  select distinct col1, col2 from table;
+  update <table> set <key> = <val>, ... [from select ...] [where <key> = <val>];
   ```
 
 - Delete Query
 
   ```sql
-  delete from table where col = val;
+  delete from <table> [where <col> = <val>];
   ```
 
-- Count Query
+- Select Query
 
   ```sql
-  select count(*) from table;
+  select [<col1>, <col2> | *]
+    from <table1>, [<table2> ...]
+    [where <cond1> [<cond2>]]
+    [order by <colx> [desc | asc] ...]
+    [group by <coly>]
   ```
+
+  - Distinct Query
+
+    ```sql
+    select distinct <col1>, <col2> from <table>;
+    ```
+
+  - Count Query
+
+    ```sql
+    select count(*) from table;
+    ```
 
 - Backup Sqlite3 (non-interactively)
 

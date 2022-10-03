@@ -6,6 +6,8 @@
 
 - [A good breakdown of function terminology](https://dev.to/aaron_powell/named-function-vs-variable-function-11m0)
 
+- [Microsoft Developer Javascript Resources](https://developer.microsoft.com/en-us/javascript/)
+
 ## Notes
 
 ### Variables

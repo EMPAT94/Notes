@@ -12,7 +12,7 @@
 
 - Columns - Single Attribute
 
-- Rows - Single Entity
+- Rows - Single Entity (Record)
 
 ### Normalization
 
@@ -28,10 +28,12 @@
   - All keys in a table depend on primary key
   - Each table is one logical unit
 
-- 3st Form
+- 3rd Form
 
   - No dependencies in between columns of same table
   - No derived values stored
+
+- Goes all the way till 6th Normal Form (theoretically)
 
 ### Denormalization
 
@@ -40,6 +42,8 @@
 - One to One
 
 - One to Many
+
+  - Key stored in "Many" table
 
 - Many to Many
 

@@ -104,6 +104,15 @@ System.out.println("Something is " + something);
 // For next line use "nextLine" (newline/enter terminates)
 // Careful when using nextLine _after_ other next* as they leave newline in buffer
 
+// VALIDATION
+System.out.print("Enter an invalid int: ");
+if (ip.hasNextInt()) {
+  int x = ip.nextInt();
+  System.out.println("it's a valid int: " + x);
+} else {
+  System.out.println("it's an invalid int: " + x);
+}
+
 input.close();
 ```
 
@@ -133,7 +142,7 @@ input.close();
 
   ```
   if (<expression>) {}
-  else if (<xepression>) {}
+  else if (<expression>) {}
   else {}
   ```
 
@@ -143,16 +152,82 @@ input.close();
   int num = 9;
 
   if (num % 2 == 0) System.out.println("Number is even.");
-  else System.out.print("Number is odd.");
+  else System.out.println("Number is odd.");
   ```
 
 - switch case
+
+  Syntax:
+
+  ```
+  switch (<expression>) {
+    case <value1>: <stmts>; [break];
+    case <value2>: <stmts>; [break];
+    case <value3>: <stmts>; [break];
+    default: <stmt>;
+  }
+  ```
+
+  Example:
+
+  ```java
+  int num = 8;
+
+  switch (num % 2) {
+    case 0: System.out.println("Num is even"); break;
+    case 1: System.out.println("Num is odd"); break;
+    default: System.out.println("Error!");
+  }
+  ```
 
 ### Loops
 
 - for
 
+  Syntax:
+
+  ```
+  for (<initialize>; <condition>; <increment>) {
+      <stmts>
+  }
+
+  // OR
+
+  for (<type> <var_name> : <collection of type>) {
+    <stmts>
+  }
+  ```
+
+  Example:
+
+  ```java
+  int [] arr = {1, 2, 3, 4, 5, 6};
+
+  for (int x = 0; x < 5; x++) {
+    System.out.println(arr[x]);
+  }
+
+  for (int x: arr)  System.out.println(x);
+  ```
+
 - while
+
+  Syntax:
+
+  ```
+  while(<expression>) {}
+  ```
+
+  Example:
+
+  ```java
+  int x = 10;
+
+  while(x > 5) {
+    System.out.println(x);
+    x--;
+  }
+  ```
 
 ### Classes & Objects
 
