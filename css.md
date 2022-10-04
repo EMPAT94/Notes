@@ -106,3 +106,25 @@
 ## Box-model
 
 > content, padding, border, margin.
+
+## Layouts
+
+### Flexbox
+
+- Parent:
+
+  - `display: flex`
+  - `flex-direction: row (default on web) | column (default on react-native)`
+  - `justify-content: center | ...` (main axis)
+  - `align-items: center | flex-start | ...` (cross axis)
+  - `flex-wrap: wrap | nowrap`
+
+- Children:
+
+  - `flex-grow: <number>` amount of space an item will take
+  - `flex-shrink: <number>` same as above
+  - `flex-basis: <value>` Initial size
+  - Shorthand for grow, shrink and basis: `flex: <num> <num> <val>`
+  - `align-self: center | ...`
+
+### Grid
