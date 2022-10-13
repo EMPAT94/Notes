@@ -8,7 +8,7 @@ There is a widly followed convention in python to have a "main" function that is
 def main():
   pass
 
-if __module__ == "__main__":
+if __name__ == "__main__":
   main()
 ```
 
