@@ -49,6 +49,20 @@
 
   - Requires extra table to hold relations (junction table)
 
+### JOINS
+
+Assume tables A and B with some primary-foreign key relationship.
+
+- A Inner Join B: Only records in A and B that match (intersection)
+
+- A Left Join B: All records in A + matching records in B (A + intersection)
+
+- A Right Join B: All records in B + matching records in A (B + intersection)
+
+- A Outer Join B: All records in A + All records in B (union)
+
+- A Cross Join B (Cartesian Product): All records in A x All records in B
+
 ---
 
 ## Database Implementations
