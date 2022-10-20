@@ -36,7 +36,7 @@
 
 - boolean (true, false) 1B (only 1 bit is actually used)
 
-> Below types are not primitive
+> Below types are not primitive (are stored on heap instead of stack)
 
 - String, Arrays, Classes, Objects, Interfaces ...
 
@@ -180,6 +180,8 @@ input.close();
   }
   ```
 
+  - `case` falls through
+
 ### Loops
 
 - for
@@ -210,7 +212,7 @@ input.close();
   for (int x: arr)  System.out.println(x);
   ```
 
-- while
+- while (there is also "do-while")
 
   Syntax:
 
@@ -228,6 +230,69 @@ input.close();
     x--;
   }
   ```
+
+- can use `break` and `continue` to manipulate loops.
+
+### Strings
+
+- [API Link](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/String.html)
+
+- Strings are immutable character sequences saved on heap (not primitive values). Inside `java.lang.String` so automatically imported.
+
+- Some useful String methods:
+
+  - length()
+  - charAt(int i)
+  - indexOf(char c)
+  - substring(int start, int end)
+  - toUpperCase(), toLowerCase()
+  - contains(String subStr)
+  - endsWith(String subStr)
+  - startsWith(String subStr)
+  - matches(String regex)
+  - replace(String old, String new)
+  - split(String regex)
+  - strip() [evolved from trim(), unicode aware]
+
+- Note that while `String s = "abc"` is similar to `String s = new String("abc")`, it is not exactly the same because the former "literal" will first check in the String pool if `"abc"` already exists before creating a new one while the latter will create a new one irrespectively. The difference is explained by following code:
+
+  ```java
+  String s1 = "abc";
+  String s2 = "abc";
+
+  // s1 == s2 => true
+
+  String s3 = new String("abc");
+  String s4 = new String("abc");
+
+  // s3 == s4 => false
+  ```
+
+### Arrays
+
+- [API Link](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/Arrays.html)
+
+- Arrays are present in package `java.util.Arrays`
+
+```java
+
+// Syntax
+
+// <type> [] <var_name> = new <type>[<capacity>];
+
+// Example
+
+int [] array_of_five_ints = new int[5];
+
+String [] arrayOf10String = new String[10];
+
+MyObject [] arrayOfCustomObj = new MyObject[3];
+
+// Example to create with pre-filled data
+
+char [] vowels = { 'a', 'e', 'i', 'o', 'u' }; // => new Char[5];
+
+```
 
 ### Classes & Objects
 
