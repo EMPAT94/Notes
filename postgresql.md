@@ -51,6 +51,7 @@
 ```sql
 # CREATE DATABASE <database>;
 # CREATE USER <user> WITH ENCRYPTED PASSWORD '<pass>';
+# ALTER DATABASE <database> OWNER TO <user>;
 # GRANT ALL PRIVILEGES ON DATABASE <database> TO <user>;
 ```
 
