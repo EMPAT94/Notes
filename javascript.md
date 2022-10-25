@@ -19,6 +19,58 @@
 
 ### Comments
 
+- Single line Comments: `//`
+
+- Multi-line Comments: `/* ... */`
+
+### Functions
+
+- Standard Function
+
+```js
+// Syntax:
+// function <fn_name>(<args_list>) { <body> }
+
+// Example function that adds two values
+function add(a, b) {
+  return a + b;
+}
+```
+
+- Arrow Functions
+
+```javascript
+
+[const | let | var] <fn_name> = (<args_list>) => { <body> };
+
+// Parentheses around body are optional. When ommited, returns the evaluated value by default
+// The same "add" function above can be written as:
+
+const add = (a, b) => a + b;
+
+// Arrow functions (or lambda expressions) do not have their own scope (this),
+// they borrow it from their parent scope. Useful as anon functions.
+```
+
+- Anonymous Functions
+
+```javascript
+// Functions with no "name"
+// All arrow functions are anonymous
+
+// Example:
+function (a, b) { return (a + b); }
+
+// Since function has no name, it must be assigned to a variable to be called.
+const add = function (a, b) { return (a + b); }
+```
+
+- IIFE (Immediately Invoked Function Expression)
+
+### Promises
+
+### Classes & Objects
+
 ## Tips
 
 - Make a dynamic chain of promises
