@@ -1,10 +1,12 @@
 # Shell
 
-- Use user argument or default Valued
+- Using a default value for a variable
 
   ```sh
-  VAL=${1:-"<default>"}
+  VAL=${<var>:-"<default>"}
   ```
+
+  - The above sets default if var is null or unset. Use only `:` for skipping null check.
 
 - Reuse previous shell command
 
@@ -90,6 +92,12 @@
   ```sh
   $ if command; then <sucess>; else <fail>; fi
   ```
+
+  - Check if an environment variable exists
+
+    ```bash
+    if [[ -z $ENV_VAR ]]; then; fi;
+    ```
 
 - for loop
 
