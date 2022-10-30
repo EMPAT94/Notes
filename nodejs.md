@@ -103,6 +103,18 @@ require("http")
   if (require.main === module) main();
   ```
 
+- Although it can also be done like so:
+
+  ```js
+  import { open } from "node:fs/promises";
+
+  const file = await open("./some/file/to/read");
+
+  for await (const line of file.readLines()) {
+    console.log(line);
+  }
+  ```
+
 ## About Timers
 
 - [Offical event loop timers doc](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)

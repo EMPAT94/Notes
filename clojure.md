@@ -31,17 +31,35 @@ OPINION: Should just call 'em expressions and be done with it
 - Booleans: `true`, `false`
 - Numbers: integers `1`, floats `1.2`, ratios `1/2`
 - Strings: `"only double quotes work"`
+- Characters: `\a` `\b` `\c`
 - Regex: `#"regular-expression-here"`
 - Keywords: `:colon-prefixed-symbols`
   - Very fast lookup, so used as keys and params
+- Null: `nil`
+- Symbols: `+` `map`
 
 ### Data Structures
 
-- Maps: `{:keyword-keys "value can be anything"}`
+- Maps (Dicts/Objects/Hashes): `{:keyword-keys "value can be anything"}`
 
-  - Get: `(get {:key "value"} :key)` => Lookup by key
+  - Get: `(get {:key "value"} :key "default")` => Lookup by key, "default" if not found
+  - Add: `(assoc some-map :key "V")`
+  - Update: `(assoc some-map :key "U")`
+  - Remove: `(dissoc some-map :key)`
+  - Contains: `(contains? some-map :key)` => true | false
+  - Find: `(find some-map :key)` => [:key "U"]
+  - Keys: `(keys some-map)`
+  - Values: `(vals some-map)`
+  - Merge: `(merge map-one map-two)`
   - Get-in: `(get-in {:a {:b "value"}} [:a :b])` => Nested
-  - `(:key {:key "value"})` == `({:key "value"} :key)` == `"value"`
+  - `(:key {:key "value"} "default")` == `({:key "value"} :key)` == `"value"`
+  - Assoc-in updates nested data
+
+- Records (Alternatives to maps for domain specific data with "type"):
+
+  - Definition => `(defrecord Name [field1 field2 field3])`
+  - Instance => `(def inst1 (->Name val1 val2 val3))`
+  - Instance => `(def inst2 (map->Name {:field1 val1 :field2 val2 :field3 val3}))`
 
 - Vectors (Arrays): `[1 2 3 "anything" :goes]`
 
@@ -50,12 +68,17 @@ OPINION: Should just call 'em expressions and be done with it
 
 - Lists (Linked Lists): `'(1 2 3 "anything" :goes)`
 
-  - Get: `(nth '(1 2 3) 0)` => Lookup by iterating
+  - Get head: `(first '(1 2 3))` => 1
+  - Get tail: `(rest '(1 2 3))` => 2 3
+  - Get top: `(pop '(1 2 3))` => 2 3
+  - Peek top: `(peek '(1 2 3))` => 1
+  - Get arbitrary: `(nth '(1 2 3) 0)` => Lookup by iterating
   - Add: `(conj '(1 2 3) 4)` => Adds to **start** of list
 
 - Sets: `#{"some" :values 1 1/4}`
 
-  - Add: `(conj #{:a :b} :c)`
+  - Add: `(conj #{:a :b} :c)` => :a :b :c
+  - Remove: `(disj #{:a :b :c} :c)` => :a :b
   - Contains: `(contains? #{1 2 3} 2)` => Check inclusion, returns true/false
   - Can use Map-like `get` and `:key` lookup too
 
@@ -82,16 +105,44 @@ OPINION: Should just call 'em expressions and be done with it
 
 - `(fn [arg] (print arg))` == `#(print %)` ==> anon fn
 
-### Conditionals
+  - `fn` has closure over surrounding lexical scope
 
-- `(if <cond> <then> <else>)` => all things inside `<>` are individual forms
+- `(let [name value] (code that uses name))` => `let` creates bindings in lexical scope
+
+### Branching
+
+- If-else: `(if <cond> <then> <else>)` => all things inside `<>` are individual forms
 
   - If no `else` then returns `nil` on `false`
+  - Use `do` to add more than one expression in the branches
 
-- `(when <cond> <form1> <form2> <form3>)`
+- When: `(when <cond> <form1> <form2> <form3>)`
 
   - A combination of `if` and `do`
 
+- Cond: `(cond <condition1> <expression1> <condition2> <expression2>)` => Successively check each condition and evaluate corresponding expression if true
+
+- Cond-else: `(cond <> <> <> <> :else <expression>)` => `:else` always evaluates to true. Using the word "else" is a convention.
+
+- Case: `(case <var> <case_1_literal> <expression> <case_2> <expression>)`
+
+  - Matches are done in constant time, case conditions must be literal values
+
+- Case-else: `(case <var> <> <> <> <> <default expression if no match>)`
+
 ### Loops
 
-- `(loop TODO)`
+- For: `(for <[bindings]> <expression>)`
+
+  - More of a list comprehension than a loop. Returns a list.
+
+- Loop + Recur: `(loop <[bindings]> (<expr> (recur <[bindings]>)))`
+
+- Fn + Recur: `(defn name <[bindings]> (<expr> (recur <[bindings]>)))`
+
+  - `recur` must be the last expression
+  - it is tail call recursive
+
+### Exceptions
+
+### With (Same as `with` in python)
