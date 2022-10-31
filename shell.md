@@ -398,7 +398,7 @@
 - For all tracks in albumFolder, import metadata, fix filenames and copy to Dir:
 
   ```shell
-  $ beets -d ~/Dir import [-S <url>] [-s <file> | -g <folder>]
+  $ beet -d ~/Dir import [-S <url>] [-s <file> | -g <folder>]
   ```
 
   where  
