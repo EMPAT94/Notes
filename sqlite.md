@@ -71,6 +71,33 @@
     select distinct <col1>, <col2> from <table>;
     ```
 
+  - Limit Query
+
+    ```sql
+    select ... LIMIT <number>;
+    ```
+
+  - Offset Query
+
+    ```sql
+    select ... OFFSET <number>;
+    ```
+
+    - Offset and Limit may be used together (with order by) for paginated results
+
+  - Like Query
+
+    ```sql
+    select * from <table> where LIKE <pattern>;
+    ```
+
+    - `<pattern>` is _like_ regex but not really. Here's a comparison:
+      - `x%` = `^x+` = starts with "x"
+      - `%x` = `.*x$` = ends with "x"
+      - `%xyz%` = `.*xyz.*` = contains "xyz"
+      - `_x%` = `^.x.*` = has x in second position, `_` is like `.` - means any
+      - `x%y` = `^x.*y$` = starts with "x" and ends with "y"
+
   - Count Query
 
     ```sql

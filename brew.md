@@ -12,9 +12,11 @@
 
 1. Get info about a package: `brew info <package>`
 
-1. Install a package (formula or cask): `brew install [--cask] <package>`
+1. Install a package (formula or cask): `brew install [--no-quarantine] [--cask] <package>`
 
    - I normally don't use the optional `--cask` flag, brew is clever enough to know which I want most of the time; and prompts me for which when ambiguous.
+
+   - `--no-quarantine` ensures you don't get the security confirmation dialog on opening a cask for first time.
 
    - `formula` refers to a cli app or lib while `cask` refers to a full "gui" application
 

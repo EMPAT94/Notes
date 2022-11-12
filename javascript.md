@@ -111,3 +111,13 @@ const add = function (a, b) { return (a + b); }
   let fraction = 1.234;
   let intPart = ~~fraction; // 1
   ```
+
+- Arrays, Iterables and Array-Likes
+
+  - Iterables have a [Symbol.iterator] function; can use used in `for-of` loop
+    - Generator functions can be iterable
+  - Array-likes have numberical indexes and a length key
+    - HTML nodes are array-like
+  - Iterables can be (or not be) array-like and vice versa
+  - Arrays are instance of Array and have Array functions like `pop`, `push` etc
+  - Arrays can be constructed from either of above using `Array.from`
