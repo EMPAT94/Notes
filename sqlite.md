@@ -98,11 +98,17 @@
       - `_x%` = `^.x.*` = has x in second position, `_` is like `.` - means any
       - `x%y` = `^x.*y$` = starts with "x" and ends with "y"
 
-  - Count Query
+  - Sum | Min | Max | Average | Count - Aggregate functions
 
-    ```sql
-    select count(*) from table;
-    ```
+  ```sql
+  select [SUM | MIN | MAX | AVG | COUNT](<col>) from <table> [group by <table>]
+  ```
+
+  - HAVING: Like "WHERE" filter for aggregate functions
+
+  ```sql
+  select <col> from <table> [group by <col>] HAVING <[sum | min | max | avg | count ] bool expr>;
+  ```
 
 - Backup Sqlite3 (non-interactively)
 
