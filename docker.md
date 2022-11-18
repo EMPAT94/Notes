@@ -171,3 +171,11 @@
 - Permission denied error solution: `sudo aa-remove-unknown`
 
 > It turned out that AppArmor service was messing up with Docker. AppArmor (or "Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles.
+
+### MacOS
+
+> Dockers require a linux kernel to work, so it works like a virtual machine on Mac.
+
+- Easiest way to use would be `brew install --cask docker` but docker desktop is not opensource (or fully free). Next best option is to use another container runtime. I came across something called [colima](https://github.com/abiosoft/colima)!
+
+- To setup docker as in linux: `brew install docker docker-compose colima && colima start`

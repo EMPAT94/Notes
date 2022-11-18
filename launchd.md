@@ -64,3 +64,5 @@
 1. Unload agent `launchctl unload -w ~/Library/LaunchAgents/com.zettelmerken.dailyreview.plist`
 
 1. Start/Stop (for debugging) `launchctl start com.zettelmerken.dailyreview`
+
+1. List all services `launchctl list`
