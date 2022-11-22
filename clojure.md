@@ -15,6 +15,8 @@
 
 - [Exercism Track: Guided Tutorials](https://exercism.org/tracks/clojure)
 
+- [Clojure Beginner Resources: Github Gist](https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f)
+
 ## Notes (from braveclojure)
 
 ### Syntax

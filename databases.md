@@ -63,6 +63,26 @@ Assume tables A and B with some primary-foreign key relationship.
 
 - A Cross Join B (Cartesian Product): All records in A x All records in B
 
+### Transaction
+
+> a logical unit of work against a database which may spread across one or more operations.
+
+- Follow ACID properties:
+
+  - Atomicity: (operations) succeed or fail completely (no partials)
+
+  - Consistency: data is always in valid state before and after transaction (constraints are checked)
+
+  - Isolation: One transaction does not affect another transaction
+
+  - Durability: Results of a transaction are permanent
+
+- Explicit Transaction Control:
+
+  - BEGIN [TRANSACTION] - Start a transaction, operations follow this keyword
+  - COMMIT [TRANSACTION] - Define a transaction success; data is saved in database
+  - ROLLBACK [TRANSACTION] - Define a transaction failure; database is reverted to previous valid state
+
 ---
 
 ## Database Implementations
@@ -80,4 +100,11 @@ Assume tables A and B with some primary-foreign key relationship.
 - Neo4j
 - ArrangoDB
 - CouchDB
-- IndexDB
+- Cassandra
+- CockroachDB
+- DynamoDB (Amazon)
+- OracleDB (JSON/RDBMS)
+- Firebase Cloud Store
+- Firebase Realtime Store
+- InfluxDB
+- IndexDB (Browser)
