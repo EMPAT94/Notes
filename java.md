@@ -340,3 +340,22 @@ public class Bike {
 Bike b = new Bike(18);
 
 ```
+
+### OOP Pillars
+
+- Encapsulation - Packing state/behaviour (data/methods) together
+
+  - Facilitates "data hiding"
+
+- Inheritance - State/Behaviour can be passed around to descendants
+
+- Polymorphism - Same name (object/method) means different thing depending on context
+
+  - Overloading: Same name, different parameters, same class
+  - Overriding: Same name, same parameters, different class
+
+- Above 3 are pillars, OOP also consists keywords like
+
+  - Abstraction: Define a skeleton (Abstract Class) or expose API (Interface) then implement later however.
+    - Abstract Class - When classes (extends) are similar
+    - Interface - When classes (implements) share some traits but are not similar

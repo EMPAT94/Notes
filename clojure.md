@@ -1,13 +1,22 @@
-# Clojure
+# Clojure(script)
 
 ## Resources
 
-- [Official Site](https://clojure.org/index)
-
-- [Clojure for the Brave and True:](https://www.braveclojure.com/)
+- [Clojure Official Site](https://clojure.org/index)
+- [Clojurescript Official Site](https://clojurescript.org/index)
 
 - [Clojure Resources #1](https://clojuredocs.org/)
 - [Clojure Resources #2](https://clojure-doc.org/)
+
+- [Clojure for the Brave and True:](https://www.braveclojure.com/)
+
+- [Learn Clojurescript](https://www.learn-clojurescript.com/section-0/)
+
+- [Modern CLJS](https://github.com/magomimmo/modern-cljs)
+
+- [Clojurescript Unraveled](https://funcool.github.io/clojurescript-unraveled/)
+
+- [Clojure from the ground up](https://aphyr.com/posts/301-clojure-from-the-ground-up-welcome)
 
 - [Clojure by example](https://kimh.github.io/clojure-by-example/#about-this-page)
 

@@ -27,3 +27,5 @@
    - `--greedy` flag is for those apps that have auto-update enabled. I use it always, instead of upgrading individual app.
 
 1. Cleanup everything: `brew autoremove && brew cleanup [--prune=all]`
+
+1. List of all formulae explicitly installed (without deps): `brew leaves`
