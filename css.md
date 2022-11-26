@@ -135,3 +135,46 @@
 - Bootstrap
 - Ant
 - Sementic
+
+### Tips n Tricks
+
+- Center Div
+
+  ```html
+  <div class="outer">This text should be in center!</div>
+
+  <style>
+    .outer {
+      display: flex /* grid */;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  </style>
+  ```
+
+- Change svg color using css filter
+
+[Source](https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element)
+
+1. Add the SVG image using an `<img>` tag.
+
+   ```html
+   <img src="dotted-arrow.svg" class="filter-green" />
+   ```
+
+2. To filter to a specific color, use the following [Codepen](https://codepen.io/sosuke/pen/Pjoqqp) to convert a hex color code to a CSS filter:
+
+For example, output for #00EE00 is
+
+filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+
+3. Add the CSS filter into this class.
+
+   ```css
+   .filter-green {
+     filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(
+         118%
+       ) contrast(119%);
+   }
+   ```

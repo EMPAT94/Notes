@@ -179,3 +179,51 @@
 - Easiest way to use would be `brew install --cask docker` but docker desktop is not opensource (or fully free). Next best option is to use another container runtime. I came across something called [colima](https://github.com/abiosoft/colima)!
 
 - To setup docker as in linux: `brew install docker docker-compose colima && colima start`
+
+### Deploying static sites in docker
+
+Following dockerfile uses nginx:alpine image to serve static data over 8000
+
+```dockerfile
+
+# nginx state for serving content
+FROM nginx:1.21-alpine
+
+# Set working directory to nginx asset directory
+WORKDIR /usr/share/nginx/html
+
+# Remove default nginx static assets
+RUN rm -rf ./*
+
+# Copy static assets over
+COPY ./static ./
+
+```
+
+Build the image:
+
+```sh
+docker build -t static-serve .
+```
+
+Start a container
+
+```sh
+docker run -p 8000:80 static-serve
+```
+
+---
+
+Btw, this is all an alternative to:
+
+```sh
+python -m http.server
+```
+
+---
+
+Also see multistage builds to reduce image size, if that is a concern. See [how-to-use-the-official-nginx-docker-image](https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/)
+
+---
+
+For smallest possible image size for static serve, see [smallest-docker-image-static-website](https://lipanski.com/posts/smallest-docker-image-static-website)
