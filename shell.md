@@ -87,7 +87,7 @@
   $ if [ <test> ]; then <something>; fi
   ```
 
-  for command sucess | fail, simply do this (not no sq brackets)
+  for command sucess | fail, simply do this (no sq brackets)
 
   ```sh
   $ if command; then <sucess>; else <fail>; fi
@@ -96,7 +96,7 @@
   - Check if an environment variable exists
 
     ```bash
-    if [[ -z $ENV_VAR ]]; then; fi;
+    if [[ -z $ENV_VAR ]]; then echo "Not exists"; fi;
     ```
 
 - for loop
