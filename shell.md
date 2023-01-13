@@ -325,6 +325,14 @@
   This is an example email.
   ```
 
+## ffmpeg
+
+- Convert a mov to mp4 (with compression):
+
+```shell
+ffmpeg -i my-video.mov -vcodec h264 -acodec mp2 my-video.mp4
+```
+
 ## vlc [cli mode]
 
 - Start vlc with ncurses interface
