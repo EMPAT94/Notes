@@ -4,6 +4,8 @@
 
 - [Official Docs](https://www.swift.org/documentation/)
 
+- [Style Guide](https://www.swift.org/documentation/api-design-guidelines/)
+
 ## Notes
 
 - Print to console: `print("Hello, World!")`
@@ -13,7 +15,7 @@
   - `Int`: 1, 2, ...
   - `Float`: 1.1, 1.2 ...
   - `Double`: 1.1, 1.2 ...
-  - `Boolean`: true, false
+  - `Bool`: true, false
   - `String`: "a", "ABC", ...
   - Find type: `type(of: <value>)`
   - Type-cast: `<type>(<value>)` Values are never implicitly converted
@@ -43,7 +45,7 @@
   - Unicode: `"Unicode: \u{xxxx}"`
   - Utilities: `<strName>.uppercased()` `<strName>.lowercased()` `<strName>.count()`
 
-- Collections
+- Data Structures
 
   - `let` | `var` rules follow!
   - Array
