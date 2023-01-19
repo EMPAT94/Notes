@@ -16,7 +16,7 @@
   - `Boolean`: true, false
   - `String`: "a", "ABC", ...
   - Find type: `type(of: <value>)`
-  - Type-cast: `<type>(<value>)`
+  - Type-cast: `<type>(<value>)` Values are never implicitly converted
 
 - Variables and Constants
 
@@ -56,8 +56,20 @@
   - Dictionary
     - Definition: `let dict = Dictionary<<keyType>, <valType>>()` `let dict: [<keyType>: <valType>] = [:]` Note the colon here for empty
     - Utilities: `<dictName>[<key>] [  = <value> ]` `let original = <dictName>.updateValue(...)`
+  - Tuple
+    - Definition: `let tup = (1, 2, 3)`
 
-- Loops
+- Optionals
+
+  - Values that can be nil
+  - Definition: `var nullableSomething: <type>?` Note the `?`
+  - Unwrapping:
+    - Force: `<optionalName>!` Note the `!`, use with caution
+    - If: `if <optionalName> != nil { ... }`
+    - Optional Binding: `if let <optionalName> [= <optionalName>] { ... }`
+    - Null Coalesce: `<optionalName> ?? <defaultValue>`
+
+- Looping
 
   - Iterating an array values: `for <name> in <Array> { ... }`
   - Iterating an array values and index: `for (<name>, <idx>) in <Array>.enumerated() { ... }`
@@ -67,15 +79,10 @@
   - `while <condition> { ... }`
   - `repeat { ... } while <condition>`
 
-- Optionals
+- Branching
 
-  - Values that can be nil
-  - Definition: `var nullableSomething: <type>?` Note the `?`
-  - Unwrapping:
-    - Force: `<optionalName>!` Note the `!`, use with caution
-    - If: `if <optionalName> != nil { ... }`
-    - Optional Binding: `if let <optionalName> = <optionalName> { ... }`
-    - Null Coalesce: `<optionalName> ?? <defaultValue>`
+  - `if <condition> {} else {}`
+  - `switch <name> { case <expression>: ... <default>: }` No "break" required
 
 - Functions
 
@@ -111,6 +118,10 @@
 
     // NOTE: "return" keyword is not required for single line body
     ```
+
+    - Nested functions have closures (defined by `{}`)
+    - Functions are first class
+    - `{ (<name>) in <retValue> }` is like a lambda of sorts for `func x(<name>: <type>) -> <retType> { return <retValue> }`
 
 - Tips
 
