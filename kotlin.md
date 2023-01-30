@@ -32,7 +32,7 @@
 
   - List: `val lst = listOf("a", "b", "c")` List<String>
   - Map: `val mp = mapOf("a" to 1, "b" to 2, "c" to 3)` Map<String, Int>
-  - Set: `val st = listOf("a", "b", "c")` Set<String>
+  - Set: `val st = setOf("a", "b", "c")` Set<String>
   - Add `mutable` as prefix for variables: `val mutList = mutableListOf("a")`
 
 - Functions
