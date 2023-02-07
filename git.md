@@ -1,8 +1,40 @@
 # Git
 
+## Stash
+
+> Stash the changes in a dirty working directory away
+
+- Show all saved points: `git stash list`
+
+- Quickly stash current changes: `git stash [push]`
+
+- Quickly unstash latest save: `git stash pop`
+
+- Clear all saved stashes: `git stash clear`
+
+- Save with a specific name: `git stash save <name>`
+
+- Apply a specific stash: `git stash apply <n>`
+
+  - where "n" is the stash@{n} you see after listing all stashes
+
+## Manual Rebase
+
+- If changed committed in latest commit: `git reset --soft HEAD~1`
+
+- Stash working state: `git stash`
+
+- Pull latest from upstream: `git pull origin ...`
+
+- Pop working state: `git stash pop`
+
+- Create a commit: `git commit`
+
+- Force push: `git push -f origin ...`
+
 ## Tags
 
-- Tags: Mark a point in commit history (useful for releases and such)
+> Mark a point in commit history (useful for releases and such)
 
 - [Docs](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
 
