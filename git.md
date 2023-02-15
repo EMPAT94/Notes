@@ -18,7 +18,17 @@
 
   - where "n" is the stash@{n} you see after listing all stashes
 
-## Manual Rebase
+## Rebase
+
+> Make it look like your commit(s) were made on top of the latest head
+
+- In the branch to be rebased: `git rebase <rebase-on>`
+
+- Example, to rebase a featurex branch on main: `git checkout featurex; git rebase main; git push -f origin featurex`
+
+- <span style="color: red">IMPORTANT!</span> Do not rebase on shared public branch!
+
+### Manual Rebase
 
 - If changed committed in latest commit: `git reset --soft HEAD~1`
 
