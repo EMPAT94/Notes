@@ -33,6 +33,7 @@
     - child_added
     - child_removed
     - child_changed
+    - child_moved
 
 - To query data, the syntax is usually `reference().order().query1().query2()...on()`, like so:
 
@@ -53,6 +54,8 @@
     - equalTo()
     - limitToFirst()
     - limitToLast()
+    - startAfter()
+    - endBefore()
 
   ```js
   // Example node

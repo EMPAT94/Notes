@@ -26,7 +26,7 @@
 
 - Example, to rebase a featurex branch on main: `git checkout featurex; git rebase main; git push -f origin featurex`
 
-- <span style="color: red">IMPORTANT!</span> Do not rebase on shared public branch!
+- <span style="color: red">IMPORTANT!</span> Do not rebase on shared public branches!
 
 ### Manual Rebase
 
