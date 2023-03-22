@@ -176,9 +176,7 @@
 
 > Dockers require a linux kernel to work, so it works like a virtual machine on Mac.
 
-- Easiest way to use would be `brew install --cask docker` but docker desktop is not opensource (or fully free). Next best option is to use another container runtime. I came across something called [colima](https://github.com/abiosoft/colima)!
-
-- To setup docker as in linux: `brew install docker docker-compose colima && colima start`
+- Easiest way to use would be `brew install --cask docker` but docker desktop is not opensource (or fully free).
 
 ### Deploying static sites in docker
 
