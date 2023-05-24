@@ -22,9 +22,9 @@
 
 - [Reddit Community Link](https://www.reddit.com/r/elixir/)
 
-https://joyofelixir.com/toc.html
+- https://joyofelixir.com/toc.html
 
-https://www.poeticoding.com/category/elixir/
+- https://www.poeticoding.com/category/elixir/
 
 ## TDD
 
@@ -43,21 +43,19 @@ Using ExUnit: `mix test --stale --max-failures 1 --listen-on-stdin --trace --see
 
 ## Notes
 
-### Optimizations
+### Data Types
 
-1. Pattern matching is _fastest_ in getting values into variables
-
-### Exercism Syllabus
-
-#### Data Types
-
-- Bitstring (just sequence of bits) > Binary (Bitstring % 8 === 0) > Strings (UTF-8 Binary)
+- String
+  - Interpolation: "#{var} literal"
+  - Concatenation: "first" <> var <> "third"
 - Integer
 - Float
 - Boolean
 - Atom (like a "Symbol" in js, value is itself)
 
-#### Data Structures
+- Bitstring (just sequence of bits) > Binary (Bitstring % 8 === 0) > Strings (UTF-8 Binary)
+
+### Data Structures
 
 Tuples: `{"any", "type", 1, false}`
 
@@ -70,6 +68,9 @@ List: `["here", "too", 123, true]`
 - Linked List
 - Cheap Write
 - Expensive Read
+- Append: [1 | [2, 3, 4]] = [1, 2, 3, 4]
+- Concat: [1, 2] ++ [2, 3] = [1, 2, 3, 4]
+- Substract: [3, 4] -- [1, 2, 3, 4] = [1, 2]
 
 Charlist: `['a', 'b', 'c'] = 'abc'`
 
@@ -91,25 +92,41 @@ Keywords: ?
 
 Structs: ?
 
-#### Control Flow
+### Control Flow
 
-if
+- if: `if condition do \n ... \n end` or `if condition, do: ..., else: ...`
 
-unless
+- unless: opposite of `if`, same syntax
 
-case
+- case: `case variable do \n pattern -> return \n ... \n end`
 
-cond
+- cond: `cond do \n condition -> return \n ... \n end`
 
-with
+- with: `with pattern do \n ... \n end` or `with pattern, do: ...`
 
-#### Modules
+- Boolean Operators: and/&& or/|| not/!
 
-module constants
+- Exists: var in list, e.g, `1 in [1, 2, 3, 4]` = true, can be used as `not in`
 
-struts
+### Functions
 
-#### Typespec and Doc
+- Anonymous: `sum = fn a, b -> a + b end` called as `sum.(1, 2)` = 3
+- Shorthand: `sum = &(&1 + &2)` same as above
+- Parameters can be pattern matched to return different results:
+
+  - `sum -> fn \n pattern -> return \n pattern -> return \n end`
+
+### Modules
+
+> Like Classes
+
+- Functions inside modules are defined using `def` keyword, `defp` for private
+
+- constants: `@name value`
+
+- (parameters) structs: `defstruct [:var1, :var2]`
+
+### Typespec and Doc
 
 Create new type and assign it to spec:
 
