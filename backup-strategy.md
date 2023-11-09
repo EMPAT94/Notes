@@ -4,44 +4,47 @@
 
 I currently have following storage options:
 
-- Laptop: 1 TB SSD (Local)
-- Phone: 128 GB (Local)
-- External: 1 TB HDD (Local)
+- Local
 
-- Mega.nz: 50 GB (Remote)
-- Oracle VPS: 50 GB (Remote)
-- Nextcloud: 100 GB (Remote)
-- Storj: 150 GB (Remote)
+  - Laptop
+  - Phone
+  - External Disk
 
-- Github: ~ (Remote text-only versioned git backups)
+- Remote
+
+  - Mega.nz: 50 GB
+  - Oracle VPS: 50 GB
+  - Nextcloud: 100 GB
+  - Storj: 150 GB
+  - Github
 
 ## Strategies:
 
-- Multi-Media (Photos, Videos, Music, Ebooks and other Documents)
+- Multi-Media (Photos, Videos, Music, Ebooks and general Documents)
 
-  - Laptop <-> Phone (can generate in either) (every week)
+  - Laptop <-> Phone
   - Nextcloud (auto-sync)
-  - External HDD (once a month)
+  - External Disk (once a month)
 
-- Notes, (Encrypted) Keys, Text data
+- Notes, (Encrypted) Keys, etc
 
-  - Laptop (generated)
+  - Laptop <-> Phone
   - Github (immediate)
-  - Phone (every week)
   - Nextcloud (auto-sync)
-  - External HDD (once a month)
+  - External Disk (once a month)
 
 - Project Repositories
 
   - Laptop (generated)
   - Github (immediate)
-  - External HDD (once a month)
+  - External Disk (once a month)
 
-- [Hobby] Deployed Apps (Config and DB)
+- Deployed Apps (Config and DB)
 
-  - VPS local backups (also generates)
+  - VPS local backups
   - Daily automatic encrypted push to Storj
-  - Daily automatic pull to Laptop
+  - Laptop
+  - External Disk
 
 ## Notes:
 
@@ -58,7 +61,7 @@ I currently have following storage options:
 - [Syncthing]() Laptop <-> Phone
 - [Rsync]() Laptop <- VPS
 - [Rclone]() VPS -> Storj/Mega
-- [Mega.nz App]() for Laptop -> Mega.nz
-- [Webdav]() for Laptop -> Nextcloud
-- [Git]() for Laptop -> Github
-- USB 2.0 for Laptop -> External HDD (Yes, it is scavanged from an old system)
+- [Mega.nz App]() Laptop -> Mega.nz
+- [Nextcloud]() for Laptop -> Nextcloud
+- [Git]() Laptop -> Github
+- [Cable/ADB]() Laptop <-> Phone <-> External Disk
