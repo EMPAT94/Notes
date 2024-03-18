@@ -431,3 +431,14 @@
 - Start an emulator: `emulator @<device_name>`
 
 - Some useful options: `emulator @<device> -no-boot-anim -memory <size> -logcat <regex>`
+
+## SSHFS (macos setup)
+
+```bash
+$ brew install --cask macfuse
+$ brew tap gromgit/fuse && brew install gromgit/fuse/sshfs-mac
+$ sshfs -V # test if installed
+$ sshfs -o allow_other,default_permissions <server-dir> <local-dir> # follow prompts for permission
+```
+
+> On linux, sshfs should be preinstalled, if not just use default package manager
