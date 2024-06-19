@@ -120,30 +120,13 @@
 
 - Not essential but a better workflow is to start off with a bare repository and have one folder each for each branch:
 
-  - Clone bare repo
-
   ```sh
-  git clone --bare <remote> .bare
-  ```
-
-  - git command needs a .git to work with
-
-  ```sh
-  echo "gitdir: ./.bare > .git"
-  ```
-
-  - Set remote brances up so git fetch and etc start working
-
-  ```sh
+  mkdir <repo>; cd <repo>
+  git clone --bare <remote>
+  echo "gitdir: ./. > .git"
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-  ```
-
-  - Fetch remote branches
-
-  ```sh
   git fetch origin
+  git worktree add <branch>
   ```
-
-- It is possible to set this up in a single shell command and bind an alias in .gitconfig
 
 - Worktree commands help: `git worktree help`

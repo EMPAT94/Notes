@@ -225,3 +225,9 @@ Also see multistage builds to reduce image size, if that is a concern. See [how-
 ---
 
 For smallest possible image size for static serve, see [smallest-docker-image-static-website](https://lipanski.com/posts/smallest-docker-image-static-website)
+
+## Copy Docker image without hub/registry
+
+```sh
+docker save <image> | gzip | DOCKER_HOST=ssh://user@remotehost docker load
+```

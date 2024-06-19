@@ -4,6 +4,12 @@
 
 - [Official Site](https://elixir-lang.org/)
 
+- https://www.erlang.org/doc/system/getting_started.html
+
+- https://hexdocs.pm/elixir/introduction.html
+
+- https://hexdocs.pm/phoenix/overview.html
+
 - [Official Learning Resource](https://github.com/dwyl/learn-elixir)
 
 - [Standard Modules](https://hexdocs.pm/elixir/Kernel.html)
