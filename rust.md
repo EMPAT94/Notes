@@ -27,6 +27,22 @@ modified: "Sat May  9 10:26:00 EDT 2026"
 
 ## How to
 
+### Discard None (Optional) values in a loop
+
+```rust
+let x = [Some(1), None, Some(2), None, Some(3)];
+
+// Using let Some(x) = y else { continue }
+let mut sum = 0;
+for v in x {
+    let Some(v) = v else { continue };
+    sum += v;
+}
+
+// Using filter_map
+let fsum = x.iter().filter_map(|v| v.map(|v| v)).fold(0, |s, e| s + e);
+```
+
 ### Quickly convert a digit (0-9) into char
 
 ```rust

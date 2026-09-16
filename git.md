@@ -183,3 +183,56 @@ ssh -T git@github-other.com
 # Ensure your other-account repos are configured by the other-account email
 git config user.email "other@account.com"
 ```
+
+## How to reduce large .git folders?
+
+If `git maintenance run` and `git repack -a -d -f --depth=250 --window=250` [source](https://gcc.gnu.org/legacy-ml/gcc/2007-12/msg00165.html) don't already do it, manually prune it.
+
+> This could happen if large binaries were commit at some point
+
+To see the biggest files:
+
+```bash
+#!/usr/bin/env bash
+
+# Source: http://stevelorek.com/how-to-shrink-a-git-repository.html
+
+# To pull in all branchs
+# for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do
+#     git branch --track ${branch##*/} $branch
+# done
+
+# Shows you the largest objects in your repo's pack file.
+# Written for osx.
+#
+# @see http://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/
+# @author Antony Stubbs
+
+# set the internal field spereator to line break, so that we can iterate easily over the verify-pack output
+IFS=$'\n';
+
+# list all objects including their size, sort by size, take top 10
+objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head`
+
+echo "All sizes are in kB. The pack column is the size of the object, compressed, inside the pack file."
+
+output="size,pack,SHA,location"
+for y in $objects
+do
+	# extract the size in bytes
+	size=$((`echo $y | cut -f 5 -d ' '`/1024))
+	# extract the compressed size in bytes
+	compressedSize=$((`echo $y | cut -f 6 -d ' '`/1024))
+	# extract the SHA
+	sha=`echo $y | cut -f 1 -d ' '`
+	# find the objects location in the repository tree
+	other=`git rev-list --all --objects | grep $sha`
+	output="${output}\n${size},${compressedSize},${other}"
+done
+
+echo -e $output | column -t -s ', '
+```
+
+THen use [git-filter-repo](https://github.com/newren/git-filter-repo/) to [purge a large list of files](https://github.com/newren/git-filter-repo/blob/main/Documentation/examples-from-user-filed-issues.md#purge-a-large-list-of-files) or [remove the whole directory](https://github.com/newren/git-filter-repo/blob/main/Documentation/examples-from-user-filed-issues.md#removing-a-directory) or any other way that suits your needs.
+
+> This may remove your oirgin, just re-add your repo url and force push
